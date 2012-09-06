@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRequisitionMaterialActivitySubcontractorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRequisitionMaterialActivitySubcontractorLabel_id}"/>
+                    <h:outputText value="#{requisitionMaterialActivitySubcontractorController.selected.id}" title="#{bundle.ViewRequisitionMaterialActivitySubcontractorTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRequisitionMaterialActivitySubcontractorLabel_requisitionMaterialActivityId}"/>
+                    <h:outputText value="#{requisitionMaterialActivitySubcontractorController.selected.requisitionMaterialActivityId}" title="#{bundle.ViewRequisitionMaterialActivitySubcontractorTitle_requisitionMaterialActivityId}"/>
+                    <h:outputText value="#{bundle.ViewRequisitionMaterialActivitySubcontractorLabel_subcontractorId}"/>
+                    <h:outputText value="#{requisitionMaterialActivitySubcontractorController.selected.subcontractorId}" title="#{bundle.ViewRequisitionMaterialActivitySubcontractorTitle_subcontractorId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{requisitionMaterialActivitySubcontractorController.destroyAndView}" value="#{bundle.ViewRequisitionMaterialActivitySubcontractorDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewRequisitionMaterialActivitySubcontractorEditLink}"/>
+                <br />
+                <h:commandLink action="#{requisitionMaterialActivitySubcontractorController.prepareCreate}" value="#{bundle.ViewRequisitionMaterialActivitySubcontractorCreateLink}" />
+                <br />
+                <h:commandLink action="#{requisitionMaterialActivitySubcontractorController.prepareList}" value="#{bundle.ViewRequisitionMaterialActivitySubcontractorShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewRequisitionMaterialActivitySubcontractorIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

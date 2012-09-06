@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditForeignPurchasePurchaseOrderDetailsLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{foreignPurchasePurchaseOrderDetailsController.selected.quantity}" title="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditForeignPurchasePurchaseOrderDetailsLabel_customAccessedValue}" for="customAccessedValue" />
+                    <h:inputText id="customAccessedValue" value="#{foreignPurchasePurchaseOrderDetailsController.selected.customAccessedValue}" title="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle_customAccessedValue}" />
+                    <h:outputLabel value="#{bundle.EditForeignPurchasePurchaseOrderDetailsLabel_customDuty}" for="customDuty" />
+                    <h:inputText id="customDuty" value="#{foreignPurchasePurchaseOrderDetailsController.selected.customDuty}" title="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle_customDuty}" />
+                    <h:outputLabel value="#{bundle.EditForeignPurchasePurchaseOrderDetailsLabel_vat}" for="vat" />
+                    <h:inputText id="vat" value="#{foreignPurchasePurchaseOrderDetailsController.selected.vat}" title="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle_vat}" />
+                    <h:outputLabel value="#{bundle.EditForeignPurchasePurchaseOrderDetailsLabel_purchaseOrderDetails}" for="purchaseOrderDetails" />
+                    <h:selectOneMenu id="purchaseOrderDetails" value="#{foreignPurchasePurchaseOrderDetailsController.selected.purchaseOrderDetails}" title="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle_purchaseOrderDetails}" required="true" requiredMessage="#{bundle.EditForeignPurchasePurchaseOrderDetailsRequiredMessage_purchaseOrderDetails}">
+                        <f:selectItems value="#{purchaseOrderDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditForeignPurchasePurchaseOrderDetailsLabel_foreignPurchase}" for="foreignPurchase" />
+                    <h:selectOneMenu id="foreignPurchase" value="#{foreignPurchasePurchaseOrderDetailsController.selected.foreignPurchase}" title="#{bundle.EditForeignPurchasePurchaseOrderDetailsTitle_foreignPurchase}" required="true" requiredMessage="#{bundle.EditForeignPurchasePurchaseOrderDetailsRequiredMessage_foreignPurchase}">
+                        <f:selectItems value="#{foreignPurchaseController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{foreignPurchasePurchaseOrderDetailsController.update}" value="#{bundle.EditForeignPurchasePurchaseOrderDetailsSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditForeignPurchasePurchaseOrderDetailsViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{foreignPurchasePurchaseOrderDetailsController.prepareList}" value="#{bundle.EditForeignPurchasePurchaseOrderDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditForeignPurchasePurchaseOrderDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

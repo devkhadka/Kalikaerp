@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="CREATE A NEW EQUIPMENT (OWNED-HIRED)"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <ui:remove>
+                        <h:outputLabel value="#{bundle.CreateEquipmentLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{equipmentController.selected.id}" title="#{bundle.CreateEquipmentTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_id}"/>
+                    </ui:remove>
+                    <h:panelGroup>
+                        <h:panelGrid columns="1">
+                            <h:selectOneRadio value="#{equipmentController.selected.hiredOwned}">
+
+                                <f:selectItem itemValue="0" itemLabel="HIRED-DATE"/>
+                                <f:selectItem itemValue="1" itemLabel="OWNED"/>
+
+                            </h:selectOneRadio>
+
+                        </h:panelGrid>
+
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+                        <h:outputLabel value="HIRED-DATE"/>
+                        <p:calendar value="#{equipmentController.selected.hiredDate}" pattern="MM/dd/yyyy">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:calendar>
+                        <h:outputLabel value="PURCHASE-DATE"/>
+                        <p:calendar value="#{equipmentController.selected.purchaseDate}" pattern="MM/dd/yyyy">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </p:calendar>
+                    </h:panelGroup>
+                    
+                     <h:commandLink value="CLICK HERE IF FINANCED" action="equipmentOnFinance" immediate="true" />
+                    <h:outputLabel value=""/>
+                    <h:outputLabel value="Company"/> 
+                    <h:selectOneMenu id="companyId" value="#{equipmentController.selected.companyId}" title="#{bundle.CreateEquipmentTitle_companyId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_companyId}">
+                        <f:selectItems value="#{companyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Equipment Category" for="equipmentCategoryId" />
+                    <h:selectOneMenu id="equipmentCategoryId" value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.CreateEquipmentTitle_equipmentCategoryId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipmentCategoryId}">
+                        <f:selectItems value="#{equipmentCategoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <ui:remove>
+                    <h:outputLabel value="Equipment Category 1" for="equipmentCategoryId1" />
+                    <h:selectOneMenu id="equipmentCategoryId1" value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.CreateEquipmentTitle_equipmentCategoryId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipmentCategoryId}">
+                        <f:selectItems value="#{equipmentCategoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Equipment Category 2" for="equipmentCategoryId2" />
+                    <h:selectOneMenu id="equipmentCategoryId2" value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.CreateEquipmentTitle_equipmentCategoryId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipmentCategoryId}">
+                        <f:selectItems value="#{equipmentCategoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Equipment Category 3" for="equipmentCategoryId3" />
+                    <h:selectOneMenu id="equipmentCategoryId3" value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.CreateEquipmentTitle_equipmentCategoryId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipmentCategoryId}">
+                        <f:selectItems value="#{equipmentCategoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Equipment Category 4" for="equipmentCategoryId4" />
+                    <h:selectOneMenu id="equipmentCategoryId4" value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.CreateEquipmentTitle_equipmentCategoryId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_equipmentCategoryId}">
+                        <f:selectItems value="#{equipmentCategoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    </ui:remove>
+                    <h:outputLabel value="Equipment Name" for="name" />
+                    <h:inputText id="name" value="#{equipmentController.selected.name}" title="#{bundle.CreateEquipmentTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_alias}" for="alias" />
+                    <h:inputText id="alias" value="#{equipmentController.selected.alias}" title="#{bundle.CreateEquipmentTitle_alias}" />
+
+                    <h:outputLabel value="#{bundle.CreateEquipmentLabel_status}" for="status" />
+                    <h:panelGroup>
+                        <h:selectOneRadio value="#{equipmentController.selected.status}">
+                            <f:selectItem itemValue="1" itemLabel="USED"/> 
+                            <f:selectItem itemValue="0" itemLabel="NEW"/>
+                        </h:selectOneRadio><br/>
+                        <h:outputLabel value="Hours" for="usedHours" /><br/>
+                        <h:inputText id="usedHours" value="#{equipmentController.selected.usedHours}" title="#{bundle.CreateEquipmentTitle_usedHours}" /><br/>
+
+                    </h:panelGroup>
+                    
+                        <h:outputLabel value="Model No"/>
+                        <h:inputText value="#{equipmentController.selected.modelNo}"/>
+                        
+                    <h:outputText value="Year Of Manufacture"/>
+                    <p:calendar/>
+                    <h:outputLabel value="Engine Serial Number" for="serialNumber" />
+                    <h:inputText id="serialNumber" value="#{equipmentController.selected.serialNumber}" title="#{bundle.CreateEquipmentTitle_serialNumber}" />
+                  <h:outputText value="Engine Make"/>
+                  <h:inputText value="#{equipmentController.selected.makeEngine}"/>
+                    <h:outputLabel value="Country"/>
+                    <h:selectOneMenu value="#{equipmentController.selected.country}">
+                        <f:selectItems value="#{countryController.itemsAvailableSelectOne}"/>
+                        
+                    </h:selectOneMenu>
+                    
+                   
+                        <h:outputLabel value="#{bundle.CreateEquipmentLabel_code}" for="code" />
+                        <h:inputText id="code" value="#{equipmentController.selected.code}" title="#{bundle.CreateEquipmentTitle_code}" />
+                    
+                        <h:outputLabel value="#{bundle.CreateEquipmentLabel_currencyId}" for="currencyId" />
+                        <h:selectOneMenu id="currencyId" value="#{equipmentController.selected.currencyId}" title="#{bundle.CreateEquipmentTitle_currencyId}" required="true" requiredMessage="#{bundle.CreateEquipmentRequiredMessage_currencyId}">
+                            <f:selectItems value="#{currencyController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+
+
+                </h:panelGrid>
+                <br />
+                <h:panelGrid columns="3">
+                    <h:commandButton value="Clear All" type="reset"/>    
+                    <h:commandLink value="Update Parts Under Warranty" action="updatePartsUnderWarranty" immediate="true" />
+                    <h:commandButton value="Create New Machine" action="#{equipmentController.createEquipment}"/>
+                </h:panelGrid>
+                <br/><br/>
+                <h:commandLink action="#{equipmentController.create}" value="#{bundle.CreateEquipmentSaveLink}"/>
+                <br />
+                <br /> 
+                <h:commandLink action="#{equipmentController.prepareList}" value="#{bundle.CreateEquipmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateEquipmentIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

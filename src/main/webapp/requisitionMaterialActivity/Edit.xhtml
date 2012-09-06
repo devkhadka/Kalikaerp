@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRequisitionMaterialActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditRequisitionMaterialActivityLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{requisitionMaterialActivityController.selected.id}" title="#{bundle.EditRequisitionMaterialActivityTitle_id}" required="true" requiredMessage="#{bundle.EditRequisitionMaterialActivityRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditRequisitionMaterialActivityLabel_requistionMaterialProjectId}" for="requistionMaterialProjectId" />
+                    <h:selectOneMenu id="requistionMaterialProjectId" value="#{requisitionMaterialActivityController.selected.requistionMaterialProjectId}" title="#{bundle.EditRequisitionMaterialActivityTitle_requistionMaterialProjectId}" required="true" requiredMessage="#{bundle.EditRequisitionMaterialActivityRequiredMessage_requistionMaterialProjectId}">
+                        <f:selectItems value="#{requistionMaterialProjectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRequisitionMaterialActivityLabel_activityId}" for="activityId" />
+                    <h:selectOneMenu id="activityId" value="#{requisitionMaterialActivityController.selected.activityId}" title="#{bundle.EditRequisitionMaterialActivityTitle_activityId}" required="true" requiredMessage="#{bundle.EditRequisitionMaterialActivityRequiredMessage_activityId}">
+                        <f:selectItems value="#{activityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{requisitionMaterialActivityController.update}" value="#{bundle.EditRequisitionMaterialActivitySaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditRequisitionMaterialActivityViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{requisitionMaterialActivityController.prepareList}" value="#{bundle.EditRequisitionMaterialActivityShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditRequisitionMaterialActivityIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRepairsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateRepairsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{repairsController.selected.id}" title="#{bundle.CreateRepairsTitle_id}" required="true" requiredMessage="#{bundle.CreateRepairsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateRepairsLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{repairsController.selected.name}" title="#{bundle.CreateRepairsTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateRepairsLabel_location}" for="location" />
+                    <h:inputText id="location" value="#{repairsController.selected.location}" title="#{bundle.CreateRepairsTitle_location}" />
+                    <h:outputLabel value="#{bundle.CreateRepairsLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{repairsController.selected.remarks}" title="#{bundle.CreateRepairsTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateRepairsLabel_companyId}" for="companyId" />
+                    <h:selectOneMenu id="companyId" value="#{repairsController.selected.companyId}" title="#{bundle.CreateRepairsTitle_companyId}" required="true" requiredMessage="#{bundle.CreateRepairsRequiredMessage_companyId}">
+                        <f:selectItems value="#{companyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{repairsController.create}" value="#{bundle.CreateRepairsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{repairsController.prepareList}" value="#{bundle.CreateRepairsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateRepairsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

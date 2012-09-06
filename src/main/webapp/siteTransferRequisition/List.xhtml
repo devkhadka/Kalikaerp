@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSiteTransferRequisitionEmpty}" rendered="#{siteTransferRequisitionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{siteTransferRequisitionController.items.rowCount > 0}">
+                    <h:outputText value="#{siteTransferRequisitionController.pagination.pageFirstItem + 1}..#{siteTransferRequisitionController.pagination.pageLastItem + 1}/#{siteTransferRequisitionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{siteTransferRequisitionController.previous}" value="#{bundle.Previous} #{siteTransferRequisitionController.pagination.pageSize}" rendered="#{siteTransferRequisitionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{siteTransferRequisitionController.next}" value="#{bundle.Next} #{siteTransferRequisitionController.pagination.pageSize}" rendered="#{siteTransferRequisitionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{siteTransferRequisitionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_quantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_expectedDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.expectedDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_requisitionedBy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requisitionedBy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_unitId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSiteTransferRequisitionTitle_materialId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.materialId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{siteTransferRequisitionController.prepareView}" value="#{bundle.ListSiteTransferRequisitionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{siteTransferRequisitionController.prepareEdit}" value="#{bundle.ListSiteTransferRequisitionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{siteTransferRequisitionController.destroy}" value="#{bundle.ListSiteTransferRequisitionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{siteTransferRequisitionController.prepareCreate}" value="#{bundle.ListSiteTransferRequisitionCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListSiteTransferRequisitionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSiteTransferDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_id}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.id}" title="#{bundle.ViewSiteTransferDetailsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_quantityReq}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.quantityReq}" title="#{bundle.ViewSiteTransferDetailsTitle_quantityReq}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_location}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.location}" title="#{bundle.ViewSiteTransferDetailsTitle_location}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_unitId}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.unitId}" title="#{bundle.ViewSiteTransferDetailsTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_materialId}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.materialId}" title="#{bundle.ViewSiteTransferDetailsTitle_materialId}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_processApprovedRequisitionsId}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.processApprovedRequisitionsId}" title="#{bundle.ViewSiteTransferDetailsTitle_processApprovedRequisitionsId}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferDetailsLabel_siteTransferOrdersId}"/>
+                    <h:outputText value="#{siteTransferDetailsController.selected.siteTransferOrdersId}" title="#{bundle.ViewSiteTransferDetailsTitle_siteTransferOrdersId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{siteTransferDetailsController.destroyAndView}" value="#{bundle.ViewSiteTransferDetailsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewSiteTransferDetailsEditLink}"/>
+                <br />
+                <h:commandLink action="#{siteTransferDetailsController.prepareCreate}" value="#{bundle.ViewSiteTransferDetailsCreateLink}" />
+                <br />
+                <h:commandLink action="#{siteTransferDetailsController.prepareList}" value="#{bundle.ViewSiteTransferDetailsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewSiteTransferDetailsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

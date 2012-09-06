@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRequisitionRejectionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRequisitionRejectionEmpty}" rendered="#{requisitionRejectionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{requisitionRejectionController.items.rowCount > 0}">
+                    <h:outputText value="#{requisitionRejectionController.pagination.pageFirstItem + 1}..#{requisitionRejectionController.pagination.pageLastItem + 1}/#{requisitionRejectionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{requisitionRejectionController.previous}" value="#{bundle.Previous} #{requisitionRejectionController.pagination.pageSize}" rendered="#{requisitionRejectionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{requisitionRejectionController.next}" value="#{bundle.Next} #{requisitionRejectionController.pagination.pageSize}" rendered="#{requisitionRejectionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{requisitionRejectionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionRejectionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionRejectionTitle_rejectedQuantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rejectedQuantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionRejectionTitle_unitId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionRejectionTitle_requisitionDeliveryId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requisitionDeliveryId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{requisitionRejectionController.prepareView}" value="#{bundle.ListRequisitionRejectionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{requisitionRejectionController.prepareEdit}" value="#{bundle.ListRequisitionRejectionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{requisitionRejectionController.destroy}" value="#{bundle.ListRequisitionRejectionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{requisitionRejectionController.prepareCreate}" value="#{bundle.ListRequisitionRejectionCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListRequisitionRejectionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

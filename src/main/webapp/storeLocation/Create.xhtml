@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStoreLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateStoreLocationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeLocationController.selected.id}" title="#{bundle.CreateStoreLocationTitle_id}" required="true" requiredMessage="#{bundle.CreateStoreLocationRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateStoreLocationLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{storeLocationController.selected.name}" title="#{bundle.CreateStoreLocationTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateStoreLocationLabel_parentId}" for="parentId" />
+                    <h:selectOneMenu id="parentId" value="#{storeLocationController.selected.parentId}" title="#{bundle.CreateStoreLocationTitle_parentId}" >
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStoreLocationLabel_storesId}" for="storesId" />
+                    <h:selectOneMenu id="storesId" value="#{storeLocationController.selected.storesId}" title="#{bundle.CreateStoreLocationTitle_storesId}" required="true" requiredMessage="#{bundle.CreateStoreLocationRequiredMessage_storesId}">
+                        <f:selectItems value="#{storesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeLocationController.create}" value="#{bundle.CreateStoreLocationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{storeLocationController.prepareList}" value="#{bundle.CreateStoreLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateStoreLocationIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRepairsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRepairsLabel_id}"/>
+                    <h:outputText value="#{repairsController.selected.id}" title="#{bundle.ViewRepairsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRepairsLabel_name}"/>
+                    <h:outputText value="#{repairsController.selected.name}" title="#{bundle.ViewRepairsTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewRepairsLabel_location}"/>
+                    <h:outputText value="#{repairsController.selected.location}" title="#{bundle.ViewRepairsTitle_location}"/>
+                    <h:outputText value="#{bundle.ViewRepairsLabel_remarks}"/>
+                    <h:outputText value="#{repairsController.selected.remarks}" title="#{bundle.ViewRepairsTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewRepairsLabel_companyId}"/>
+                    <h:outputText value="#{repairsController.selected.companyId}" title="#{bundle.ViewRepairsTitle_companyId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{repairsController.destroyAndView}" value="#{bundle.ViewRepairsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewRepairsEditLink}"/>
+                <br />
+                <h:commandLink action="#{repairsController.prepareCreate}" value="#{bundle.ViewRepairsCreateLink}" />
+                <br />
+                <h:commandLink action="#{repairsController.prepareList}" value="#{bundle.ViewRepairsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewRepairsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

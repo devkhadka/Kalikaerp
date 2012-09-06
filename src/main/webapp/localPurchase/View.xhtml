@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLocalPurchaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLocalPurchaseLabel_id}"/>
+                    <h:outputText value="#{localPurchaseController.selected.id}" title="#{bundle.ViewLocalPurchaseTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewLocalPurchaseLabel_unitId}"/>
+                    <h:outputText value="#{localPurchaseController.selected.unitId}" title="#{bundle.ViewLocalPurchaseTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewLocalPurchaseLabel_currencyId}"/>
+                    <h:outputText value="#{localPurchaseController.selected.currencyId}" title="#{bundle.ViewLocalPurchaseTitle_currencyId}"/>
+                    <h:outputText value="#{bundle.ViewLocalPurchaseLabel_purchaseOrderId}"/>
+                    <h:outputText value="#{localPurchaseController.selected.purchaseOrderId}" title="#{bundle.ViewLocalPurchaseTitle_purchaseOrderId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{localPurchaseController.destroyAndView}" value="#{bundle.ViewLocalPurchaseDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewLocalPurchaseEditLink}"/>
+                <br />
+                <h:commandLink action="#{localPurchaseController.prepareCreate}" value="#{bundle.ViewLocalPurchaseCreateLink}" />
+                <br />
+                <h:commandLink action="#{localPurchaseController.prepareList}" value="#{bundle.ViewLocalPurchaseShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewLocalPurchaseIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

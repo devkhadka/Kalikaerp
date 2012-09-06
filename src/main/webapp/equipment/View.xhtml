@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_id}"/>
+                    <h:outputText value="#{equipmentController.selected.id}" title="#{bundle.ViewEquipmentTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_hiredOwned}"/>
+                    <h:outputText value="#{equipmentController.selected.hiredOwned}" title="#{bundle.ViewEquipmentTitle_hiredOwned}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_hiredDate}"/>
+                    <h:outputText value="#{equipmentController.selected.hiredDate}" title="#{bundle.ViewEquipmentTitle_hiredDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_alias}"/>
+                    <h:outputText value="#{equipmentController.selected.alias}" title="#{bundle.ViewEquipmentTitle_alias}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_name}"/>
+                    <h:outputText value="#{equipmentController.selected.name}" title="#{bundle.ViewEquipmentTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_status}"/>
+                    <h:outputText value="#{equipmentController.selected.status}" title="#{bundle.ViewEquipmentTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_usedHours}"/>
+                    <h:outputText value="#{equipmentController.selected.usedHours}" title="#{bundle.ViewEquipmentTitle_usedHours}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_serialNumber}"/>
+                    <h:outputText value="#{equipmentController.selected.serialNumber}" title="#{bundle.ViewEquipmentTitle_serialNumber}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_code}"/>
+                    <h:outputText value="#{equipmentController.selected.code}" title="#{bundle.ViewEquipmentTitle_code}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_companyId}"/>
+                    <h:outputText value="#{equipmentController.selected.companyId}" title="#{bundle.ViewEquipmentTitle_companyId}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_currencyId}"/>
+                    <h:outputText value="#{equipmentController.selected.currencyId}" title="#{bundle.ViewEquipmentTitle_currencyId}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentLabel_equipmentCategoryId}"/>
+                    <h:outputText value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.ViewEquipmentTitle_equipmentCategoryId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentController.destroyAndView}" value="#{bundle.ViewEquipmentDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentController.prepareCreate}" value="#{bundle.ViewEquipmentCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentController.prepareList}" value="#{bundle.ViewEquipmentShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

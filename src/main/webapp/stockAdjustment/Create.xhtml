@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStockAdjustmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{stockAdjustmentController.selected.id}" title="#{bundle.CreateStockAdjustmentTitle_id}" required="true" requiredMessage="#{bundle.CreateStockAdjustmentRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{stockAdjustmentController.selected.remarks}" title="#{bundle.CreateStockAdjustmentTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_addLessQuantity}" for="addLessQuantity" />
+                    <h:inputText id="addLessQuantity" value="#{stockAdjustmentController.selected.addLessQuantity}" title="#{bundle.CreateStockAdjustmentTitle_addLessQuantity}" />
+                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_addLess}" for="addLess" />
+                    <h:inputText id="addLess" value="#{stockAdjustmentController.selected.addLess}" title="#{bundle.CreateStockAdjustmentTitle_addLess}" />
+                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{stockAdjustmentController.selected.unitId}" title="#{bundle.CreateStockAdjustmentTitle_unitId}" required="true" requiredMessage="#{bundle.CreateStockAdjustmentRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_stockLocationId}" for="stockLocationId" />
+                    <h:selectOneMenu id="stockLocationId" value="#{stockAdjustmentController.selected.stockLocationId}" title="#{bundle.CreateStockAdjustmentTitle_stockLocationId}" required="true" requiredMessage="#{bundle.CreateStockAdjustmentRequiredMessage_stockLocationId}">
+                        <f:selectItems value="#{stockLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStockAdjustmentLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{stockAdjustmentController.selected.materialId}" title="#{bundle.CreateStockAdjustmentTitle_materialId}" required="true" requiredMessage="#{bundle.CreateStockAdjustmentRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{stockAdjustmentController.create}" value="#{bundle.CreateStockAdjustmentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{stockAdjustmentController.prepareList}" value="#{bundle.CreateStockAdjustmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateStockAdjustmentIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

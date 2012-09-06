@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSiteTransferRequisitionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_id}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.id}" title="#{bundle.ViewSiteTransferRequisitionTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_quantity}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.quantity}" title="#{bundle.ViewSiteTransferRequisitionTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_expectedDate}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.expectedDate}" title="#{bundle.ViewSiteTransferRequisitionTitle_expectedDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_requisitionedBy}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.requisitionedBy}" title="#{bundle.ViewSiteTransferRequisitionTitle_requisitionedBy}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_remarks}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.remarks}" title="#{bundle.ViewSiteTransferRequisitionTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_unitId}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.unitId}" title="#{bundle.ViewSiteTransferRequisitionTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewSiteTransferRequisitionLabel_materialId}"/>
+                    <h:outputText value="#{siteTransferRequisitionController.selected.materialId}" title="#{bundle.ViewSiteTransferRequisitionTitle_materialId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{siteTransferRequisitionController.destroyAndView}" value="#{bundle.ViewSiteTransferRequisitionDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewSiteTransferRequisitionEditLink}"/>
+                <br />
+                <h:commandLink action="#{siteTransferRequisitionController.prepareCreate}" value="#{bundle.ViewSiteTransferRequisitionCreateLink}" />
+                <br />
+                <h:commandLink action="#{siteTransferRequisitionController.prepareList}" value="#{bundle.ViewSiteTransferRequisitionShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewSiteTransferRequisitionIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

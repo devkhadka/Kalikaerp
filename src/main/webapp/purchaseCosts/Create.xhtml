@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePurchaseCostsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreatePurchaseCostsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{purchaseCostsController.selected.id}" title="#{bundle.CreatePurchaseCostsTitle_id}" required="true" requiredMessage="#{bundle.CreatePurchaseCostsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreatePurchaseCostsLabel_exchangeRate}" for="exchangeRate" />
+                    <h:inputText id="exchangeRate" value="#{purchaseCostsController.selected.exchangeRate}" title="#{bundle.CreatePurchaseCostsTitle_exchangeRate}" />
+                    <h:outputLabel value="#{bundle.CreatePurchaseCostsLabel_currencyId}" for="currencyId" />
+                    <h:selectOneMenu id="currencyId" value="#{purchaseCostsController.selected.currencyId}" title="#{bundle.CreatePurchaseCostsTitle_currencyId}" required="true" requiredMessage="#{bundle.CreatePurchaseCostsRequiredMessage_currencyId}">
+                        <f:selectItems value="#{currencyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePurchaseCostsLabel_purchaseOrderId}" for="purchaseOrderId" />
+                    <h:selectOneMenu id="purchaseOrderId" value="#{purchaseCostsController.selected.purchaseOrderId}" title="#{bundle.CreatePurchaseCostsTitle_purchaseOrderId}" required="true" requiredMessage="#{bundle.CreatePurchaseCostsRequiredMessage_purchaseOrderId}">
+                        <f:selectItems value="#{purchaseOrderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseCostsController.create}" value="#{bundle.CreatePurchaseCostsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{purchaseCostsController.prepareList}" value="#{bundle.CreatePurchaseCostsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreatePurchaseCostsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

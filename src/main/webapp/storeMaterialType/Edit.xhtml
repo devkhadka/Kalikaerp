@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStoreMaterialTypeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditStoreMaterialTypeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeMaterialTypeController.selected.id}" title="#{bundle.EditStoreMaterialTypeTitle_id}" required="true" requiredMessage="#{bundle.EditStoreMaterialTypeRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditStoreMaterialTypeLabel_storeInId}" for="storeInId" />
+                    <h:selectOneMenu id="storeInId" value="#{storeMaterialTypeController.selected.storeInId}" title="#{bundle.EditStoreMaterialTypeTitle_storeInId}" required="true" requiredMessage="#{bundle.EditStoreMaterialTypeRequiredMessage_storeInId}">
+                        <f:selectItems value="#{storeInController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{storeMaterialTypeController.update}" value="#{bundle.EditStoreMaterialTypeSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditStoreMaterialTypeViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{storeMaterialTypeController.prepareList}" value="#{bundle.EditStoreMaterialTypeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditStoreMaterialTypeIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

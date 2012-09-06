@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMaterialRequisitionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+
+            <table style="font-weight: bold;text-align: center;text-transform:uppercase; font-size: 15px; color: #555;">
+                <tr class="btn">
+
+                    <td width="190px"><h:outputText value="Material"/></td>
+                    <td width="195px"><h:outputText value="Project"/></td>
+                    <td width="150px"><h:outputText value="Activity"/></td>
+                    <td><h:outputText value="Sub-contractor"/></td>
+                    <td width="205px"> <h:outputText value="Delivery-Date"/></td>
+                    <td> <h:outputText value="RequestPDate"/></td>
+                    <td width="150px"><h:outputText value="Qty"/></td>
+                    <td width="150px"> <h:outputText value="Unit"/></td>
+                    <td width="150px"> <h:outputText value="ApproveQuantity"/></td>
+                    <td width="150px"> <h:outputText value="IssueCompleted"/></td>
+                    <td width="150px"> <h:outputText value="RejectedQuantity"/></td>
+                    <td width="150px"> <h:outputText value="ReasonsOfRejection"/></td>
+                    <td width="150px"> <h:outputText value="UnitId"/></td>
+                </tr>
+            </table>
+            <h:form>
+                <h:panelGrid columns="6" cellspacing="5" style="font-weight: bold;text-align: center;" cellpadding="5">
+
+                    <table>
+                        <ui:repeat value="#{materialRequisitionController.selected.requisitionMaterialCollection}" var="reqMaterials" >
+                            <tr><td>
+                                    <h:outputText  value=" #{reqMaterials}" /> <br/>
+                                    <h:commandLink value="Edit" action="#{materialRequisitionController.setCurrentrRequisitionMaterial(reqMaterials)}"/> <br/>
+                                    <h:commandLink value="Delete" action="#{materialRequisitionController.deleteRequisitionMaterial(reqMaterials)}"/>
+                                </td><td>
+
+                                    <table>
+                                        <ui:repeat var="reqPrj" value="#{reqMaterials.requistionMaterialProjectCollection}" >
+                                            <tr>
+                                                <td>
+
+                                                    <h:outputText value=" #{reqPrj}"></h:outputText>
+                                                </td>
+                                                <td>
+                                                    <table>
+                                                        <ui:repeat value ="#{reqPrj.requisitionMaterialActivityCollection}" var="reqac" >
+                                                            <tr>
+                                                                <td>
+                                                                    <h:outputText value=" #{reqac}"/>
+
+                                                                </td>
+                                                                <td>
+                                                                    <table>
+                                                                        <ui:repeat value="#{reqac.requisitionMaterialActivitySubcontractorCollection}" var="sub">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <h:outputText value=" #{sub}"/>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <table>
+                                                                                        <ui:repeat value="#{sub.requisitionDeliveryCollection}" var="rrd">
+                                                                                            <tr>
+                                                                                                <td width="250">
+
+
+                                                                                                    <h:outputText value="#{rrd.deliveryDate}">
+
+                                                                                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                                                                                                    </h:outputText>
+
+                                                                                                </td>
+                                                                                                <td width="150">
+                                                                                                    <h:outputText value="#{rrd.requestProcessDate}"> 
+                                                                                                        <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                                                                                                    </h:outputText>
+
+                                                                                                </td>
+                                                                                                <td width="150">
+                                                                                                    <h:outputText value="#{rrd.quantity}"/>
+
+                                                                                                </td>
+
+                                                                                                <td width="150">
+
+                                                                                                    <h:outputText value="#{rrd.unitId.name}"/> 
+
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <h:inputText value="#{rrd.newArmc.approveQuantity}"/>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <h:inputText value="#{rrd.newArmc.issueCompleted}"/>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <h:inputText value="#{rrd.newArmc.rejectQuantity}"/>
+                                                                                                </td>
+                                                                                                <td>
+
+                                                                                                    <h:inputText value="#{rrd.newArmc.reasonsOfRejection}"/>
+                                                                                                </td>
+                                                                                                <td>
+
+                                                                                                    <h:selectOneMenu value="#{rrd.newArmc.unitId}">
+                                                                                                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                                                                                                    </h:selectOneMenu>
+                                                                                                </td>
+                                                                                                
+
+                                                                                            </tr>
+                                                                                        </ui:repeat>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </ui:repeat>
+                                                                    </table>
+                                                                </td>
+
+                                                            </tr>
+                                                        </ui:repeat>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </table>
+                                </td>
+                            </tr>
+                        </ui:repeat>
+                    </table>
+
+                </h:panelGrid>
+                &nbsp;&nbsp;
+                
+                <p:commandButton value="APPROVE" action="#{materialRequisitionController.approveRequisitionMaterial}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

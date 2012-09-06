@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRoadRegistrationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRoadRegistrationLabel_id}"/>
+                    <h:outputText value="#{roadRegistrationController.selected.id}" title="#{bundle.ViewRoadRegistrationTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRoadRegistrationLabel_rcNumber}"/>
+                    <h:outputText value="#{roadRegistrationController.selected.rcNumber}" title="#{bundle.ViewRoadRegistrationTitle_rcNumber}"/>
+                    <h:outputText value="#{bundle.ViewRoadRegistrationLabel_rcDate}"/>
+                    <h:outputText value="#{roadRegistrationController.selected.rcDate}" title="#{bundle.ViewRoadRegistrationTitle_rcDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRoadRegistrationLabel_region}"/>
+                    <h:outputText value="#{roadRegistrationController.selected.region}" title="#{bundle.ViewRoadRegistrationTitle_region}"/>
+                    <h:outputText value="#{bundle.ViewRoadRegistrationLabel_remarks}"/>
+                    <h:outputText value="#{roadRegistrationController.selected.remarks}" title="#{bundle.ViewRoadRegistrationTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewRoadRegistrationLabel_equipmentId}"/>
+                    <h:outputText value="#{roadRegistrationController.selected.equipmentId}" title="#{bundle.ViewRoadRegistrationTitle_equipmentId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{roadRegistrationController.destroyAndView}" value="#{bundle.ViewRoadRegistrationDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewRoadRegistrationEditLink}"/>
+                <br />
+                <h:commandLink action="#{roadRegistrationController.prepareCreate}" value="#{bundle.ViewRoadRegistrationCreateLink}" />
+                <br />
+                <h:commandLink action="#{roadRegistrationController.prepareList}" value="#{bundle.ViewRoadRegistrationShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewRoadRegistrationIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+<h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+
+    <h:body>
+
+        <p:layout fullPage="true">  
+
+
+
+            <p:layoutUnit position="west" size="300" header="Menu Bar" resizable="true" closable="false" collapsible="true">  
+
+                <p:accordionPanel activeIndex="#{accordionPanelTabSession.intIndex}" dynamic="true" cache="false">  
+                    <p:tab title="SETUP MASTER">  
+                        <h:panelGrid columns="1"> 
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(0)}"/>
+                            <h:form>
+                                <h:commandLink action="/company/List" value=" Company "/>
+                            </h:form>
+
+                            <h:form>
+                                <h:commandLink action="/country/List" value=" Country "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/currency/List" value=" Currency "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/materialMaster/List" value=" MaterialMaster "/>
+                            </h:form>    
+                            <h:form>
+                                <h:commandLink action="/industries/List" value=" Industries "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/unit/List" value=" Unit "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/supplierGroup/List" value=" SupplierGroup "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/unitGroup/List" value=" UnitGroup "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/requistionMaterialProject/List" value=" RequistionMaterialProject "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/project/List" value=" Project "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/statusMaterial/List" value=" StatusMaterial "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/recevingType/List" value=" RecevingType "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/supplier/List" value=" Supplier "/>
+                            </h:form>
+
+                            <h:form>
+                                <h:commandLink action="/subcontractor/List" value=" Subcontractor "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/scheduledMaintenanceTypes/List" value=" ScheduledMaintenanceTypes "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/importBasis/List" value=" ImportBasis "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="PURCHASE"  id="p">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(1)}"/>
+                            <h:form>
+                                <h:commandLink action="/purchaseCosts/List" value=" PurchaseCosts "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/purchaseOrder/List" value=" PurchaseOrder "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/purchaseOrderDetails/List" value=" PurchaseOrderDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/purchaseRequest/List" value=" PurchaseRequest "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/purchaseRequestMaterial/List" value=" PurchaseRequestMaterial "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/approvePurchaseRequestMaterial/List" value=" ApprovePurchaseRequestMaterial "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/rejectPurchaseRequest/List" value=" RejectPurchaseRequest "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/localPurchase/List" value=" LocalPurchase "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/localPurchasePurchaseOrderDetails/List" value=" LocalPurchasePurchaseOrderDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/foreignPurchase/List" value=" ForeignPurchase "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/foreignPurchasePurchaseOrderDetails/List" value=" ForeignPurchasePurchaseOrderDetails "/>
+                            </h:form>`
+
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="REQUISITION">  
+                        <h:panelGrid columns="1" >  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(2)}"/>
+                            <h:form>
+                                <h:commandLink action="/requisitionDelivery/List" value=" RequisitionDelivery "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/requisitionMaterial/List" value=" RequisitionMaterial "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/requisitionMaterialActivity/List" value=" RequisitionMaterialActivity "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/requisitionMaterialActivitySubcontractor/List" value=" RequisitionMaterialActivitySubcontractor "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/requisitionRejection/List" value=" RequisitionRejection "/>
+                            </h:form>
+
+
+                            <h:form>
+                                <h:commandLink action="/materialRequistionType/List" value=" MaterialRequistionType "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/processApprovedRequisitions/List" value=" ProcessApprovedRequisitions "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/siteTransferRequisition/List" value=" SiteTransferRequisition "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="EQUIPMENT">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(3)}"/>
+                            <h:form>
+                                <h:commandLink action="/equipment/List" value=" Equipment "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentCategory/List" value=" EquipmentCategory "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentCategoryHasEquipmentParts/List" value=" EquipmentCategoryHasEquipmentParts "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentFinanceDetail/List" value=" EquipmentFinanceDetail "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentFinancing/List" value=" EquipmentFinancing "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentHasEquipmentParts/List" value=" EquipmentHasEquipmentParts "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentInsurance/List" value=" EquipmentInsurance "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentMaintenance/List" value=" EquipmentMaintenance "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentParts/List" value=" EquipmentParts "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/equipmentRepairsMaterials/List" value=" EquipmentRepairsMaterials "/>
+                            </h:form> 
+                            <h:form>
+                                <h:commandLink action="/roadRegistration/List" value=" RoadRegistration "/>
+                            </h:form>
+
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="STORE">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(4)}"/>
+                            <h:form>
+                                <h:commandLink action="/stockLocation/List" value=" StockLocation "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storeIn/List" value=" StoreIn "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storeInDetail/List" value=" StoreInDetail "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storeLocation/List" value=" StoreLocation "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storeReceive/List" value=" StoreReceive "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storeReceiveDetails/List" value=" StoreReceiveDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storeReceiveFineDetails/List" value=" StoreReceiveFineDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/stores/List" value=" Stores "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/storesHasProject/List" value=" StoresHasProject "/>
+                            </h:form> 
+                            <h:form>
+                                <h:commandLink action="/stockAdjustment/List" value=" StockAdjustment "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab> 
+                    <p:tab title="MATERIAL">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(5)}"/>
+                            <h:form>
+                                <h:commandLink action="/materialRequisition/List" value=" MaterialRequisition" immediate="true"/>
+                            </h:form> 
+                           
+                            <h:form>
+                                <h:commandLink action="/material/List" value=" Material "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/materialGroup/List" value=" MaterialGroup "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/materialGroupHasMaterial/List" value=" MaterialGroupHasMaterial "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="GOODS">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(6)}"/>
+                            <h:form>
+                                <h:commandLink action="/goodsOut/List" value=" GoodsOut "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/goodsOutDetail/List" value=" GoodsOutDetail "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/goodsOutLocation/List" value=" GoodsOutLocation "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="MAINTENANCE">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(7)}"/>
+                            <h:form>
+                                <h:commandLink action="/maintenanceDetail/List" value=" MaintenanceDetail "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/maintenanceDetails/List" value=" MaintenanceDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/maintenanceFineDetails/List" value=" MaintenanceFineDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/maintenanceSchedules/List" value=" MaintenanceSchedules "/>
+                            </h:form>
+
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="REPAIR">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(8)}"/>
+                            <h:form>
+                                <h:commandLink action="/repairOrder/List" value=" RepairOrder "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/repairs/List" value=" Repairs "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/repairsHasProject/List" value=" RepairsHasProject "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="SITE">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(9)}"/>
+                            <h:form>
+                                <h:commandLink action="/siteTransferDetails/List" value=" SiteTransferDetails "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/siteTransferOrders/List" value=" SiteTransferOrders "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/approveSiteTransfer/List" value=" ApproveSiteTransfer "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="ACTIVITY">  
+                        <h:panelGrid columns="1"> 
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(10)}"/>
+                            <h:form>
+                                <h:commandLink action="/activity/List" value=" Activity "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/subActivity/List" value=" SubActivity "/>
+                            </h:form>
+                            <h:form>
+                                <h:commandLink action="/subcontractorHasSubActivity/List" value=" SubcontractorHasSubActivity "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>  
+                    <p:tab title="OTHERS">  
+                        <h:panelGrid columns="1">  
+                            <h:outputText value="#{accordionPanelTabSession.onTabChanged(11)}"/>
+                            <h:form>
+                                <h:commandLink action="/closeExceptionsRemarks/List" value=" CloseExceptionsRemarks "/>
+                            </h:form>
+
+                            <h:form>
+                                <h:commandLink action="/issueFuelNFluidSlip/List" value=" IssueFuelNFluidSlip "/>
+                            </h:form>
+                        </h:panelGrid>  
+                    </p:tab>
+                </p:accordionPanel>  
+
+
+
+            </p:layoutUnit>  
+
+
+            <p:layoutUnit position="center">  
+                <p:menubar autoSubmenuDisplay="true">
+                    <p:submenu label="File" icon="ui-icon-document">
+                        <p:submenu label="New" icon="ui-icon-contact">
+                            <p:menuitem value="Project" url="#" helpText="CTRL+N" />
+                            <p:menuitem value="Other" url="#" helpText="CTRL+O"/>
+                        </p:submenu>
+                        <p:menuitem value="Open" url="#" />
+                        <p:menuitem value="Quit" url="http://localhost:8080/Kalika_new_erp/faces/index.xhtml" />
+                    </p:submenu>
+
+                    <p:submenu label="Edit" icon="ui-icon-pencil">
+                        <p:menuitem value="Undo" url="#" icon="ui-icon-arrowreturnthick-1-w" helpText="CTRL+Z"></p:menuitem>
+                        <p:menuitem value="Redo" url="#" icon="ui-icon-arrowreturnthick-1-e" helpText="CTRL+Y"></p:menuitem>
+                    </p:submenu>
+
+                    <p:submenu label="Help" icon="ui-icon-help">
+                        <p:menuitem value="Contents" url="#" />
+                        <p:submenu label="Search" icon="ui-icon-search">
+                            <p:submenu label="Text">
+                                <p:menuitem value="Workspace" url="#" />
+                            </p:submenu>
+                            <p:menuitem value="File" url="#" />
+                        </p:submenu>
+                    </p:submenu>
+                </p:menubar>
+                <p:panel>
+                    <f:facet name="header">
+            <ui:insert name="title">Default Title</ui:insert>
+                    </f:facet>
+            <ui:insert name="body">Default Body</ui:insert>
+                </p:panel>
+
+
+            </p:layoutUnit>  
+
+        </p:layout>  
+
+    </h:body>
+
+</html>

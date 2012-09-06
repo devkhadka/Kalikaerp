@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateProjectTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateProjectLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{projectController.selected.id}" title="#{bundle.CreateProjectTitle_id}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{projectController.selected.name}" title="#{bundle.CreateProjectTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_alias}" for="alias" />
+                    <h:inputText id="alias" value="#{projectController.selected.alias}" title="#{bundle.CreateProjectTitle_alias}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_address}" for="address" />
+                    <h:inputTextarea rows="4" cols="30" id="address" value="#{projectController.selected.address}" title="#{bundle.CreateProjectTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_vatPan}" for="vatPan" />
+                    <h:inputText id="vatPan" value="#{projectController.selected.vatPan}" title="#{bundle.CreateProjectTitle_vatPan}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_registrationName}" for="registrationName" />
+                    <h:inputText id="registrationName" value="#{projectController.selected.registrationName}" title="#{bundle.CreateProjectTitle_registrationName}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_taxOffice}" for="taxOffice" />
+                    <h:inputText id="taxOffice" value="#{projectController.selected.taxOffice}" title="#{bundle.CreateProjectTitle_taxOffice}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_picture}" for="picture" />
+                    <h:inputText id="picture" value="#{projectController.selected.picture}" title="#{bundle.CreateProjectTitle_picture}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_file}" for="file" />
+                    <h:inputText id="file" value="#{projectController.selected.file}" title="#{bundle.CreateProjectTitle_file}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_file1}" for="file1" />
+                    <h:inputText id="file1" value="#{projectController.selected.file1}" title="#{bundle.CreateProjectTitle_file1}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_telephoneNo}" for="telephoneNo" />
+                    <h:inputText id="telephoneNo" value="#{projectController.selected.telephoneNo}" title="#{bundle.CreateProjectTitle_telephoneNo}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_emailId}" for="emailId" />
+                    <h:inputText id="emailId" value="#{projectController.selected.emailId}" title="#{bundle.CreateProjectTitle_emailId}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_website}" for="website" />
+                    <h:inputTextarea rows="4" cols="30" id="website" value="#{projectController.selected.website}" title="#{bundle.CreateProjectTitle_website}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_poBoxNumber}" for="poBoxNumber" />
+                    <h:inputText id="poBoxNumber" value="#{projectController.selected.poBoxNumber}" title="#{bundle.CreateProjectTitle_poBoxNumber}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_postalAddress}" for="postalAddress" />
+                    <h:inputText id="postalAddress" value="#{projectController.selected.postalAddress}" title="#{bundle.CreateProjectTitle_postalAddress}" />
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_currencyId}" for="currencyId" />
+                    <h:selectOneMenu id="currencyId" value="#{projectController.selected.currencyId}" title="#{bundle.CreateProjectTitle_currencyId}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_currencyId}">
+                        <f:selectItems value="#{currencyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_countryId}" for="countryId" />
+                    <h:selectOneMenu id="countryId" value="#{projectController.selected.countryId}" title="#{bundle.CreateProjectTitle_countryId}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_countryId}">
+                        <f:selectItems value="#{countryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_companyId}" for="companyId" />
+                    <h:selectOneMenu id="companyId" value="#{projectController.selected.companyId}" title="#{bundle.CreateProjectTitle_companyId}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_companyId}">
+                        <f:selectItems value="#{companyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{projectController.create}" value="#{bundle.CreateProjectSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{projectController.prepareList}" value="#{bundle.CreateProjectShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateProjectIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

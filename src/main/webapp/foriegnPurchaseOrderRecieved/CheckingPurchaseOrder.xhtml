@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://java.sun.com/jsf/core"
+         xmlns:ui="http://java.sun.com/jsf/facelets"
+         >
+   
+    <body>
+       
+        
+        
+           
+             <h:form>
+<!--            <p:growl id="growl" />  -->
+  
+  
+   
+   
+        
+<!--        <p:messages id="messages" />  -->
+        <h:panelGrid columns="2" >  
+            
+            <h:outputLabel for="PoReference" value="Po Reference No:" /> 
+            
+            
+            <p:inputText id="PoReference" value="#{purchaseOrderController.poNo}" title="#{bundle.CreateStoreReceiveTitle_poNumber}" >
+               
+            </p:inputText>  
+
+        </h:panelGrid>  
+  <p:spacer width="200" height="10" />
+        <p:commandButton id="saveBtn" value="Submit"   
+                         action="#{purchaseOrderController.doGetPurchaseOrderDetailsByPo}" />  
+   
+    
+    
+   
+<!--                     <div id="divMain">
+			<p:growl id="messageGrowl" />
+			<ui:insert name="divMain" />
+                       </div>-->
+          
+        </h:form >
+        
+        
+        
+        
+    </body>
+</html>

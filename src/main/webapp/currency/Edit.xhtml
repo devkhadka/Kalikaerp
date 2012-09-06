@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCurrencyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditCurrencyLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{currencyController.selected.id}" title="#{bundle.EditCurrencyTitle_id}" required="true" requiredMessage="#{bundle.EditCurrencyRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditCurrencyLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{currencyController.selected.name}" title="#{bundle.EditCurrencyTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditCurrencyLabel_abb}" for="abb" />
+                    <h:inputText id="abb" value="#{currencyController.selected.abb}" title="#{bundle.EditCurrencyTitle_abb}" />
+                    <h:outputLabel value="#{bundle.EditCurrencyLabel_countryId}" for="countryId" />
+                    <h:selectOneMenu id="countryId" value="#{currencyController.selected.countryId}" title="#{bundle.EditCurrencyTitle_countryId}" required="true" requiredMessage="#{bundle.EditCurrencyRequiredMessage_countryId}">
+                        <f:selectItems value="#{countryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{currencyController.update}" value="#{bundle.EditCurrencySaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditCurrencyViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{currencyController.prepareList}" value="#{bundle.EditCurrencyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditCurrencyIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

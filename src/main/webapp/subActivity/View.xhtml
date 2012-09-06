@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSubActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSubActivityLabel_id}"/>
+                    <h:outputText value="#{subActivityController.selected.id}" title="#{bundle.ViewSubActivityTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSubActivityLabel_name}"/>
+                    <h:outputText value="#{subActivityController.selected.name}" title="#{bundle.ViewSubActivityTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewSubActivityLabel_parentId}"/>
+                    <h:outputText value="#{subActivityController.selected.parentId}" title="#{bundle.ViewSubActivityTitle_parentId}"/>
+                    <h:outputText value="#{bundle.ViewSubActivityLabel_subActivityId}"/>
+                    <h:outputText value="#{subActivityController.selected.subActivityId}" title="#{bundle.ViewSubActivityTitle_subActivityId}"/>
+                    <h:outputText value="#{bundle.ViewSubActivityLabel_activityId}"/>
+                    <h:outputText value="#{subActivityController.selected.activityId}" title="#{bundle.ViewSubActivityTitle_activityId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{subActivityController.destroyAndView}" value="#{bundle.ViewSubActivityDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewSubActivityEditLink}"/>
+                <br />
+                <h:commandLink action="#{subActivityController.prepareCreate}" value="#{bundle.ViewSubActivityCreateLink}" />
+                <br />
+                <h:commandLink action="#{subActivityController.prepareList}" value="#{bundle.ViewSubActivityShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewSubActivityIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

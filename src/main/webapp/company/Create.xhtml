@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCompanyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateCompanyLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{companyController.selected.id}" title="#{bundle.CreateCompanyTitle_id}" required="true" requiredMessage="#{bundle.CreateCompanyRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{companyController.selected.name}" title="#{bundle.CreateCompanyTitle_name}" required="true" requiredMessage="#{bundle.CreateCompanyRequiredMessage_name}"/>
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_alias}" for="alias" />
+                    <h:inputText id="alias" value="#{companyController.selected.alias}" title="#{bundle.CreateCompanyTitle_alias}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{companyController.selected.address}" title="#{bundle.CreateCompanyTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_vatPan}" for="vatPan" />
+                    <h:inputText id="vatPan" value="#{companyController.selected.vatPan}" title="#{bundle.CreateCompanyTitle_vatPan}" required="true" requiredMessage="#{bundle.CreateCompanyRequiredMessage_vatPan}"/>
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_registrationNumber}" for="registrationNumber" />
+                    <h:inputText id="registrationNumber" value="#{companyController.selected.registrationNumber}" title="#{bundle.CreateCompanyTitle_registrationNumber}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_taxOffice}" for="taxOffice" />
+                    <h:inputText id="taxOffice" value="#{companyController.selected.taxOffice}" title="#{bundle.CreateCompanyTitle_taxOffice}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_picture}" for="picture" />
+                    <h:inputText id="picture" value="#{companyController.selected.picture}" title="#{bundle.CreateCompanyTitle_picture}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_file}" for="file" />
+                    <h:inputText id="file" value="#{companyController.selected.file}" title="#{bundle.CreateCompanyTitle_file}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_telephoneNo}" for="telephoneNo" />
+                    <h:inputText id="telephoneNo" value="#{companyController.selected.telephoneNo}" title="#{bundle.CreateCompanyTitle_telephoneNo}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_emailId}" for="emailId" />
+                    <h:inputText id="emailId" value="#{companyController.selected.emailId}" title="#{bundle.CreateCompanyTitle_emailId}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_website}" for="website" />
+                    <h:inputTextarea rows="4" cols="30" id="website" value="#{companyController.selected.website}" title="#{bundle.CreateCompanyTitle_website}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_poBoxNumber}" for="poBoxNumber" />
+                    <h:inputText id="poBoxNumber" value="#{companyController.selected.poBoxNumber}" title="#{bundle.CreateCompanyTitle_poBoxNumber}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_postalAddress}" for="postalAddress" />
+                    <h:inputText id="postalAddress" value="#{companyController.selected.postalAddress}" title="#{bundle.CreateCompanyTitle_postalAddress}" />
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_currencyId}" for="currencyId" />
+                    <h:selectOneMenu id="currencyId" value="#{companyController.selected.currencyId}" title="#{bundle.CreateCompanyTitle_currencyId}" required="true" requiredMessage="#{bundle.CreateCompanyRequiredMessage_currencyId}">
+                        <f:selectItems value="#{currencyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_countryId}" for="countryId" />
+                    <h:selectOneMenu id="countryId" value="#{companyController.selected.countryId}" title="#{bundle.CreateCompanyTitle_countryId}" required="true" requiredMessage="#{bundle.CreateCompanyRequiredMessage_countryId}">
+                        <f:selectItems value="#{countryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCompanyLabel_industriesId}" for="industriesId" />
+                    <h:selectOneMenu id="industriesId" value="#{companyController.selected.industriesId}" title="#{bundle.CreateCompanyTitle_industriesId}" required="true" requiredMessage="#{bundle.CreateCompanyRequiredMessage_industriesId}">
+                        <f:selectItems value="#{industriesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{companyController.create}" value="#{bundle.CreateCompanySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{companyController.prepareList}" value="#{bundle.CreateCompanyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateCompanyIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

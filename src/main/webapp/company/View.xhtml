@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCompanyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCompanyLabel_id}"/>
+                    <h:outputText value="#{companyController.selected.id}" title="#{bundle.ViewCompanyTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_name}"/>
+                    <h:outputText value="#{companyController.selected.name}" title="#{bundle.ViewCompanyTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_alias}"/>
+                    <h:outputText value="#{companyController.selected.alias}" title="#{bundle.ViewCompanyTitle_alias}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_address}"/>
+                    <h:outputText value="#{companyController.selected.address}" title="#{bundle.ViewCompanyTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_vatPan}"/>
+                    <h:outputText value="#{companyController.selected.vatPan}" title="#{bundle.ViewCompanyTitle_vatPan}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_registrationNumber}"/>
+                    <h:outputText value="#{companyController.selected.registrationNumber}" title="#{bundle.ViewCompanyTitle_registrationNumber}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_taxOffice}"/>
+                    <h:outputText value="#{companyController.selected.taxOffice}" title="#{bundle.ViewCompanyTitle_taxOffice}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_picture}"/>
+                    <h:outputText value="#{companyController.selected.picture}" title="#{bundle.ViewCompanyTitle_picture}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_file}"/>
+                    <h:outputText value="#{companyController.selected.file}" title="#{bundle.ViewCompanyTitle_file}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_telephoneNo}"/>
+                    <h:outputText value="#{companyController.selected.telephoneNo}" title="#{bundle.ViewCompanyTitle_telephoneNo}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_emailId}"/>
+                    <h:outputText value="#{companyController.selected.emailId}" title="#{bundle.ViewCompanyTitle_emailId}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_website}"/>
+                    <h:outputText value="#{companyController.selected.website}" title="#{bundle.ViewCompanyTitle_website}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_poBoxNumber}"/>
+                    <h:outputText value="#{companyController.selected.poBoxNumber}" title="#{bundle.ViewCompanyTitle_poBoxNumber}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_postalAddress}"/>
+                    <h:outputText value="#{companyController.selected.postalAddress}" title="#{bundle.ViewCompanyTitle_postalAddress}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_currencyId}"/>
+                    <h:outputText value="#{companyController.selected.currencyId}" title="#{bundle.ViewCompanyTitle_currencyId}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_countryId}"/>
+                    <h:outputText value="#{companyController.selected.countryId}" title="#{bundle.ViewCompanyTitle_countryId}"/>
+                    <h:outputText value="#{bundle.ViewCompanyLabel_industriesId}"/>
+                    <h:outputText value="#{companyController.selected.industriesId}" title="#{bundle.ViewCompanyTitle_industriesId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{companyController.destroyAndView}" value="#{bundle.ViewCompanyDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewCompanyEditLink}"/>
+                <br />
+                <h:commandLink action="#{companyController.prepareCreate}" value="#{bundle.ViewCompanyCreateLink}" />
+                <br />
+                <h:commandLink action="#{companyController.prepareList}" value="#{bundle.ViewCompanyShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewCompanyIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

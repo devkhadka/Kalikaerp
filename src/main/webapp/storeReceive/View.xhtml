@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStoreReceiveTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStoreReceiveLabel_id}"/>
+                    <h:outputText value="#{storeReceiveController.selected.id}" title="#{bundle.ViewStoreReceiveTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveLabel_poNumber}"/>
+                    <h:outputText value="#{storeReceiveController.selected.poNumber}" title="#{bundle.ViewStoreReceiveTitle_poNumber}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveLabel_isComplete}"/>
+                    <h:outputText value="#{storeReceiveController.selected.isComplete}" title="#{bundle.ViewStoreReceiveTitle_isComplete}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveLabel_storeLocationId}"/>
+                    <h:outputText value="#{storeReceiveController.selected.storeLocationId}" title="#{bundle.ViewStoreReceiveTitle_storeLocationId}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveLabel_recevingTypeId}"/>
+                    <h:outputText value="#{storeReceiveController.selected.recevingTypeId}" title="#{bundle.ViewStoreReceiveTitle_recevingTypeId}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveLabel_storesId}"/>
+                    <h:outputText value="#{storeReceiveController.selected.storesId}" title="#{bundle.ViewStoreReceiveTitle_storesId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeReceiveController.destroyAndView}" value="#{bundle.ViewStoreReceiveDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewStoreReceiveEditLink}"/>
+                <br />
+                <h:commandLink action="#{storeReceiveController.prepareCreate}" value="#{bundle.ViewStoreReceiveCreateLink}" />
+                <br />
+                <h:commandLink action="#{storeReceiveController.prepareList}" value="#{bundle.ViewStoreReceiveShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewStoreReceiveIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

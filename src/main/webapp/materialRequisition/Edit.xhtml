@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMaterialRequisitionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMaterialRequisitionLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{materialRequisitionController.selected.id}" title="#{bundle.EditMaterialRequisitionTitle_id}" required="true" requiredMessage="#{bundle.EditMaterialRequisitionRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditMaterialRequisitionLabel_requisitonToBeRaisedDate}" for="requisitonToBeRaisedDate" />
+                    <p:calendar id="requisitonToBeRaisedDate" value="#{materialRequisitionController.selected.requisitonToBeRaisedDate}" title="#{bundle.CreateMaterialRequisitionTitle_requisitonToBeRaisedDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <h:outputLabel value="#{bundle.EditMaterialRequisitionLabel_locationDelivery}" for="locationDelivery" />
+                    <h:inputText id="locationDelivery" value="#{materialRequisitionController.selected.locationDelivery}" title="#{bundle.EditMaterialRequisitionTitle_locationDelivery}" />
+                    <h:outputLabel value="#{bundle.EditMaterialRequisitionLabel_createdBy}" for="createdBy" />
+                    <h:inputText id="createdBy" value="#{materialRequisitionController.selected.createdBy}" title="#{bundle.EditMaterialRequisitionTitle_createdBy}" />
+                    <h:outputLabel value="#{bundle.EditMaterialRequisitionLabel_createdDate}" for="createdDate" />
+                    <p:calendar id="createdDate" value="#{materialRequisitionController.selected.createdDate}" title="#{bundle.CreateMaterialRequisitionTitle_createdDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <h:outputLabel value="#{bundle.EditMaterialRequisitionLabel_materialRequistionTypeId}" for="materialRequistionTypeId" />
+                    <h:selectOneMenu id="materialRequistionTypeId" value="#{materialRequisitionController.selected.materialRequistionTypeId}" title="#{bundle.EditMaterialRequisitionTitle_materialRequistionTypeId}" required="true" requiredMessage="#{bundle.EditMaterialRequisitionRequiredMessage_materialRequistionTypeId}">
+                        <f:selectItems value="#{materialRequistionTypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{materialRequisitionController.update}" value="#{bundle.EditMaterialRequisitionSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditMaterialRequisitionViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{materialRequisitionController.prepareList}" value="#{bundle.EditMaterialRequisitionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditMaterialRequisitionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

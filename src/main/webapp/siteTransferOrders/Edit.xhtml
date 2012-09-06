@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSiteTransferOrdersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditSiteTransferOrdersLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{siteTransferOrdersController.selected.id}" title="#{bundle.EditSiteTransferOrdersTitle_id}" required="true" requiredMessage="#{bundle.EditSiteTransferOrdersRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditSiteTransferOrdersLabel_storesId}" for="storesId" />
+                    <h:selectOneMenu id="storesId" value="#{siteTransferOrdersController.selected.storesId}" title="#{bundle.EditSiteTransferOrdersTitle_storesId}" required="true" requiredMessage="#{bundle.EditSiteTransferOrdersRequiredMessage_storesId}">
+                        <f:selectItems value="#{storesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{siteTransferOrdersController.update}" value="#{bundle.EditSiteTransferOrdersSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditSiteTransferOrdersViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{siteTransferOrdersController.prepareList}" value="#{bundle.EditSiteTransferOrdersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditSiteTransferOrdersIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

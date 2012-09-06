@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRoadRegistrationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditRoadRegistrationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{roadRegistrationController.selected.id}" title="#{bundle.EditRoadRegistrationTitle_id}" required="true" requiredMessage="#{bundle.EditRoadRegistrationRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditRoadRegistrationLabel_rcNumber}" for="rcNumber" />
+                    <h:inputText id="rcNumber" value="#{roadRegistrationController.selected.rcNumber}" title="#{bundle.EditRoadRegistrationTitle_rcNumber}" />
+                    <h:outputLabel value="#{bundle.EditRoadRegistrationLabel_rcDate}" for="rcDate" />
+                    <h:inputText id="rcDate" value="#{roadRegistrationController.selected.rcDate}" title="#{bundle.EditRoadRegistrationTitle_rcDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRoadRegistrationLabel_region}" for="region" />
+                    <h:inputText id="region" value="#{roadRegistrationController.selected.region}" title="#{bundle.EditRoadRegistrationTitle_region}" />
+                    <h:outputLabel value="#{bundle.EditRoadRegistrationLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{roadRegistrationController.selected.remarks}" title="#{bundle.EditRoadRegistrationTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditRoadRegistrationLabel_equipmentId}" for="equipmentId" />
+                    <h:selectOneMenu id="equipmentId" value="#{roadRegistrationController.selected.equipmentId}" title="#{bundle.EditRoadRegistrationTitle_equipmentId}" required="true" requiredMessage="#{bundle.EditRoadRegistrationRequiredMessage_equipmentId}">
+                        <f:selectItems value="#{equipmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{roadRegistrationController.update}" value="#{bundle.EditRoadRegistrationSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditRoadRegistrationViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{roadRegistrationController.prepareList}" value="#{bundle.EditRoadRegistrationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditRoadRegistrationIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

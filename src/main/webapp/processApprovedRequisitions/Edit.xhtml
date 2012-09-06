@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProcessApprovedRequisitionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{processApprovedRequisitionsController.selected.id}" title="#{bundle.EditProcessApprovedRequisitionsTitle_id}" required="true" requiredMessage="#{bundle.EditProcessApprovedRequisitionsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_quantityPO}" for="quantityPO" />
+                    <h:inputText id="quantityPO" value="#{processApprovedRequisitionsController.selected.quantityPO}" title="#{bundle.EditProcessApprovedRequisitionsTitle_quantityPO}" />
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_stores}" for="stores" />
+                    <h:inputText id="stores" value="#{processApprovedRequisitionsController.selected.stores}" title="#{bundle.EditProcessApprovedRequisitionsTitle_stores}" />
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_quantityStores}" for="quantityStores" />
+                    <h:inputText id="quantityStores" value="#{processApprovedRequisitionsController.selected.quantityStores}" title="#{bundle.EditProcessApprovedRequisitionsTitle_quantityStores}" />
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_quantityPOunitid}" for="quantityPOunitid" />
+                    <h:inputText id="quantityPOunitid" value="#{processApprovedRequisitionsController.selected.quantityPOunitid}" title="#{bundle.EditProcessApprovedRequisitionsTitle_quantityPOunitid}" />
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_quantityStoresUnitId}" for="quantityStoresUnitId" />
+                    <h:inputText id="quantityStoresUnitId" value="#{processApprovedRequisitionsController.selected.quantityStoresUnitId}" title="#{bundle.EditProcessApprovedRequisitionsTitle_quantityStoresUnitId}" />
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_processedBy}" for="processedBy" />
+                    <h:inputText id="processedBy" value="#{processApprovedRequisitionsController.selected.processedBy}" title="#{bundle.EditProcessApprovedRequisitionsTitle_processedBy}" />
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_processedDate}" for="processedDate" />
+                    <h:inputText id="processedDate" value="#{processApprovedRequisitionsController.selected.processedDate}" title="#{bundle.EditProcessApprovedRequisitionsTitle_processedDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditProcessApprovedRequisitionsLabel_approvePurchaseRequestMaterialId}" for="approvePurchaseRequestMaterialId" />
+                    <h:selectOneMenu id="approvePurchaseRequestMaterialId" value="#{processApprovedRequisitionsController.selected.approvePurchaseRequestMaterialId}" title="#{bundle.EditProcessApprovedRequisitionsTitle_approvePurchaseRequestMaterialId}" required="true" requiredMessage="#{bundle.EditProcessApprovedRequisitionsRequiredMessage_approvePurchaseRequestMaterialId}">
+                        <f:selectItems value="#{approveMaterialsRequisitonController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{processApprovedRequisitionsController.update}" value="#{bundle.EditProcessApprovedRequisitionsSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditProcessApprovedRequisitionsViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{processApprovedRequisitionsController.prepareList}" value="#{bundle.EditProcessApprovedRequisitionsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditProcessApprovedRequisitionsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

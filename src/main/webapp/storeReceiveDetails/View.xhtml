@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStoreReceiveDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_id}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.id}" title="#{bundle.ViewStoreReceiveDetailsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_supplierName}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.supplierName}" title="#{bundle.ViewStoreReceiveDetailsTitle_supplierName}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_deliveryNoteNumber}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.deliveryNoteNumber}" title="#{bundle.ViewStoreReceiveDetailsTitle_deliveryNoteNumber}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_carrier}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.carrier}" title="#{bundle.ViewStoreReceiveDetailsTitle_carrier}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_carriageNumber}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.carriageNumber}" title="#{bundle.ViewStoreReceiveDetailsTitle_carriageNumber}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_driver}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.driver}" title="#{bundle.ViewStoreReceiveDetailsTitle_driver}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_date}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.date}" title="#{bundle.ViewStoreReceiveDetailsTitle_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_user}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.user}" title="#{bundle.ViewStoreReceiveDetailsTitle_user}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_receivedBy}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.receivedBy}" title="#{bundle.ViewStoreReceiveDetailsTitle_receivedBy}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_verifiedBy}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.verifiedBy}" title="#{bundle.ViewStoreReceiveDetailsTitle_verifiedBy}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_grnNumber}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.grnNumber}" title="#{bundle.ViewStoreReceiveDetailsTitle_grnNumber}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveDetailsLabel_storeReceiveId}"/>
+                    <h:outputText value="#{storeReceiveDetailsController.selected.storeReceiveId}" title="#{bundle.ViewStoreReceiveDetailsTitle_storeReceiveId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeReceiveDetailsController.destroyAndView}" value="#{bundle.ViewStoreReceiveDetailsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewStoreReceiveDetailsEditLink}"/>
+                <br />
+                <h:commandLink action="#{storeReceiveDetailsController.prepareCreate}" value="#{bundle.ViewStoreReceiveDetailsCreateLink}" />
+                <br />
+                <h:commandLink action="#{storeReceiveDetailsController.prepareList}" value="#{bundle.ViewStoreReceiveDetailsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewStoreReceiveDetailsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

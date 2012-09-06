@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePurchaseRequestMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_expectedDate}" for="expectedDate" />
+                    <h:inputText id="expectedDate" value="#{purchaseRequestMaterialController.selected.expectedDate}" title="#{bundle.CreatePurchaseRequestMaterialTitle_expectedDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_expextedQuantity}" for="expextedQuantity" />
+                    <h:inputText id="expextedQuantity" value="#{purchaseRequestMaterialController.selected.expextedQuantity}" title="#{bundle.CreatePurchaseRequestMaterialTitle_expextedQuantity}" />
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_complete}" for="complete" />
+                    <h:inputText id="complete" value="#{purchaseRequestMaterialController.selected.complete}" title="#{bundle.CreatePurchaseRequestMaterialTitle_complete}" />
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_locationDelivery}" for="locationDelivery" />
+                    <h:inputTextarea rows="4" cols="30" id="locationDelivery" value="#{purchaseRequestMaterialController.selected.locationDelivery}" title="#{bundle.CreatePurchaseRequestMaterialTitle_locationDelivery}" />
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_raisedBy}" for="raisedBy" />
+                    <h:inputText id="raisedBy" value="#{purchaseRequestMaterialController.selected.raisedBy}" title="#{bundle.CreatePurchaseRequestMaterialTitle_raisedBy}" />
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_date}" for="date" />
+                    <h:inputText id="date" value="#{purchaseRequestMaterialController.selected.date}" title="#{bundle.CreatePurchaseRequestMaterialTitle_date}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{purchaseRequestMaterialController.selected.unitId}" title="#{bundle.CreatePurchaseRequestMaterialTitle_unitId}" required="true" requiredMessage="#{bundle.CreatePurchaseRequestMaterialRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_projectId}" for="projectId" />
+                    <h:selectOneMenu id="projectId" value="#{purchaseRequestMaterialController.selected.projectId}" title="#{bundle.CreatePurchaseRequestMaterialTitle_projectId}" >
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_material}" for="material" />
+                    <h:selectOneMenu id="material" value="#{purchaseRequestMaterialController.selected.materialId}" title="#{bundle.CreatePurchaseRequestMaterialTitle_material}" required="true" requiredMessage="#{bundle.CreatePurchaseRequestMaterialRequiredMessage_material}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestMaterialLabel_purchaseRequest}" for="purchaseRequest" />
+                    <h:selectOneMenu id="purchaseRequest" value="#{purchaseRequestMaterialController.selected.purchaseRequestId}" title="#{bundle.CreatePurchaseRequestMaterialTitle_purchaseRequest}" required="true" requiredMessage="#{bundle.CreatePurchaseRequestMaterialRequiredMessage_purchaseRequest}">
+                        <f:selectItems value="#{purchaseRequestController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseRequestMaterialController.create}" value="#{bundle.CreatePurchaseRequestMaterialSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{purchaseRequestMaterialController.prepareList}" value="#{bundle.CreatePurchaseRequestMaterialShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreatePurchaseRequestMaterialIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

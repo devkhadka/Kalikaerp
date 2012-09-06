@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStoreInDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeInDetailController.selected.id}" title="#{bundle.EditStoreInDetailTitle_id}" required="true" requiredMessage="#{bundle.EditStoreInDetailRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{storeInDetailController.selected.name}" title="#{bundle.EditStoreInDetailTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{storeInDetailController.selected.quantity}" title="#{bundle.EditStoreInDetailTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_serialno}" for="serialno" />
+                    <h:inputText id="serialno" value="#{storeInDetailController.selected.serialno}" title="#{bundle.EditStoreInDetailTitle_serialno}" />
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{storeInDetailController.selected.status}" title="#{bundle.EditStoreInDetailTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{storeInDetailController.selected.remarks}" title="#{bundle.EditStoreInDetailTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{storeInDetailController.selected.unitId}" title="#{bundle.EditStoreInDetailTitle_unitId}" required="true" requiredMessage="#{bundle.EditStoreInDetailRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreInDetailLabel_storeInId}" for="storeInId" />
+                    <h:selectOneMenu id="storeInId" value="#{storeInDetailController.selected.storeInId}" title="#{bundle.EditStoreInDetailTitle_storeInId}" required="true" requiredMessage="#{bundle.EditStoreInDetailRequiredMessage_storeInId}">
+                        <f:selectItems value="#{storeInController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{storeInDetailController.update}" value="#{bundle.EditStoreInDetailSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditStoreInDetailViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{storeInDetailController.prepareList}" value="#{bundle.EditStoreInDetailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditStoreInDetailIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

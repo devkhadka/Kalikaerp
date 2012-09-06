@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_id}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.id}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_project}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.project}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_project}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_quantity}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.quantity}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_complete}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.complete}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_complete}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_approvedBy}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.approvedBy}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_approvedBy}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_date}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.date}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_locationDelivery}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.locationDelivery}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_locationDelivery}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_unitId}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.unitId}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewApprovePurchaseRequestMaterialLabel_purchaseRequestMaterial}"/>
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.selected.purchaseRequestMaterial}" title="#{bundle.ViewApprovePurchaseRequestMaterialTitle_purchaseRequestMaterial}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{approvePurchaseRequestMaterialController.destroyAndView}" value="#{bundle.ViewApprovePurchaseRequestMaterialDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewApprovePurchaseRequestMaterialEditLink}"/>
+                <br />
+                <h:commandLink action="#{approvePurchaseRequestMaterialController.prepareCreate}" value="#{bundle.ViewApprovePurchaseRequestMaterialCreateLink}" />
+                <br />
+                <h:commandLink action="#{approvePurchaseRequestMaterialController.prepareList}" value="#{bundle.ViewApprovePurchaseRequestMaterialShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewApprovePurchaseRequestMaterialIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

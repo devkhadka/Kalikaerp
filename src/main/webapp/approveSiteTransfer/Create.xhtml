@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateApproveSiteTransferTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{approveSiteTransferController.selected.id}" title="#{bundle.CreateApproveSiteTransferTitle_id}" required="true" requiredMessage="#{bundle.CreateApproveSiteTransferRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_approvedQuantity}" for="approvedQuantity" />
+                    <h:inputText id="approvedQuantity" value="#{approveSiteTransferController.selected.approvedQuantity}" title="#{bundle.CreateApproveSiteTransferTitle_approvedQuantity}" />
+                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_rejectedQuantity}" for="rejectedQuantity" />
+                    <h:inputText id="rejectedQuantity" value="#{approveSiteTransferController.selected.rejectedQuantity}" title="#{bundle.CreateApproveSiteTransferTitle_rejectedQuantity}" />
+                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{approveSiteTransferController.selected.remarks}" title="#{bundle.CreateApproveSiteTransferTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_siteTransferDetailsId}" for="siteTransferDetailsId" />
+                    <h:selectOneMenu id="siteTransferDetailsId" value="#{approveSiteTransferController.selected.siteTransferDetailsId}" title="#{bundle.CreateApproveSiteTransferTitle_siteTransferDetailsId}" required="true" requiredMessage="#{bundle.CreateApproveSiteTransferRequiredMessage_siteTransferDetailsId}">
+                        <f:selectItems value="#{siteTransferDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_unitIdRejected}" for="unitIdRejected" />
+                    <h:selectOneMenu id="unitIdRejected" value="#{approveSiteTransferController.selected.unitIdRejected}" title="#{bundle.CreateApproveSiteTransferTitle_unitIdRejected}" required="true" requiredMessage="#{bundle.CreateApproveSiteTransferRequiredMessage_unitIdRejected}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateApproveSiteTransferLabel_unitIdApproved}" for="unitIdApproved" />
+                    <h:selectOneMenu id="unitIdApproved" value="#{approveSiteTransferController.selected.unitIdApproved}" title="#{bundle.CreateApproveSiteTransferTitle_unitIdApproved}" required="true" requiredMessage="#{bundle.CreateApproveSiteTransferRequiredMessage_unitIdApproved}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{approveSiteTransferController.create}" value="#{bundle.CreateApproveSiteTransferSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{approveSiteTransferController.prepareList}" value="#{bundle.CreateApproveSiteTransferShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateApproveSiteTransferIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

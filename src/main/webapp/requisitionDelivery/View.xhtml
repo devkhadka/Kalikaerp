@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRequisitionDeliveryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRequisitionDeliveryLabel_id}"/>
+                    <h:outputText value="#{requisitionDeliveryController.selected.id}" title="#{bundle.ViewRequisitionDeliveryTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRequisitionDeliveryLabel_deliveryDate}"/>
+                    <h:outputText value="#{requisitionDeliveryController.selected.deliveryDate}" title="#{bundle.ViewRequisitionDeliveryTitle_deliveryDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRequisitionDeliveryLabel_requestProcessDate}"/>
+                    <h:outputText value="#{requisitionDeliveryController.selected.requestProcessDate}" title="#{bundle.ViewRequisitionDeliveryTitle_requestProcessDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRequisitionDeliveryLabel_quantity}"/>
+                    <h:outputText value="#{requisitionDeliveryController.selected.quantity}" title="#{bundle.ViewRequisitionDeliveryTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewRequisitionDeliveryLabel_pending}"/>
+                    <h:outputText value="#{requisitionDeliveryController.selected.pending}" title="#{bundle.ViewRequisitionDeliveryTitle_pending}"/>
+                    <h:outputText value="#{bundle.ViewRequisitionDeliveryLabel_requisitionmaterialactivitySubcontractorid}"/>
+                    <h:outputText value="#{requisitionDeliveryController.selected.requisitionmaterialactivitySubcontractorid}" title="#{bundle.ViewRequisitionDeliveryTitle_requisitionmaterialactivitySubcontractorid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{requisitionDeliveryController.destroyAndView}" value="#{bundle.ViewRequisitionDeliveryDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewRequisitionDeliveryEditLink}"/>
+                <br />
+                <h:commandLink action="#{requisitionDeliveryController.prepareCreate}" value="#{bundle.ViewRequisitionDeliveryCreateLink}" />
+                <br />
+                <h:commandLink action="#{requisitionDeliveryController.prepareList}" value="#{bundle.ViewRequisitionDeliveryShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewRequisitionDeliveryIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

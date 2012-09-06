@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRequisitionDeliveryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditRequisitionDeliveryLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{requisitionDeliveryController.selected.id}" title="#{bundle.EditRequisitionDeliveryTitle_id}" required="true" requiredMessage="#{bundle.EditRequisitionDeliveryRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditRequisitionDeliveryLabel_deliveryDate}" for="deliveryDate" />
+                    <h:inputText id="deliveryDate" value="#{requisitionDeliveryController.selected.deliveryDate}" title="#{bundle.EditRequisitionDeliveryTitle_deliveryDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRequisitionDeliveryLabel_requestProcessDate}" for="requestProcessDate" />
+                    <h:inputText id="requestProcessDate" value="#{requisitionDeliveryController.selected.requestProcessDate}" title="#{bundle.EditRequisitionDeliveryTitle_requestProcessDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditRequisitionDeliveryLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{requisitionDeliveryController.selected.quantity}" title="#{bundle.EditRequisitionDeliveryTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditRequisitionDeliveryLabel_pending}" for="pending" />
+                    <h:inputText id="pending" value="#{requisitionDeliveryController.selected.pending}" title="#{bundle.EditRequisitionDeliveryTitle_pending}" />
+                    <h:outputLabel value="#{bundle.EditRequisitionDeliveryLabel_requisitionmaterialactivitySubcontractorid}" for="requisitionmaterialactivitySubcontractorid" />
+                    <h:selectOneMenu id="requisitionmaterialactivitySubcontractorid" value="#{requisitionDeliveryController.selected.requisitionmaterialactivitySubcontractorid}" title="#{bundle.EditRequisitionDeliveryTitle_requisitionmaterialactivitySubcontractorid}" required="true" requiredMessage="#{bundle.EditRequisitionDeliveryRequiredMessage_requisitionmaterialactivitySubcontractorid}">
+                        <f:selectItems value="#{requisitionMaterialActivitySubcontractorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{requisitionDeliveryController.update}" value="#{bundle.EditRequisitionDeliverySaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditRequisitionDeliveryViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{requisitionDeliveryController.prepareList}" value="#{bundle.EditRequisitionDeliveryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditRequisitionDeliveryIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

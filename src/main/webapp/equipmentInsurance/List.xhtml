@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEquipmentInsuranceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEquipmentInsuranceEmpty}" rendered="#{equipmentInsuranceController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{equipmentInsuranceController.items.rowCount > 0}">
+                    <h:outputText value="#{equipmentInsuranceController.pagination.pageFirstItem + 1}..#{equipmentInsuranceController.pagination.pageLastItem + 1}/#{equipmentInsuranceController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{equipmentInsuranceController.previous}" value="#{bundle.Previous} #{equipmentInsuranceController.pagination.pageSize}" rendered="#{equipmentInsuranceController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{equipmentInsuranceController.next}" value="#{bundle.Next} #{equipmentInsuranceController.pagination.pageSize}" rendered="#{equipmentInsuranceController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{equipmentInsuranceController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_insurer}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.insurer}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_policy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.policy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_premium}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.premium}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_insuredAmount}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.insuredAmount}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_coverStartDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.coverStartDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_coverEndDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.coverEndDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentInsuranceTitle_equipmentId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipmentId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{equipmentInsuranceController.prepareView}" value="#{bundle.ListEquipmentInsuranceViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipmentInsuranceController.prepareEdit}" value="#{bundle.ListEquipmentInsuranceEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipmentInsuranceController.destroy}" value="#{bundle.ListEquipmentInsuranceDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{equipmentInsuranceController.prepareCreate}" value="#{bundle.ListEquipmentInsuranceCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListEquipmentInsuranceIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

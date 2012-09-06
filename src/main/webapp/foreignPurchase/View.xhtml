@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewForeignPurchaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_id}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.id}" title="#{bundle.ViewForeignPurchaseTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_insurance}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.insurance}" title="#{bundle.ViewForeignPurchaseTitle_insurance}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_freight}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.freight}" title="#{bundle.ViewForeignPurchaseTitle_freight}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_lcChargeBankCommission}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.lcChargeBankCommission}" title="#{bundle.ViewForeignPurchaseTitle_lcChargeBankCommission}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_dockCharges}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.dockCharges}" title="#{bundle.ViewForeignPurchaseTitle_dockCharges}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_loadUnloadCharges}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.loadUnloadCharges}" title="#{bundle.ViewForeignPurchaseTitle_loadUnloadCharges}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_clearingForwardingCharges}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.clearingForwardingCharges}" title="#{bundle.ViewForeignPurchaseTitle_clearingForwardingCharges}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_otherIncidientalExpenses}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.otherIncidientalExpenses}" title="#{bundle.ViewForeignPurchaseTitle_otherIncidientalExpenses}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_imn}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.imn}" title="#{bundle.ViewForeignPurchaseTitle_imn}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_exchangeRate}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.exchangeRate}" title="#{bundle.ViewForeignPurchaseTitle_exchangeRate}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_domesticFrieght}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.domesticFrieght}" title="#{bundle.ViewForeignPurchaseTitle_domesticFrieght}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_purchaseOrderId}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.purchaseOrderId}" title="#{bundle.ViewForeignPurchaseTitle_purchaseOrderId}"/>
+                    <h:outputText value="#{bundle.ViewForeignPurchaseLabel_importBasisId}"/>
+                    <h:outputText value="#{foreignPurchaseController.selected.importBasisId}" title="#{bundle.ViewForeignPurchaseTitle_importBasisId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{foreignPurchaseController.destroyAndView}" value="#{bundle.ViewForeignPurchaseDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewForeignPurchaseEditLink}"/>
+                <br />
+                <h:commandLink action="#{foreignPurchaseController.prepareCreate}" value="#{bundle.ViewForeignPurchaseCreateLink}" />
+                <br />
+                <h:commandLink action="#{foreignPurchaseController.prepareList}" value="#{bundle.ViewForeignPurchaseShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewForeignPurchaseIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

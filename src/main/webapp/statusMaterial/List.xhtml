@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListStatusMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListStatusMaterialEmpty}" rendered="#{statusMaterialController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{statusMaterialController.items.rowCount > 0}">
+                    <h:outputText value="#{statusMaterialController.pagination.pageFirstItem + 1}..#{statusMaterialController.pagination.pageLastItem + 1}/#{statusMaterialController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{statusMaterialController.previous}" value="#{bundle.Previous} #{statusMaterialController.pagination.pageSize}" rendered="#{statusMaterialController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{statusMaterialController.next}" value="#{bundle.Next} #{statusMaterialController.pagination.pageSize}" rendered="#{statusMaterialController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{statusMaterialController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStatusMaterialTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStatusMaterialTitle_typeNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStatusMaterialTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{statusMaterialController.prepareView}" value="#{bundle.ListStatusMaterialViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{statusMaterialController.prepareEdit}" value="#{bundle.ListStatusMaterialEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{statusMaterialController.destroy}" value="#{bundle.ListStatusMaterialDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{statusMaterialController.prepareCreate}" value="#{bundle.ListStatusMaterialCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListStatusMaterialIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

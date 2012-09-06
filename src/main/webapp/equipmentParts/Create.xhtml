@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipmentPartsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentPartsController.selected.id}" title="#{bundle.CreateEquipmentPartsTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentPartsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{equipmentPartsController.selected.name}" title="#{bundle.CreateEquipmentPartsTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_modelNumber}" for="modelNumber" />
+                    <h:inputText id="modelNumber" value="#{equipmentPartsController.selected.modelNumber}" title="#{bundle.CreateEquipmentPartsTitle_modelNumber}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{equipmentPartsController.selected.remarks}" title="#{bundle.CreateEquipmentPartsTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_usage}" for="usage" />
+                    <h:inputText id="usage" value="#{equipmentPartsController.selected.usage}" title="#{bundle.CreateEquipmentPartsTitle_usage}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{equipmentPartsController.selected.description}" title="#{bundle.CreateEquipmentPartsTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentPartsLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{equipmentPartsController.selected.quantity}" title="#{bundle.CreateEquipmentPartsTitle_quantity}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentPartsController.create}" value="#{bundle.CreateEquipmentPartsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipmentPartsController.prepareList}" value="#{bundle.CreateEquipmentPartsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateEquipmentPartsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

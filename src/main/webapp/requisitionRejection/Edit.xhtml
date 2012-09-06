@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRequisitionRejectionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditRequisitionRejectionLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{requisitionRejectionController.selected.id}" title="#{bundle.EditRequisitionRejectionTitle_id}" required="true" requiredMessage="#{bundle.EditRequisitionRejectionRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditRequisitionRejectionLabel_rejectedQuantity}" for="rejectedQuantity" />
+                    <h:inputText id="rejectedQuantity" value="#{requisitionRejectionController.selected.rejectedQuantity}" title="#{bundle.EditRequisitionRejectionTitle_rejectedQuantity}" />
+                    <h:outputLabel value="#{bundle.EditRequisitionRejectionLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{requisitionRejectionController.selected.unitId}" title="#{bundle.EditRequisitionRejectionTitle_unitId}" required="true" requiredMessage="#{bundle.EditRequisitionRejectionRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditRequisitionRejectionLabel_requisitionDeliveryId}" for="requisitionDeliveryId" />
+                    <h:selectOneMenu id="requisitionDeliveryId" value="#{requisitionRejectionController.selected.requisitionDeliveryId}" title="#{bundle.EditRequisitionRejectionTitle_requisitionDeliveryId}" required="true" requiredMessage="#{bundle.EditRequisitionRejectionRequiredMessage_requisitionDeliveryId}">
+                        <f:selectItems value="#{requisitionDeliveryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{requisitionRejectionController.update}" value="#{bundle.EditRequisitionRejectionSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditRequisitionRejectionViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{requisitionRejectionController.prepareList}" value="#{bundle.EditRequisitionRejectionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditRequisitionRejectionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

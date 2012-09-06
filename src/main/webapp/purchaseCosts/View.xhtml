@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPurchaseCostsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPurchaseCostsLabel_id}"/>
+                    <h:outputText value="#{purchaseCostsController.selected.id}" title="#{bundle.ViewPurchaseCostsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseCostsLabel_exchangeRate}"/>
+                    <h:outputText value="#{purchaseCostsController.selected.exchangeRate}" title="#{bundle.ViewPurchaseCostsTitle_exchangeRate}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseCostsLabel_currencyId}"/>
+                    <h:outputText value="#{purchaseCostsController.selected.currencyId}" title="#{bundle.ViewPurchaseCostsTitle_currencyId}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseCostsLabel_purchaseOrderId}"/>
+                    <h:outputText value="#{purchaseCostsController.selected.purchaseOrderId}" title="#{bundle.ViewPurchaseCostsTitle_purchaseOrderId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseCostsController.destroyAndView}" value="#{bundle.ViewPurchaseCostsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewPurchaseCostsEditLink}"/>
+                <br />
+                <h:commandLink action="#{purchaseCostsController.prepareCreate}" value="#{bundle.ViewPurchaseCostsCreateLink}" />
+                <br />
+                <h:commandLink action="#{purchaseCostsController.prepareList}" value="#{bundle.ViewPurchaseCostsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewPurchaseCostsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListStoreReceiveDetailsEmpty}" rendered="#{storeReceiveDetailsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{storeReceiveDetailsController.items.rowCount > 0}">
+                    <h:outputText value="#{storeReceiveDetailsController.pagination.pageFirstItem + 1}..#{storeReceiveDetailsController.pagination.pageLastItem + 1}/#{storeReceiveDetailsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{storeReceiveDetailsController.previous}" value="#{bundle.Previous} #{storeReceiveDetailsController.pagination.pageSize}" rendered="#{storeReceiveDetailsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{storeReceiveDetailsController.next}" value="#{bundle.Next} #{storeReceiveDetailsController.pagination.pageSize}" rendered="#{storeReceiveDetailsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{storeReceiveDetailsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_supplierName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.supplierName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_deliveryNoteNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryNoteNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_carrier}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carrier}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_carriageNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.carriageNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_driver}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.driver}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_user}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.user}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_receivedBy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.receivedBy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_verifiedBy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.verifiedBy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_grnNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grnNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveDetailsTitle_storeReceiveId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.storeReceiveId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{storeReceiveDetailsController.prepareView}" value="#{bundle.ListStoreReceiveDetailsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{storeReceiveDetailsController.prepareEdit}" value="#{bundle.ListStoreReceiveDetailsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{storeReceiveDetailsController.destroy}" value="#{bundle.ListStoreReceiveDetailsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{storeReceiveDetailsController.prepareCreate}" value="#{bundle.ListStoreReceiveDetailsCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListStoreReceiveDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStoreInTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditStoreInLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeInController.selected.id}" title="#{bundle.EditStoreInTitle_id}" required="true" requiredMessage="#{bundle.EditStoreInRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{storeInController.selected.quantity}" title="#{bundle.EditStoreInTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_methodOfValuation}" for="methodOfValuation" />
+                    <h:inputText id="methodOfValuation" value="#{storeInController.selected.methodOfValuation}" title="#{bundle.EditStoreInTitle_methodOfValuation}" />
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_reOrderLevel}" for="reOrderLevel" />
+                    <h:inputText id="reOrderLevel" value="#{storeInController.selected.reOrderLevel}" title="#{bundle.EditStoreInTitle_reOrderLevel}" />
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_minimumLevel}" for="minimumLevel" />
+                    <h:inputText id="minimumLevel" value="#{storeInController.selected.minimumLevel}" title="#{bundle.EditStoreInTitle_minimumLevel}" />
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_maximumLevel}" for="maximumLevel" />
+                    <h:inputText id="maximumLevel" value="#{storeInController.selected.maximumLevel}" title="#{bundle.EditStoreInTitle_maximumLevel}" />
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_rejectedQuantity}" for="rejectedQuantity" />
+                    <h:inputText id="rejectedQuantity" value="#{storeInController.selected.rejectedQuantity}" title="#{bundle.EditStoreInTitle_rejectedQuantity}" />
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_grnNumber}" for="grnNumber" />
+                    <h:selectOneMenu id="grnNumber" value="#{storeInController.selected.grnNumber}" title="#{bundle.EditStoreInTitle_grnNumber}" required="true" requiredMessage="#{bundle.EditStoreInRequiredMessage_grnNumber}">
+                        <f:selectItems value="#{storeReceiveDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{storeInController.selected.unitId}" title="#{bundle.EditStoreInTitle_unitId}" required="true" requiredMessage="#{bundle.EditStoreInRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{storeInController.selected.materialId}" title="#{bundle.EditStoreInTitle_materialId}" required="true" requiredMessage="#{bundle.EditStoreInRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_storeLocationId}" for="storeLocationId" />
+                    <h:selectOneMenu id="storeLocationId" value="#{storeInController.selected.storeLocationId}" title="#{bundle.EditStoreInTitle_storeLocationId}" >
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreInLabel_statusMaterialId}" for="statusMaterialId" />
+                    <h:selectOneMenu id="statusMaterialId" value="#{storeInController.selected.statusMaterialId}" title="#{bundle.EditStoreInTitle_statusMaterialId}" required="true" requiredMessage="#{bundle.EditStoreInRequiredMessage_statusMaterialId}">
+                        <f:selectItems value="#{statusMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{storeInController.update}" value="#{bundle.EditStoreInSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditStoreInViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{storeInController.prepareList}" value="#{bundle.EditStoreInShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditStoreInIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

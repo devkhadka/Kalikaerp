@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMaintenanceFineDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditMaintenanceFineDetailsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{maintenanceFineDetailsController.selected.id}" title="#{bundle.EditMaintenanceFineDetailsTitle_id}" required="true" requiredMessage="#{bundle.EditMaintenanceFineDetailsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditMaintenanceFineDetailsLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{maintenanceFineDetailsController.selected.description}" title="#{bundle.EditMaintenanceFineDetailsTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceFineDetailsLabel_hour}" for="hour" />
+                    <h:inputText id="hour" value="#{maintenanceFineDetailsController.selected.hour}" title="#{bundle.EditMaintenanceFineDetailsTitle_hour}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceFineDetailsLabel_labourRate}" for="labourRate" />
+                    <h:inputText id="labourRate" value="#{maintenanceFineDetailsController.selected.labourRate}" title="#{bundle.EditMaintenanceFineDetailsTitle_labourRate}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceFineDetailsLabel_overhead}" for="overhead" />
+                    <h:inputText id="overhead" value="#{maintenanceFineDetailsController.selected.overhead}" title="#{bundle.EditMaintenanceFineDetailsTitle_overhead}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceFineDetailsLabel_maintenanceDetailId}" for="maintenanceDetailId" />
+                    <h:selectOneMenu id="maintenanceDetailId" value="#{maintenanceFineDetailsController.selected.maintenanceDetailId}" title="#{bundle.EditMaintenanceFineDetailsTitle_maintenanceDetailId}" required="true" requiredMessage="#{bundle.EditMaintenanceFineDetailsRequiredMessage_maintenanceDetailId}">
+                        <f:selectItems value="#{maintenanceDetailController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{maintenanceFineDetailsController.update}" value="#{bundle.EditMaintenanceFineDetailsSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditMaintenanceFineDetailsViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{maintenanceFineDetailsController.prepareList}" value="#{bundle.EditMaintenanceFineDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditMaintenanceFineDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

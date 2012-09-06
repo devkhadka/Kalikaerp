@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStoreReceiveFineDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeReceiveFineDetailsController.selected.id}" title="#{bundle.EditStoreReceiveFineDetailsTitle_id}" required="true" requiredMessage="#{bundle.EditStoreReceiveFineDetailsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_quantityChallan}" for="quantityChallan" />
+                    <h:inputText id="quantityChallan" value="#{storeReceiveFineDetailsController.selected.quantityChallan}" title="#{bundle.EditStoreReceiveFineDetailsTitle_quantityChallan}" />
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_quantityReceived}" for="quantityReceived" />
+                    <h:inputText id="quantityReceived" value="#{storeReceiveFineDetailsController.selected.quantityReceived}" title="#{bundle.EditStoreReceiveFineDetailsTitle_quantityReceived}" />
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_quantityDamaged}" for="quantityDamaged" />
+                    <h:inputText id="quantityDamaged" value="#{storeReceiveFineDetailsController.selected.quantityDamaged}" title="#{bundle.EditStoreReceiveFineDetailsTitle_quantityDamaged}" />
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{storeReceiveFineDetailsController.selected.remarks}" title="#{bundle.EditStoreReceiveFineDetailsTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_unitIdDamaged}" for="unitIdDamaged" />
+                    <h:selectOneMenu id="unitIdDamaged" value="#{storeReceiveFineDetailsController.selected.unitIdDamaged}" title="#{bundle.EditStoreReceiveFineDetailsTitle_unitIdDamaged}" required="true" requiredMessage="#{bundle.EditStoreReceiveFineDetailsRequiredMessage_unitIdDamaged}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_unitIdReceived}" for="unitIdReceived" />
+                    <h:selectOneMenu id="unitIdReceived" value="#{storeReceiveFineDetailsController.selected.unitIdReceived}" title="#{bundle.EditStoreReceiveFineDetailsTitle_unitIdReceived}" required="true" requiredMessage="#{bundle.EditStoreReceiveFineDetailsRequiredMessage_unitIdReceived}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_storeReceiveDetailsId}" for="storeReceiveDetailsId" />
+                    <h:selectOneMenu id="storeReceiveDetailsId" value="#{storeReceiveFineDetailsController.selected.storeReceiveDetailsId}" title="#{bundle.EditStoreReceiveFineDetailsTitle_storeReceiveDetailsId}" required="true" requiredMessage="#{bundle.EditStoreReceiveFineDetailsRequiredMessage_storeReceiveDetailsId}">
+                        <f:selectItems value="#{storeReceiveDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_unitIdChallan}" for="unitIdChallan" />
+                    <h:selectOneMenu id="unitIdChallan" value="#{storeReceiveFineDetailsController.selected.unitIdChallan}" title="#{bundle.EditStoreReceiveFineDetailsTitle_unitIdChallan}" required="true" requiredMessage="#{bundle.EditStoreReceiveFineDetailsRequiredMessage_unitIdChallan}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStoreReceiveFineDetailsLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{storeReceiveFineDetailsController.selected.materialId}" title="#{bundle.EditStoreReceiveFineDetailsTitle_materialId}" required="true" requiredMessage="#{bundle.EditStoreReceiveFineDetailsRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{storeReceiveFineDetailsController.update}" value="#{bundle.EditStoreReceiveFineDetailsSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditStoreReceiveFineDetailsViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{storeReceiveFineDetailsController.prepareList}" value="#{bundle.EditStoreReceiveFineDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditStoreReceiveFineDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://java.sun.com/jsf/core"
+         xmlns:ui="http://java.sun.com/jsf/facelets"
+         >
+   
+    <h:body>
+        
+         <h:head>
+        <title>Facelet </title>
+        <h:outputStylesheet name="css/Kalika.css"/>
+    </h:head>
+        <h:form>
+             <p:panelGrid style="margin-top:20px;height: 100%;width: 100%;border-width: 2px" >  
+                 
+                    
+   
+    <f:facet name="header">  
+        <p:row>  
+            <p:column colspan="4">INWARDS</p:column>  
+        </p:row>  
+        <p:row >  
+            <p:column colspan="4" >RECEIVING GOODS SUPPLIED BY A SUPPLIER </p:column>  
+           
+        </p:row>  
+    </f:facet>  
+  
+    <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">PO NUMBER :</p:column> 
+        <p:column colspan="2" style="font-weight: bold;"> <h:outputText value="#{storeReceiveController.poNo}" /></p:column> 
+        
+    </p:row> 
+                 
+                  <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">SUPPLIER :</p:column>  
+        <p:column colspan="2" >   <h:outputText style="width: 100%" id="supplierId" value="#{storeReceiveController.supplierName}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row> 
+                 
+                  <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">DELIVERY NOTE NUMBER :</p:column>  
+        <p:column colspan="2">   <h:inputText  style="width: 100%" id="deliveryNoteNumber" value="#{storeReceiveController.deliveryNoteNo}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row>  
+                    <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">CARRIER :</p:column>  
+        <p:column colspan="2">   <h:inputText style="width: 100%" id="carrier" value="#{storeReceiveController.carrier}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row>  
+     <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">CARRIAGE NUMBER :</p:column>  
+        <p:column colspan="2">   <h:inputText style="width: 100%" id="carriageNumber" value="#{storeReceiveController.carriageNo}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row>  
+      <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">DRIVER :</p:column>  
+        <p:column colspan="2">   <h:inputText style="width: 100%" id="driver" value="#{storeReceiveController.driver}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row>  
+  
+  
+    <p:row>  
+        <p:column colspan="4" >  
+        
+            <p:spacer width="0" height="18"/>
+            <ui:include src="DataTableForGrnWithPo.xhtml"/>
+             <p:spacer width="0" height="13"/>
+                       
+        </p:column>  
+    </p:row>  
+  
+    <p:row>  
+        <p:column style="font-weight: bold;">RECEIVED BY :</p:column>  
+        <p:column ></p:column>  
+  
+        <p:column ></p:column>  
+        <p:column style="font-weight: bold;">VERIFIED BY :</p:column>  
+    </p:row>  
+                    
+      <p:row>  
+        <p:column style="font-weight: bold;width:22%"><h:inputText style="width: 100%" id="recieverId" value="#{storeReceiveController.receivedBy}" title="#{bundle.ViewStoreReceiveDetailsLabel_receivedBy}" /></p:column>  
+        <p:column style="width: 10%"></p:column>  
+  
+        <p:column style="width: 50%">  <p:spacer width="20%" height="0%"/>
+            <p:commandButton  id="saveBtn" value="Generate GRN" icon="ui-icon-check"   
+                              style="margin:0;width: 60%" action="#{storeReceiveController.GenerateGRNNO}"/>  </p:column>  
+        <p:column style="width: 150"><h:inputText style="width: 100%" id="verifiedId" value="#{storeReceiveController.verifiedBy}" title="#{bundle.ViewStoreReceiveDetailsLabel_verifiedBy}" /></p:column>  
+    </p:row> 
+  
+             </p:panelGrid>
+            
+             <h:selectOneMenu id="storeLocationId" value="#{storeReceiveController.selected.storeLocationId}" title="#{bundle.CreateStoreReceiveTitle_storeLocationId}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_storeLocationId}">
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_storesId}" for="storesId" />
+                    
+                    <h:selectOneMenu id="storesId" value="#{storeReceiveController.selected.storesId}" title="#{bundle.CreateStoreReceiveTitle_storesId}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_storesId}">
+                        <f:selectItems value="#{storesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_recevingTypeId}" for="recevingTypeId" />
+                    <h:selectOneMenu id="recevingTypeId" value="#{storeReceiveController.selected.recevingTypeId}" title="#{bundle.CreateStoreReceiveTitle_recevingTypeId}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_recevingTypeId}">
+                        <f:selectItems value="#{recevingTypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+        </h:form>
+    </h:body>
+</html>

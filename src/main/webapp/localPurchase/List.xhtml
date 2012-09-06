@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListLocalPurchaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListLocalPurchaseEmpty}" rendered="#{localPurchaseController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{localPurchaseController.items.rowCount > 0}">
+                    <h:outputText value="#{localPurchaseController.pagination.pageFirstItem + 1}..#{localPurchaseController.pagination.pageLastItem + 1}/#{localPurchaseController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{localPurchaseController.previous}" value="#{bundle.Previous} #{localPurchaseController.pagination.pageSize}" rendered="#{localPurchaseController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{localPurchaseController.next}" value="#{bundle.Next} #{localPurchaseController.pagination.pageSize}" rendered="#{localPurchaseController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{localPurchaseController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLocalPurchaseTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLocalPurchaseTitle_unitId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLocalPurchaseTitle_currencyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.currencyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListLocalPurchaseTitle_purchaseOrderId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.purchaseOrderId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{localPurchaseController.prepareView}" value="#{bundle.ListLocalPurchaseViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{localPurchaseController.prepareEdit}" value="#{bundle.ListLocalPurchaseEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{localPurchaseController.destroy}" value="#{bundle.ListLocalPurchaseDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{localPurchaseController.prepareCreate}" value="#{bundle.ListLocalPurchaseCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListLocalPurchaseIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

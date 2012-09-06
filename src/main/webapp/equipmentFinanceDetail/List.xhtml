@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEquipmentFinanceDetailEmpty}" rendered="#{equipmentFinanceDetailController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{equipmentFinanceDetailController.items.rowCount > 0}">
+                    <h:outputText value="#{equipmentFinanceDetailController.pagination.pageFirstItem + 1}..#{equipmentFinanceDetailController.pagination.pageLastItem + 1}/#{equipmentFinanceDetailController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{equipmentFinanceDetailController.previous}" value="#{bundle.Previous} #{equipmentFinanceDetailController.pagination.pageSize}" rendered="#{equipmentFinanceDetailController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{equipmentFinanceDetailController.next}" value="#{bundle.Next} #{equipmentFinanceDetailController.pagination.pageSize}" rendered="#{equipmentFinanceDetailController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{equipmentFinanceDetailController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_nextDueDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nextDueDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_paidDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paidDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_paidAmount}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paidAmount}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_otherCharges}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otherCharges}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentFinanceDetailTitle_equipmentFinancingId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipmentFinancingId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{equipmentFinanceDetailController.prepareView}" value="#{bundle.ListEquipmentFinanceDetailViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipmentFinanceDetailController.prepareEdit}" value="#{bundle.ListEquipmentFinanceDetailEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipmentFinanceDetailController.destroy}" value="#{bundle.ListEquipmentFinanceDetailDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{equipmentFinanceDetailController.prepareCreate}" value="#{bundle.ListEquipmentFinanceDetailCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListEquipmentFinanceDetailIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewApproveSiteTransferTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_id}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.id}" title="#{bundle.ViewApproveSiteTransferTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_approvedQuantity}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.approvedQuantity}" title="#{bundle.ViewApproveSiteTransferTitle_approvedQuantity}"/>
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_rejectedQuantity}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.rejectedQuantity}" title="#{bundle.ViewApproveSiteTransferTitle_rejectedQuantity}"/>
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_remarks}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.remarks}" title="#{bundle.ViewApproveSiteTransferTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_siteTransferDetailsId}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.siteTransferDetailsId}" title="#{bundle.ViewApproveSiteTransferTitle_siteTransferDetailsId}"/>
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_unitIdRejected}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.unitIdRejected}" title="#{bundle.ViewApproveSiteTransferTitle_unitIdRejected}"/>
+                    <h:outputText value="#{bundle.ViewApproveSiteTransferLabel_unitIdApproved}"/>
+                    <h:outputText value="#{approveSiteTransferController.selected.unitIdApproved}" title="#{bundle.ViewApproveSiteTransferTitle_unitIdApproved}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{approveSiteTransferController.destroyAndView}" value="#{bundle.ViewApproveSiteTransferDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewApproveSiteTransferEditLink}"/>
+                <br />
+                <h:commandLink action="#{approveSiteTransferController.prepareCreate}" value="#{bundle.ViewApproveSiteTransferCreateLink}" />
+                <br />
+                <h:commandLink action="#{approveSiteTransferController.prepareList}" value="#{bundle.ViewApproveSiteTransferShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewApproveSiteTransferIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

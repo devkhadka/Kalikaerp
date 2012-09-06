@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListStoreReceiveTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListStoreReceiveEmpty}" rendered="#{storeReceiveController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{storeReceiveController.items.rowCount > 0}">
+                    <h:outputText value="#{storeReceiveController.pagination.pageFirstItem + 1}..#{storeReceiveController.pagination.pageLastItem + 1}/#{storeReceiveController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{storeReceiveController.previous}" value="#{bundle.Previous} #{storeReceiveController.pagination.pageSize}" rendered="#{storeReceiveController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{storeReceiveController.next}" value="#{bundle.Next} #{storeReceiveController.pagination.pageSize}" rendered="#{storeReceiveController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{storeReceiveController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveTitle_poNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.poNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveTitle_isComplete}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.isComplete}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveTitle_storeLocationId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.storeLocationId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveTitle_recevingTypeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.recevingTypeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStoreReceiveTitle_storesId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.storesId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{storeReceiveController.prepareView}" value="#{bundle.ListStoreReceiveViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{storeReceiveController.prepareEdit}" value="#{bundle.ListStoreReceiveEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{storeReceiveController.destroy}" value="#{bundle.ListStoreReceiveDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{storeReceiveController.prepareCreate}" value="#{bundle.ListStoreReceiveCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListStoreReceiveIndexLink}" action="/index" immediate="true" />
+            </h:form>
+            
+               
+             <h:form>
+            <p:growl id="growl" />  
+  
+    <h3>INWARDS</h3> 
+   
+    <p:panel id="pnl" header="Recieving Goods Supplied By a Supplier" style="width:400px;height:160px;" > 
+        
+        <p:messages id="messages" />  
+        <h:panelGrid columns="3" >  
+            
+            <h:outputLabel for="PoReference" value="Po Reference No:" /> 
+            
+            
+            <p:inputText id="PoReference" value="#{storeReceiveController.poNo}" title="#{bundle.CreateStoreReceiveTitle_poNumber}" >
+               
+            </p:inputText>  
+<!--            <p:message for="firstname" />  -->
+  
+            <h:outputLabel  value="Doesnot have a Reference" />  
+            
+            <p:selectBooleanCheckbox  id="referenceCheck" value="#{storeReceiveController.checkBoxRef}" /> 
+        </h:panelGrid>  
+  <p:spacer width="200" height="10" />
+        <p:commandButton id="saveBtn" value="Submit" icon="ui-icon-check"   
+                         style="margin:0" action="#{storeReceiveController.doGenerateGrn}" update="growl"/>  
+    </p:panel> 
+    
+    
+   
+                     <div id="divMain">
+			<p:growl id="messageGrowl" />
+			<ui:insert name="divMain" />
+                       </div>
+        <h:commandLink value="Jump to StoreIn" action="/storeReceiveGoods/StoreReceivingGoods"  />    
+        </h:form >
+        </ui:define>
+    </ui:composition>
+
+</html>

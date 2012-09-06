@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditIndustriesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditIndustriesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{industriesController.selected.id}" title="#{bundle.EditIndustriesTitle_id}" required="true" requiredMessage="#{bundle.EditIndustriesRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditIndustriesLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{industriesController.selected.name}" title="#{bundle.EditIndustriesTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditIndustriesLabel_lineOfBusiness}" for="lineOfBusiness" />
+                    <h:inputTextarea rows="4" cols="30" id="lineOfBusiness" value="#{industriesController.selected.lineOfBusiness}" title="#{bundle.EditIndustriesTitle_lineOfBusiness}" />
+                    <h:outputLabel value="#{bundle.EditIndustriesLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{industriesController.selected.remarks}" title="#{bundle.EditIndustriesTitle_remarks}" />
+                </h:panelGrid>
+                <h:commandLink action="#{industriesController.update}" value="#{bundle.EditIndustriesSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditIndustriesViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{industriesController.prepareList}" value="#{bundle.EditIndustriesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditIndustriesIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

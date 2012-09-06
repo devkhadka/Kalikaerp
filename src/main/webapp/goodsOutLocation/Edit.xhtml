@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditGoodsOutLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditGoodsOutLocationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{goodsOutLocationController.selected.id}" title="#{bundle.EditGoodsOutLocationTitle_id}" required="true" requiredMessage="#{bundle.EditGoodsOutLocationRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditGoodsOutLocationLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{goodsOutLocationController.selected.quantity}" title="#{bundle.EditGoodsOutLocationTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditGoodsOutLocationLabel_statusMaterialId}" for="statusMaterialId" />
+                    <h:selectOneMenu id="statusMaterialId" value="#{goodsOutLocationController.selected.statusMaterialId}" title="#{bundle.EditGoodsOutLocationTitle_statusMaterialId}" required="true" requiredMessage="#{bundle.EditGoodsOutLocationRequiredMessage_statusMaterialId}">
+                        <f:selectItems value="#{statusMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditGoodsOutLocationLabel_storeLocationId}" for="storeLocationId" />
+                    <h:selectOneMenu id="storeLocationId" value="#{goodsOutLocationController.selected.storeLocationId}" title="#{bundle.EditGoodsOutLocationTitle_storeLocationId}" required="true" requiredMessage="#{bundle.EditGoodsOutLocationRequiredMessage_storeLocationId}">
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditGoodsOutLocationLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{goodsOutLocationController.selected.unitId}" title="#{bundle.EditGoodsOutLocationTitle_unitId}" required="true" requiredMessage="#{bundle.EditGoodsOutLocationRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditGoodsOutLocationLabel_goodsOutId}" for="goodsOutId" />
+                    <h:selectOneMenu id="goodsOutId" value="#{goodsOutLocationController.selected.goodsOutId}" title="#{bundle.EditGoodsOutLocationTitle_goodsOutId}" required="true" requiredMessage="#{bundle.EditGoodsOutLocationRequiredMessage_goodsOutId}">
+                        <f:selectItems value="#{goodsOutDetailController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{goodsOutLocationController.update}" value="#{bundle.EditGoodsOutLocationSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditGoodsOutLocationViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{goodsOutLocationController.prepareList}" value="#{bundle.EditGoodsOutLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditGoodsOutLocationIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

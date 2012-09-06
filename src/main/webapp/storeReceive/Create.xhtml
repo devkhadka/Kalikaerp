@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStoreReceiveTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeReceiveController.selected.id}" title="#{bundle.CreateStoreReceiveTitle_id}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_poNumber}" for="poNumber" />
+                    <h:inputText id="poNumber" value="#{storeReceiveController.selected.poNumber}" title="#{bundle.CreateStoreReceiveTitle_poNumber}" />
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_isComplete}" for="isComplete" />
+                    <h:inputText id="isComplete" value="#{storeReceiveController.selected.isComplete}" title="#{bundle.CreateStoreReceiveTitle_isComplete}" />
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_storeLocationId}" for="storeLocationId" />
+                    <h:selectOneMenu id="storeLocationId" value="#{storeReceiveController.selected.storeLocationId}" title="#{bundle.CreateStoreReceiveTitle_storeLocationId}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_storeLocationId}">
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_recevingTypeId}" for="recevingTypeId" />
+                    <h:selectOneMenu id="recevingTypeId" value="#{storeReceiveController.selected.recevingTypeId}" title="#{bundle.CreateStoreReceiveTitle_recevingTypeId}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_recevingTypeId}">
+                        <f:selectItems value="#{recevingTypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveLabel_storesId}" for="storesId" />
+                    <h:selectOneMenu id="storesId" value="#{storeReceiveController.selected.storesId}" title="#{bundle.CreateStoreReceiveTitle_storesId}" required="true" requiredMessage="#{bundle.CreateStoreReceiveRequiredMessage_storesId}">
+                        <f:selectItems value="#{storesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeReceiveController.create}" value="#{bundle.CreateStoreReceiveSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{storeReceiveController.prepareList}" value="#{bundle.CreateStoreReceiveShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateStoreReceiveIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

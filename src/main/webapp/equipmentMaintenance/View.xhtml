@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentMaintenanceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentMaintenanceLabel_id}"/>
+                    <h:outputText value="#{equipmentMaintenanceController.selected.id}" title="#{bundle.ViewEquipmentMaintenanceTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentMaintenanceLabel_description}"/>
+                    <h:outputText value="#{equipmentMaintenanceController.selected.description}" title="#{bundle.ViewEquipmentMaintenanceTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentMaintenanceLabel_equipmentId}"/>
+                    <h:outputText value="#{equipmentMaintenanceController.selected.equipmentId}" title="#{bundle.ViewEquipmentMaintenanceTitle_equipmentId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentMaintenanceController.destroyAndView}" value="#{bundle.ViewEquipmentMaintenanceDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentMaintenanceEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentMaintenanceController.prepareCreate}" value="#{bundle.ViewEquipmentMaintenanceCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentMaintenanceController.prepareList}" value="#{bundle.ViewEquipmentMaintenanceShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentMaintenanceIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateForeignPurchaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{foreignPurchaseController.selected.id}" title="#{bundle.CreateForeignPurchaseTitle_id}" required="true" requiredMessage="#{bundle.CreateForeignPurchaseRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_insurance}" for="insurance" />
+                    <h:inputText id="insurance" value="#{foreignPurchaseController.selected.insurance}" title="#{bundle.CreateForeignPurchaseTitle_insurance}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_freight}" for="freight" />
+                    <h:inputText id="freight" value="#{foreignPurchaseController.selected.freight}" title="#{bundle.CreateForeignPurchaseTitle_freight}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_lcChargeBankCommission}" for="lcChargeBankCommission" />
+                    <h:inputText id="lcChargeBankCommission" value="#{foreignPurchaseController.selected.lcChargeBankCommission}" title="#{bundle.CreateForeignPurchaseTitle_lcChargeBankCommission}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_dockCharges}" for="dockCharges" />
+                    <h:inputText id="dockCharges" value="#{foreignPurchaseController.selected.dockCharges}" title="#{bundle.CreateForeignPurchaseTitle_dockCharges}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_loadUnloadCharges}" for="loadUnloadCharges" />
+                    <h:inputText id="loadUnloadCharges" value="#{foreignPurchaseController.selected.loadUnloadCharges}" title="#{bundle.CreateForeignPurchaseTitle_loadUnloadCharges}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_clearingForwardingCharges}" for="clearingForwardingCharges" />
+                    <h:inputText id="clearingForwardingCharges" value="#{foreignPurchaseController.selected.clearingForwardingCharges}" title="#{bundle.CreateForeignPurchaseTitle_clearingForwardingCharges}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_otherIncidientalExpenses}" for="otherIncidientalExpenses" />
+                    <h:inputText id="otherIncidientalExpenses" value="#{foreignPurchaseController.selected.otherIncidientalExpenses}" title="#{bundle.CreateForeignPurchaseTitle_otherIncidientalExpenses}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_imn}" for="imn" />
+                    <h:inputText id="imn" value="#{foreignPurchaseController.selected.imn}" title="#{bundle.CreateForeignPurchaseTitle_imn}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_exchangeRate}" for="exchangeRate" />
+                    <h:inputText id="exchangeRate" value="#{foreignPurchaseController.selected.exchangeRate}" title="#{bundle.CreateForeignPurchaseTitle_exchangeRate}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_domesticFrieght}" for="domesticFrieght" />
+                    <h:inputText id="domesticFrieght" value="#{foreignPurchaseController.selected.domesticFrieght}" title="#{bundle.CreateForeignPurchaseTitle_domesticFrieght}" />
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_purchaseOrderId}" for="purchaseOrderId" />
+                    <h:selectOneMenu id="purchaseOrderId" value="#{foreignPurchaseController.selected.purchaseOrderId}" title="#{bundle.CreateForeignPurchaseTitle_purchaseOrderId}" required="true" requiredMessage="#{bundle.CreateForeignPurchaseRequiredMessage_purchaseOrderId}">
+                        <f:selectItems value="#{purchaseOrderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateForeignPurchaseLabel_importBasisId}" for="importBasisId" />
+                    <h:selectOneMenu id="importBasisId" value="#{foreignPurchaseController.selected.importBasisId}" title="#{bundle.CreateForeignPurchaseTitle_importBasisId}" required="true" requiredMessage="#{bundle.CreateForeignPurchaseRequiredMessage_importBasisId}">
+                        <f:selectItems value="#{importBasisController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{foreignPurchaseController.create}" value="#{bundle.CreateForeignPurchaseSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{foreignPurchaseController.prepareList}" value="#{bundle.CreateForeignPurchaseShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateForeignPurchaseIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

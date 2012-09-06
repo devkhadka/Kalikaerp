@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Facelet </title>
+        <h:outputStylesheet name="css/Kalika.css"/>
+    </h:head>
+
+    <body>
+
+
+        <h:form>
+            
+              <p:panel style="margin-top:20px;height: 100%;width: 100%;border-width: 2px" >  
+                 
+                    
+   
+    <f:facet name="header">  
+        <p:row>  
+            <p:column >STORE IN</p:column>  
+        </p:row>  
+        
+    
+    </f:facet>  
+
+            <table style='border: 1px solid black'>
+
+                <ui:repeat value="#{storeReceiveDetailsController.byAllGrnDetails}" var="sRCColl">
+                    <tr>
+                        <td>
+                            #{sRCColl.grnNumber}
+        <!--                    <h:commandLink action="#{repeatController.b.addAuthor()}" value="a" />-->
+                        </td>
+                        <td><table>
+
+                                <ui:repeat value="#{sRCColl.storeReceiveFineDetailsCollection}" var="sRFDColl">
+                                    <tr>
+                                        <td>
+                                            <h:outputText value="#{sRFDColl.materialId}" />  
+
+
+
+                                            <td>
+                                                <h:outputText value="#{sRFDColl.quantityReceived}" />  
+
+
+
+                                            </td>
+                                            <td>
+                                                <h:outputText value="#{sRFDColl.unitIdReceived}" />  
+
+                                                <h:commandLink action="#{sRFDColl.addStoreIn()}" value="Add StoreIn"/>
+                                             
+
+                                            </td>
+
+                                        </td>
+                                        <td>
+                                            <table>
+                                                
+                                       
+                                                <ui:repeat value="#{sRFDColl.storeInCollection}" var="sin" >
+                                                    <tr>
+                                                        <td>df
+                                                        
+                                                            <p:commandButton id="Select" value="Basic" onclick="dlg1.show();"  action="#{storeReceiveDetailsController.addCurrentStoreIn(sin)}" >
+                                                              
+                                                            </p:commandButton>
+                                                        </td>
+
+                                                        <td>
+
+
+                                                            <!--                                                          input text cannot be put here cause in list we cant write in List<String> unless it is a class-->
+                                                            <h:inputText value="#{sin.quantity}" />  
+
+                                                        </td>
+                                                        
+                                                         <td>
+
+
+                                                            <h:outputLabel value="#{bundle.CreateStoreInLabel_statusMaterialId}" for="statusMaterialId" />
+                    <h:selectOneMenu id="statusMaterialId" value="#{sin.statusMaterialId}" title="#{bundle.CreateStoreInTitle_statusMaterialId}" required="true" requiredMessage="#{bundle.CreateStoreInRequiredMessage_statusMaterialId}">
+                        <f:selectItems value="#{statusMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu> 
+
+                                                        </td>
+                                                         <td>
+
+
+                                                            <h:outputLabel value="#{bundle.CreateStoreInLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{sin.materialId}" title="#{bundle.CreateStoreInTitle_materialId}" required="true" requiredMessage="#{bundle.CreateStoreInRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                                                        </td>
+                                                         <td>
+
+
+                                                             <h:outputLabel value="#{bundle.CreateStoreInLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{sin.unitId}" title="#{bundle.CreateStoreInTitle_unitId}" required="true" requiredMessage="#{bundle.CreateStoreInRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                  
+
+                                                        </td>
+                                                       
+<!--                                                          <td>
+
+                                                            
+                                                  <h:selectOneMenu id="grnNumber" value="#{sin.grnNumber}" title="#{bundle.CreateStoreInTitle_grnNumber}" required="true" requiredMessage="#{bundle.CreateStoreInRequiredMessage_grnNumber}">
+                        <f:selectItems value="#{storeReceiveDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                  
+
+                                                            </td>-->
+                                                        
+                                                            <td>
+
+                                                                <h:inputText value ="#{sin.reOrderLevel}" />  
+
+                                                            </td>
+                                                            <td>
+
+                                                                <h:inputText value="#{sin.rejectedQuantity}" />  
+
+                                                            </td>
+                                                            <td>
+                                                              
+                                                                
+                                                                <h:inputText value="#{sin.storeLocationId}" ajax="false"/>  
+
+                                                            </td>
+                                                 
+
+                                                    </tr>
+                                                </ui:repeat>
+
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </ui:repeat>
+
+
+                            </table>
+                        </td>
+                    </tr>
+                </ui:repeat>
+               
+
+
+            </table>
+             <h:commandButton value="save" action="#{storeReceiveDetailsController.saveStoreIn}" />
+              </p:panel>  
+        </h:form>
+
+        <h:form id="form">  
+
+            <p:growl id="messages" showDetail="true" />  
+
+            <p:dialog id="basicDialog" header="Select Location" widgetVar="dlg1">  
+
+
+                <p:tree id="treeSingle" value="#{storeReceiveDetailsController.root}" var="node"  
+                        selectionMode="single"  
+                        selection="#{storeReceiveDetailsController.selectedNode}">  
+
+                    <p:treeNode>  
+                        <h:outputText value="#{node.name}" />  
+                    </p:treeNode>  
+                </p:tree>  
+
+
+                <p:commandButton value="Display Selected" update="messages"  
+                                 actionListener="#{storeReceiveDetailsController.displaySelectedSingle}" id="btnDisplay" ajax="false"/>  
+            </p:dialog> 
+
+        </h:form>  
+
+
+
+    </body>
+
+
+</html>

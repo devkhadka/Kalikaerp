@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRepairOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{repairOrderController.selected.id}" title="#{bundle.CreateRepairOrderTitle_id}" required="true" requiredMessage="#{bundle.CreateRepairOrderRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_problem}" for="problem" />
+                    <h:inputText id="problem" value="#{repairOrderController.selected.problem}" title="#{bundle.CreateRepairOrderTitle_problem}" />
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_estimatedTime}" for="estimatedTime" />
+                    <h:inputText id="estimatedTime" value="#{repairOrderController.selected.estimatedTime}" title="#{bundle.CreateRepairOrderTitle_estimatedTime}" />
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_materialsRequired}" for="materialsRequired" />
+                    <h:inputText id="materialsRequired" value="#{repairOrderController.selected.materialsRequired}" title="#{bundle.CreateRepairOrderTitle_materialsRequired}" />
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_estimatedCost}" for="estimatedCost" />
+                    <h:inputText id="estimatedCost" value="#{repairOrderController.selected.estimatedCost}" title="#{bundle.CreateRepairOrderTitle_estimatedCost}" />
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_timeUnit}" for="timeUnit" />
+                    <h:inputText id="timeUnit" value="#{repairOrderController.selected.timeUnit}" title="#{bundle.CreateRepairOrderTitle_timeUnit}" />
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_mechanicName}" for="mechanicName" />
+                    <h:inputText id="mechanicName" value="#{repairOrderController.selected.mechanicName}" title="#{bundle.CreateRepairOrderTitle_mechanicName}" />
+                    <h:outputLabel value="#{bundle.CreateRepairOrderLabel_equipmentId}" for="equipmentId" />
+                    <h:selectOneMenu id="equipmentId" value="#{repairOrderController.selected.equipmentId}" title="#{bundle.CreateRepairOrderTitle_equipmentId}" required="true" requiredMessage="#{bundle.CreateRepairOrderRequiredMessage_equipmentId}">
+                        <f:selectItems value="#{equipmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{repairOrderController.create}" value="#{bundle.CreateRepairOrderSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{repairOrderController.prepareList}" value="#{bundle.CreateRepairOrderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateRepairOrderIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

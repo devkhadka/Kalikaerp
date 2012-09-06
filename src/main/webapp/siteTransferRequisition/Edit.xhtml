@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSiteTransferRequisitionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{siteTransferRequisitionController.selected.id}" title="#{bundle.EditSiteTransferRequisitionTitle_id}" required="true" requiredMessage="#{bundle.EditSiteTransferRequisitionRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{siteTransferRequisitionController.selected.quantity}" title="#{bundle.EditSiteTransferRequisitionTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_expectedDate}" for="expectedDate" />
+                    <h:inputText id="expectedDate" value="#{siteTransferRequisitionController.selected.expectedDate}" title="#{bundle.EditSiteTransferRequisitionTitle_expectedDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_requisitionedBy}" for="requisitionedBy" />
+                    <h:inputText id="requisitionedBy" value="#{siteTransferRequisitionController.selected.requisitionedBy}" title="#{bundle.EditSiteTransferRequisitionTitle_requisitionedBy}" />
+                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{siteTransferRequisitionController.selected.remarks}" title="#{bundle.EditSiteTransferRequisitionTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{siteTransferRequisitionController.selected.unitId}" title="#{bundle.EditSiteTransferRequisitionTitle_unitId}" required="true" requiredMessage="#{bundle.EditSiteTransferRequisitionRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSiteTransferRequisitionLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{siteTransferRequisitionController.selected.materialId}" title="#{bundle.EditSiteTransferRequisitionTitle_materialId}" required="true" requiredMessage="#{bundle.EditSiteTransferRequisitionRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{siteTransferRequisitionController.update}" value="#{bundle.EditSiteTransferRequisitionSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditSiteTransferRequisitionViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{siteTransferRequisitionController.prepareList}" value="#{bundle.EditSiteTransferRequisitionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditSiteTransferRequisitionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

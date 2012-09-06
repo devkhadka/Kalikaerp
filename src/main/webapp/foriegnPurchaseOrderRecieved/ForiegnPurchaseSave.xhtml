@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://java.sun.com/jsf/core"
+         xmlns:ui="http://java.sun.com/jsf/facelets"
+         >
+  
+    <body>
+        <h:form id="form">  
+            
+            
+            
+                   <p:panelGrid style="margin-top:20px;height: 100%;width: 100%;border-width: 2px" >  
+                 
+                    
+   
+    <f:facet name="header">  
+        <p:row>  
+            <p:column colspan="4">INWARDS</p:column>  
+        </p:row>  
+        <p:row >  
+            <p:column colspan="4" >RECEIVING GOODS SUPPLIED BY A SUPPLIER </p:column>  
+           
+        </p:row>  
+    </f:facet>  
+  
+    <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">PO NUMBER :</p:column> 
+        <p:column colspan="2" style="font-weight: bold;"> <h:outputText value="#{purchaseOrderController.poNo}" /></p:column> 
+        
+    </p:row> 
+                 
+                  <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">PURCHASE ORDER ID :</p:column>  
+        <p:column colspan="2" >   <h:outputText style="width: 100%"  value="#{purchaseOrderController.purchaseOrder.foreignPurchase.purchaseOrderId}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row> 
+                 
+                      
+                 
+                       
+                       
+                       
+                  <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">IMPORT BASIS :</p:column>  
+        <p:column colspan="2">      <h:selectOneMenu id="importBasisId" value="#{purchaseOrderController.purchaseOrder.foreignPurchase.importBasisId}" title="#{bundle.CreateForeignPurchaseTitle_importBasisId}" required="true" requiredMessage="#{bundle.CreateForeignPurchaseRequiredMessage_importBasisId}">
+                        <f:selectItems value="#{importBasisController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                       </p:column>  
+    </p:row>  
+                    <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">FREIGHT :</p:column>  
+        <p:column colspan="2">   <h:inputText style="width: 100%" id="carrier" value="#{purchaseOrderController.purchaseOrder.foreignPurchase.freight}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row>  
+     <p:row>  
+        <p:column colspan="2" style="font-weight: bold;">INSURANCE :</p:column>  
+        <p:column colspan="2">   <h:inputText style="width: 100%" id="carriageNumber" value="#{purchaseOrderController.purchaseOrder.foreignPurchase.insurance}" title="#{bundle.CreateCompanyTitle_address}" /></p:column>  
+    </p:row>  
+     
+  
+  
+<!--    <p:row>  
+        <p:column colspan="4" >  
+        
+            <p:spacer width="0" height="18"/>
+            <ui:include src="DataTableForPurchaseOrderDetail.xhtml"/>
+             <p:spacer width="0" height="13"/>
+                       
+        </p:column>  
+    </p:row>  
+  -->
+  
+  
+             </p:panelGrid>
+            
+  
+   
+  
+</h:form>  
+    </body>
+</html>

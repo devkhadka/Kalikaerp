@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGoodsOutLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateGoodsOutLocationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{goodsOutLocationController.selected.id}" title="#{bundle.CreateGoodsOutLocationTitle_id}" required="true" requiredMessage="#{bundle.CreateGoodsOutLocationRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateGoodsOutLocationLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{goodsOutLocationController.selected.quantity}" title="#{bundle.CreateGoodsOutLocationTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.CreateGoodsOutLocationLabel_statusMaterialId}" for="statusMaterialId" />
+                    <h:selectOneMenu id="statusMaterialId" value="#{goodsOutLocationController.selected.statusMaterialId}" title="#{bundle.CreateGoodsOutLocationTitle_statusMaterialId}" required="true" requiredMessage="#{bundle.CreateGoodsOutLocationRequiredMessage_statusMaterialId}">
+                        <f:selectItems value="#{statusMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateGoodsOutLocationLabel_storeLocationId}" for="storeLocationId" />
+                    <h:selectOneMenu id="storeLocationId" value="#{goodsOutLocationController.selected.storeLocationId}" title="#{bundle.CreateGoodsOutLocationTitle_storeLocationId}" required="true" requiredMessage="#{bundle.CreateGoodsOutLocationRequiredMessage_storeLocationId}">
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateGoodsOutLocationLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{goodsOutLocationController.selected.unitId}" title="#{bundle.CreateGoodsOutLocationTitle_unitId}" required="true" requiredMessage="#{bundle.CreateGoodsOutLocationRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateGoodsOutLocationLabel_goodsOutId}" for="goodsOutId" />
+                    <h:selectOneMenu id="goodsOutId" value="#{goodsOutLocationController.selected.goodsOutId}" title="#{bundle.CreateGoodsOutLocationTitle_goodsOutId}" required="true" requiredMessage="#{bundle.CreateGoodsOutLocationRequiredMessage_goodsOutId}">
+                        <f:selectItems value="#{goodsOutDetailController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{goodsOutLocationController.create}" value="#{bundle.CreateGoodsOutLocationSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{goodsOutLocationController.prepareList}" value="#{bundle.CreateGoodsOutLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateGoodsOutLocationIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

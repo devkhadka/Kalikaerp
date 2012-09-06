@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRequisitionMaterialActivitySubcontractorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateRequisitionMaterialActivitySubcontractorLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{requisitionMaterialActivitySubcontractorController.selected.id}" title="#{bundle.CreateRequisitionMaterialActivitySubcontractorTitle_id}" required="true" requiredMessage="#{bundle.CreateRequisitionMaterialActivitySubcontractorRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateRequisitionMaterialActivitySubcontractorLabel_requisitionMaterialActivityId}" for="requisitionMaterialActivityId" />
+                    <h:selectOneMenu id="requisitionMaterialActivityId" value="#{requisitionMaterialActivitySubcontractorController.selected.requisitionMaterialActivityId}" title="#{bundle.CreateRequisitionMaterialActivitySubcontractorTitle_requisitionMaterialActivityId}" required="true" requiredMessage="#{bundle.CreateRequisitionMaterialActivitySubcontractorRequiredMessage_requisitionMaterialActivityId}">
+                        <f:selectItems value="#{requisitionMaterialActivityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRequisitionMaterialActivitySubcontractorLabel_subcontractorId}" for="subcontractorId" />
+                    <h:selectOneMenu id="subcontractorId" value="#{requisitionMaterialActivitySubcontractorController.selected.subcontractorId}" title="#{bundle.CreateRequisitionMaterialActivitySubcontractorTitle_subcontractorId}" required="true" requiredMessage="#{bundle.CreateRequisitionMaterialActivitySubcontractorRequiredMessage_subcontractorId}">
+                        <f:selectItems value="#{subcontractorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{requisitionMaterialActivitySubcontractorController.create}" value="#{bundle.CreateRequisitionMaterialActivitySubcontractorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{requisitionMaterialActivitySubcontractorController.prepareList}" value="#{bundle.CreateRequisitionMaterialActivitySubcontractorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateRequisitionMaterialActivitySubcontractorIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRequisitionDeliveryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRequisitionDeliveryEmpty}" rendered="#{requisitionDeliveryController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{requisitionDeliveryController.items.rowCount > 0}">
+                    <h:outputText value="#{requisitionDeliveryController.pagination.pageFirstItem + 1}..#{requisitionDeliveryController.pagination.pageLastItem + 1}/#{requisitionDeliveryController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{requisitionDeliveryController.previous}" value="#{bundle.Previous} #{requisitionDeliveryController.pagination.pageSize}" rendered="#{requisitionDeliveryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{requisitionDeliveryController.next}" value="#{bundle.Next} #{requisitionDeliveryController.pagination.pageSize}" rendered="#{requisitionDeliveryController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{requisitionDeliveryController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionDeliveryTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionDeliveryTitle_deliveryDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deliveryDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionDeliveryTitle_requestProcessDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requestProcessDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionDeliveryTitle_quantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionDeliveryTitle_pending}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pending}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequisitionDeliveryTitle_requisitionmaterialactivitySubcontractorid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requisitionmaterialactivitySubcontractorid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{requisitionDeliveryController.prepareView}" value="#{bundle.ListRequisitionDeliveryViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{requisitionDeliveryController.prepareEdit}" value="#{bundle.ListRequisitionDeliveryEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{requisitionDeliveryController.destroy}" value="#{bundle.ListRequisitionDeliveryDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{requisitionDeliveryController.prepareCreate}" value="#{bundle.ListRequisitionDeliveryCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListRequisitionDeliveryIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

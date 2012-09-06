@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRequistionMaterialProjectTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRequistionMaterialProjectEmpty}" rendered="#{requistionMaterialProjectController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{requistionMaterialProjectController.items.rowCount > 0}">
+                    <h:outputText value="#{requistionMaterialProjectController.pagination.pageFirstItem + 1}..#{requistionMaterialProjectController.pagination.pageLastItem + 1}/#{requistionMaterialProjectController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{requistionMaterialProjectController.previous}" value="#{bundle.Previous} #{requistionMaterialProjectController.pagination.pageSize}" rendered="#{requistionMaterialProjectController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{requistionMaterialProjectController.next}" value="#{bundle.Next} #{requistionMaterialProjectController.pagination.pageSize}" rendered="#{requistionMaterialProjectController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{requistionMaterialProjectController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequistionMaterialProjectTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequistionMaterialProjectTitle_projectId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.projectId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRequistionMaterialProjectTitle_requisitionMaterialId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requisitionMaterialId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{requistionMaterialProjectController.prepareView}" value="#{bundle.ListRequistionMaterialProjectViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{requistionMaterialProjectController.prepareEdit}" value="#{bundle.ListRequistionMaterialProjectEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{requistionMaterialProjectController.destroy}" value="#{bundle.ListRequistionMaterialProjectDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{requistionMaterialProjectController.prepareCreate}" value="#{bundle.ListRequistionMaterialProjectCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListRequistionMaterialProjectIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

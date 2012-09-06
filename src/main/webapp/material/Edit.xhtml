@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditMaterialLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{materialController.selected.id}" title="#{bundle.EditMaterialTitle_id}" required="true" requiredMessage="#{bundle.EditMaterialRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditMaterialLabel_materialDerscription}" for="materialDerscription" />
+                    <h:inputText id="materialDerscription" value="#{materialController.selected.materialDerscription}" title="#{bundle.EditMaterialTitle_materialDerscription}" />
+                    <h:outputLabel value="#{bundle.EditMaterialLabel_unitGroupId}" for="unitGroupId" />
+                    <h:selectOneMenu id="unitGroupId" value="#{materialController.selected.unitGroupId}" title="#{bundle.EditMaterialTitle_unitGroupId}" required="true" requiredMessage="#{bundle.EditMaterialRequiredMessage_unitGroupId}">
+                        <f:selectItems value="#{unitGroupController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMaterialLabel_materialGroupId}" for="materialGroupId" />
+                    <h:selectOneMenu id="materialGroupId" value="#{materialController.selected.materialGroupId}" title="#{bundle.EditMaterialTitle_materialGroupId}" required="true" requiredMessage="#{bundle.EditMaterialRequiredMessage_materialGroupId}">
+                        <f:selectItems value="#{materialGroupController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMaterialLabel_materialMasterId}" for="materialMasterId" />
+                    <h:selectOneMenu id="materialMasterId" value="#{materialController.selected.materialMasterId}" title="#{bundle.EditMaterialTitle_materialMasterId}" required="true" requiredMessage="#{bundle.EditMaterialRequiredMessage_materialMasterId}">
+                        <f:selectItems value="#{materialMasterController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{materialController.update}" value="#{bundle.EditMaterialSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditMaterialViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{materialController.prepareList}" value="#{bundle.EditMaterialShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditMaterialIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

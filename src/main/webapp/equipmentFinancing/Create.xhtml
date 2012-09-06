@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipmentFinancingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentFinancingController.selected.id}" title="#{bundle.CreateEquipmentFinancingTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentFinancingRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_contractNumber}" for="contractNumber" />
+                    <h:inputText id="contractNumber" value="#{equipmentFinancingController.selected.contractNumber}" title="#{bundle.CreateEquipmentFinancingTitle_contractNumber}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_financer}" for="financer" />
+                    <h:inputText id="financer" value="#{equipmentFinancingController.selected.financer}" title="#{bundle.CreateEquipmentFinancingTitle_financer}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_fullAmount}" for="fullAmount" />
+                    <h:inputText id="fullAmount" value="#{equipmentFinancingController.selected.fullAmount}" title="#{bundle.CreateEquipmentFinancingTitle_fullAmount}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_downPayment}" for="downPayment" />
+                    <h:inputText id="downPayment" value="#{equipmentFinancingController.selected.downPayment}" title="#{bundle.CreateEquipmentFinancingTitle_downPayment}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_financeAmount}" for="financeAmount" />
+                    <h:inputText id="financeAmount" value="#{equipmentFinancingController.selected.financeAmount}" title="#{bundle.CreateEquipmentFinancingTitle_financeAmount}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_firstInstallmentDue}" for="firstInstallmentDue" />
+                    <h:inputText id="firstInstallmentDue" value="#{equipmentFinancingController.selected.firstInstallmentDue}" title="#{bundle.CreateEquipmentFinancingTitle_firstInstallmentDue}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_installmentAmount}" for="installmentAmount" />
+                    <h:inputText id="installmentAmount" value="#{equipmentFinancingController.selected.installmentAmount}" title="#{bundle.CreateEquipmentFinancingTitle_installmentAmount}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_roi}" for="roi" />
+                    <h:inputText id="roi" value="#{equipmentFinancingController.selected.roi}" title="#{bundle.CreateEquipmentFinancingTitle_roi}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_installmentNumber}" for="installmentNumber" />
+                    <h:inputText id="installmentNumber" value="#{equipmentFinancingController.selected.installmentNumber}" title="#{bundle.CreateEquipmentFinancingTitle_installmentNumber}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{equipmentFinancingController.selected.remarks}" title="#{bundle.CreateEquipmentFinancingTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentFinancingLabel_equipmentId}" for="equipmentId" />
+                    <h:selectOneMenu id="equipmentId" value="#{equipmentFinancingController.selected.equipmentId}" title="#{bundle.CreateEquipmentFinancingTitle_equipmentId}" required="true" requiredMessage="#{bundle.CreateEquipmentFinancingRequiredMessage_equipmentId}">
+                        <f:selectItems value="#{equipmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentFinancingController.create}" value="#{bundle.CreateEquipmentFinancingSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipmentFinancingController.prepareList}" value="#{bundle.CreateEquipmentFinancingShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateEquipmentFinancingIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipmentInsuranceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentInsuranceController.selected.id}" title="#{bundle.CreateEquipmentInsuranceTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentInsuranceRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_insurer}" for="insurer" />
+                    <h:inputText id="insurer" value="#{equipmentInsuranceController.selected.insurer}" title="#{bundle.CreateEquipmentInsuranceTitle_insurer}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_policy}" for="policy" />
+                    <h:inputText id="policy" value="#{equipmentInsuranceController.selected.policy}" title="#{bundle.CreateEquipmentInsuranceTitle_policy}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_premium}" for="premium" />
+                    <h:inputText id="premium" value="#{equipmentInsuranceController.selected.premium}" title="#{bundle.CreateEquipmentInsuranceTitle_premium}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_insuredAmount}" for="insuredAmount" />
+                    <h:inputText id="insuredAmount" value="#{equipmentInsuranceController.selected.insuredAmount}" title="#{bundle.CreateEquipmentInsuranceTitle_insuredAmount}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_coverStartDate}" for="coverStartDate" />
+                    <h:inputText id="coverStartDate" value="#{equipmentInsuranceController.selected.coverStartDate}" title="#{bundle.CreateEquipmentInsuranceTitle_coverStartDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_coverEndDate}" for="coverEndDate" />
+                    <h:inputText id="coverEndDate" value="#{equipmentInsuranceController.selected.coverEndDate}" title="#{bundle.CreateEquipmentInsuranceTitle_coverEndDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{equipmentInsuranceController.selected.remarks}" title="#{bundle.CreateEquipmentInsuranceTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentInsuranceLabel_equipmentId}" for="equipmentId" />
+                    <h:selectOneMenu id="equipmentId" value="#{equipmentInsuranceController.selected.equipmentId}" title="#{bundle.CreateEquipmentInsuranceTitle_equipmentId}" required="true" requiredMessage="#{bundle.CreateEquipmentInsuranceRequiredMessage_equipmentId}">
+                        <f:selectItems value="#{equipmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentInsuranceController.create}" value="#{bundle.CreateEquipmentInsuranceSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipmentInsuranceController.prepareList}" value="#{bundle.CreateEquipmentInsuranceShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateEquipmentInsuranceIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListForeignPurchaseTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListForeignPurchaseEmpty}" rendered="#{foreignPurchaseController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{foreignPurchaseController.items.rowCount > 0}">
+                    <h:outputText value="#{foreignPurchaseController.pagination.pageFirstItem + 1}..#{foreignPurchaseController.pagination.pageLastItem + 1}/#{foreignPurchaseController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{foreignPurchaseController.previous}" value="#{bundle.Previous} #{foreignPurchaseController.pagination.pageSize}" rendered="#{foreignPurchaseController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{foreignPurchaseController.next}" value="#{bundle.Next} #{foreignPurchaseController.pagination.pageSize}" rendered="#{foreignPurchaseController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{foreignPurchaseController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_insurance}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.insurance}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_freight}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.freight}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_lcChargeBankCommission}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lcChargeBankCommission}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_dockCharges}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dockCharges}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_loadUnloadCharges}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.loadUnloadCharges}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_clearingForwardingCharges}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clearingForwardingCharges}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_otherIncidientalExpenses}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otherIncidientalExpenses}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_imn}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.imn}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_exchangeRate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.exchangeRate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_domesticFrieght}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.domesticFrieght}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_purchaseOrderId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.purchaseOrderId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListForeignPurchaseTitle_importBasisId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.importBasisId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{foreignPurchaseController.prepareView}" value="#{bundle.ListForeignPurchaseViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{foreignPurchaseController.prepareEdit}" value="#{bundle.ListForeignPurchaseEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{foreignPurchaseController.destroy}" value="#{bundle.ListForeignPurchaseDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{foreignPurchaseController.prepareCreate}" value="#{bundle.ListForeignPurchaseCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListForeignPurchaseIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

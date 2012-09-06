@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGoodsOutDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewGoodsOutDetailLabel_id}"/>
+                    <h:outputText value="#{goodsOutDetailController.selected.id}" title="#{bundle.ViewGoodsOutDetailTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewGoodsOutDetailLabel_rate}"/>
+                    <h:outputText value="#{goodsOutDetailController.selected.rate}" title="#{bundle.ViewGoodsOutDetailTitle_rate}"/>
+                    <h:outputText value="#{bundle.ViewGoodsOutDetailLabel_goodsOutId}"/>
+                    <h:outputText value="#{goodsOutDetailController.selected.goodsOutId}" title="#{bundle.ViewGoodsOutDetailTitle_goodsOutId}"/>
+                    <h:outputText value="#{bundle.ViewGoodsOutDetailLabel_approveSiteTransferId}"/>
+                    <h:outputText value="#{goodsOutDetailController.selected.approveSiteTransferId}" title="#{bundle.ViewGoodsOutDetailTitle_approveSiteTransferId}"/>
+                    <h:outputText value="#{bundle.ViewGoodsOutDetailLabel_approveMaterialsRequisitonId}"/>
+                    <h:outputText value="#{goodsOutDetailController.selected.approveMaterialsRequisitonId}" title="#{bundle.ViewGoodsOutDetailTitle_approveMaterialsRequisitonId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{goodsOutDetailController.destroyAndView}" value="#{bundle.ViewGoodsOutDetailDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewGoodsOutDetailEditLink}"/>
+                <br />
+                <h:commandLink action="#{goodsOutDetailController.prepareCreate}" value="#{bundle.ViewGoodsOutDetailCreateLink}" />
+                <br />
+                <h:commandLink action="#{goodsOutDetailController.prepareList}" value="#{bundle.ViewGoodsOutDetailShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewGoodsOutDetailIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

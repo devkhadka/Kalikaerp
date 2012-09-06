@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStoreInTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStoreInLabel_id}"/>
+                    <h:outputText value="#{storeInController.selected.id}" title="#{bundle.ViewStoreInTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_quantity}"/>
+                    <h:outputText value="#{storeInController.selected.quantity}" title="#{bundle.ViewStoreInTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_methodOfValuation}"/>
+                    <h:outputText value="#{storeInController.selected.methodOfValuation}" title="#{bundle.ViewStoreInTitle_methodOfValuation}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_reOrderLevel}"/>
+                    <h:outputText value="#{storeInController.selected.reOrderLevel}" title="#{bundle.ViewStoreInTitle_reOrderLevel}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_minimumLevel}"/>
+                    <h:outputText value="#{storeInController.selected.minimumLevel}" title="#{bundle.ViewStoreInTitle_minimumLevel}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_maximumLevel}"/>
+                    <h:outputText value="#{storeInController.selected.maximumLevel}" title="#{bundle.ViewStoreInTitle_maximumLevel}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_rejectedQuantity}"/>
+                    <h:outputText value="#{storeInController.selected.rejectedQuantity}" title="#{bundle.ViewStoreInTitle_rejectedQuantity}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_grnNumber}"/>
+                    <h:outputText value="#{storeInController.selected.grnNumber}" title="#{bundle.ViewStoreInTitle_grnNumber}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_unitId}"/>
+                    <h:outputText value="#{storeInController.selected.unitId}" title="#{bundle.ViewStoreInTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_materialId}"/>
+                    <h:outputText value="#{storeInController.selected.materialId}" title="#{bundle.ViewStoreInTitle_materialId}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_storeLocationId}"/>
+                    <h:outputText value="#{storeInController.selected.storeLocationId}" title="#{bundle.ViewStoreInTitle_storeLocationId}"/>
+                    <h:outputText value="#{bundle.ViewStoreInLabel_statusMaterialId}"/>
+                    <h:outputText value="#{storeInController.selected.statusMaterialId}" title="#{bundle.ViewStoreInTitle_statusMaterialId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeInController.destroyAndView}" value="#{bundle.ViewStoreInDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewStoreInEditLink}"/>
+                <br />
+                <h:commandLink action="#{storeInController.prepareCreate}" value="#{bundle.ViewStoreInCreateLink}" />
+                <br />
+                <h:commandLink action="#{storeInController.prepareList}" value="#{bundle.ViewStoreInShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewStoreInIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

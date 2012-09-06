@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMaintenanceDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditMaintenanceDetailLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{maintenanceDetailController.selected.id}" title="#{bundle.EditMaintenanceDetailTitle_id}" required="true" requiredMessage="#{bundle.EditMaintenanceDetailRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailLabel_equipmentMaintenanceId}" for="equipmentMaintenanceId" />
+                    <h:selectOneMenu id="equipmentMaintenanceId" value="#{maintenanceDetailController.selected.equipmentMaintenanceId}" title="#{bundle.EditMaintenanceDetailTitle_equipmentMaintenanceId}" required="true" requiredMessage="#{bundle.EditMaintenanceDetailRequiredMessage_equipmentMaintenanceId}">
+                        <f:selectItems value="#{equipmentMaintenanceController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailLabel_repairOrderId}" for="repairOrderId" />
+                    <h:selectOneMenu id="repairOrderId" value="#{maintenanceDetailController.selected.repairOrderId}" title="#{bundle.EditMaintenanceDetailTitle_repairOrderId}" required="true" requiredMessage="#{bundle.EditMaintenanceDetailRequiredMessage_repairOrderId}">
+                        <f:selectItems value="#{repairOrderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{maintenanceDetailController.update}" value="#{bundle.EditMaintenanceDetailSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditMaintenanceDetailViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{maintenanceDetailController.prepareList}" value="#{bundle.EditMaintenanceDetailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditMaintenanceDetailIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

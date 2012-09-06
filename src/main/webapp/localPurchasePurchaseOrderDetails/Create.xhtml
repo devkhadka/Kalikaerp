@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsLabel_expense}" for="expense" />
+                    <h:inputText id="expense" value="#{localPurchasePurchaseOrderDetailsController.selected.expense}" title="#{bundle.CreateLocalPurchasePurchaseOrderDetailsTitle_expense}" />
+                    <h:outputLabel value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{localPurchasePurchaseOrderDetailsController.selected.remarks}" title="#{bundle.CreateLocalPurchasePurchaseOrderDetailsTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsLabel_purchaseOrderDetails}" for="purchaseOrderDetails" />
+                    <h:selectOneMenu id="purchaseOrderDetails" value="#{localPurchasePurchaseOrderDetailsController.selected.purchaseOrderDetails}" title="#{bundle.CreateLocalPurchasePurchaseOrderDetailsTitle_purchaseOrderDetails}" required="true" requiredMessage="#{bundle.CreateLocalPurchasePurchaseOrderDetailsRequiredMessage_purchaseOrderDetails}">
+                        <f:selectItems value="#{purchaseOrderDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsLabel_localPurchase}" for="localPurchase" />
+                    <h:selectOneMenu id="localPurchase" value="#{localPurchasePurchaseOrderDetailsController.selected.localPurchase}" title="#{bundle.CreateLocalPurchasePurchaseOrderDetailsTitle_localPurchase}" required="true" requiredMessage="#{bundle.CreateLocalPurchasePurchaseOrderDetailsRequiredMessage_localPurchase}">
+                        <f:selectItems value="#{localPurchaseController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{localPurchasePurchaseOrderDetailsController.create}" value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{localPurchasePurchaseOrderDetailsController.prepareList}" value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateLocalPurchasePurchaseOrderDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

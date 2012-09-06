@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipLabel_id}"/>
+                    <h:outputText value="#{issueFuelNFluidSlipController.selected.id}" title="#{bundle.ViewIssueFuelNFluidSlipTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipLabel_issuedTo}"/>
+                    <h:outputText value="#{issueFuelNFluidSlipController.selected.issuedTo}" title="#{bundle.ViewIssueFuelNFluidSlipTitle_issuedTo}"/>
+                    <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipLabel_slipNumber}"/>
+                    <h:outputText value="#{issueFuelNFluidSlipController.selected.slipNumber}" title="#{bundle.ViewIssueFuelNFluidSlipTitle_slipNumber}"/>
+                    <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipLabel_quantity}"/>
+                    <h:outputText value="#{issueFuelNFluidSlipController.selected.quantity}" title="#{bundle.ViewIssueFuelNFluidSlipTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipLabel_unitId}"/>
+                    <h:outputText value="#{issueFuelNFluidSlipController.selected.unitId}" title="#{bundle.ViewIssueFuelNFluidSlipTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewIssueFuelNFluidSlipLabel_materialId}"/>
+                    <h:outputText value="#{issueFuelNFluidSlipController.selected.materialId}" title="#{bundle.ViewIssueFuelNFluidSlipTitle_materialId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{issueFuelNFluidSlipController.destroyAndView}" value="#{bundle.ViewIssueFuelNFluidSlipDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewIssueFuelNFluidSlipEditLink}"/>
+                <br />
+                <h:commandLink action="#{issueFuelNFluidSlipController.prepareCreate}" value="#{bundle.ViewIssueFuelNFluidSlipCreateLink}" />
+                <br />
+                <h:commandLink action="#{issueFuelNFluidSlipController.prepareList}" value="#{bundle.ViewIssueFuelNFluidSlipShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewIssueFuelNFluidSlipIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

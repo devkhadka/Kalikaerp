@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMaintenanceSchedulesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMaintenanceSchedulesEmpty}" rendered="#{maintenanceSchedulesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{maintenanceSchedulesController.items.rowCount > 0}">
+                    <h:outputText value="#{maintenanceSchedulesController.pagination.pageFirstItem + 1}..#{maintenanceSchedulesController.pagination.pageLastItem + 1}/#{maintenanceSchedulesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{maintenanceSchedulesController.previous}" value="#{bundle.Previous} #{maintenanceSchedulesController.pagination.pageSize}" rendered="#{maintenanceSchedulesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{maintenanceSchedulesController.next}" value="#{bundle.Next} #{maintenanceSchedulesController.pagination.pageSize}" rendered="#{maintenanceSchedulesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{maintenanceSchedulesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaintenanceSchedulesTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaintenanceSchedulesTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaintenanceSchedulesTitle_scheduledHours}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.scheduledHours}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaintenanceSchedulesTitle_equipmentId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipmentId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaintenanceSchedulesTitle_scheduledMaintenanceTypesId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.scheduledMaintenanceTypesId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{maintenanceSchedulesController.prepareView}" value="#{bundle.ListMaintenanceSchedulesViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{maintenanceSchedulesController.prepareEdit}" value="#{bundle.ListMaintenanceSchedulesEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{maintenanceSchedulesController.destroy}" value="#{bundle.ListMaintenanceSchedulesDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{maintenanceSchedulesController.prepareCreate}" value="#{bundle.ListMaintenanceSchedulesCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListMaintenanceSchedulesIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

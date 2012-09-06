@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditEquipmentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentController.selected.id}" title="#{bundle.EditEquipmentTitle_id}" required="true" requiredMessage="#{bundle.EditEquipmentRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_hiredOwned}" for="hiredOwned" />
+                    <h:inputText id="hiredOwned" value="#{equipmentController.selected.hiredOwned}" title="#{bundle.EditEquipmentTitle_hiredOwned}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_hiredDate}" for="hiredDate" />
+                    <h:inputText id="hiredDate" value="#{equipmentController.selected.hiredDate}" title="#{bundle.EditEquipmentTitle_hiredDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_alias}" for="alias" />
+                    <h:inputText id="alias" value="#{equipmentController.selected.alias}" title="#{bundle.EditEquipmentTitle_alias}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{equipmentController.selected.name}" title="#{bundle.EditEquipmentTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{equipmentController.selected.status}" title="#{bundle.EditEquipmentTitle_status}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_usedHours}" for="usedHours" />
+                    <h:inputText id="usedHours" value="#{equipmentController.selected.usedHours}" title="#{bundle.EditEquipmentTitle_usedHours}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_serialNumber}" for="serialNumber" />
+                    <h:inputText id="serialNumber" value="#{equipmentController.selected.serialNumber}" title="#{bundle.EditEquipmentTitle_serialNumber}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_code}" for="code" />
+                    <h:inputText id="code" value="#{equipmentController.selected.code}" title="#{bundle.EditEquipmentTitle_code}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_companyId}" for="companyId" />
+                    <h:selectOneMenu id="companyId" value="#{equipmentController.selected.companyId}" title="#{bundle.EditEquipmentTitle_companyId}" required="true" requiredMessage="#{bundle.EditEquipmentRequiredMessage_companyId}">
+                        <f:selectItems value="#{companyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_currencyId}" for="currencyId" />
+                    <h:selectOneMenu id="currencyId" value="#{equipmentController.selected.currencyId}" title="#{bundle.EditEquipmentTitle_currencyId}" required="true" requiredMessage="#{bundle.EditEquipmentRequiredMessage_currencyId}">
+                        <f:selectItems value="#{currencyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipmentLabel_equipmentCategoryId}" for="equipmentCategoryId" />
+                    <h:selectOneMenu id="equipmentCategoryId" value="#{equipmentController.selected.equipmentCategoryId}" title="#{bundle.EditEquipmentTitle_equipmentCategoryId}" required="true" requiredMessage="#{bundle.EditEquipmentRequiredMessage_equipmentCategoryId}">
+                        <f:selectItems value="#{equipmentCategoryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipmentController.update}" value="#{bundle.EditEquipmentSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditEquipmentViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{equipmentController.prepareList}" value="#{bundle.EditEquipmentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditEquipmentIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

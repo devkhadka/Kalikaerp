@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentFinanceDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_id}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.id}" title="#{bundle.ViewEquipmentFinanceDetailTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_nextDueDate}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.nextDueDate}" title="#{bundle.ViewEquipmentFinanceDetailTitle_nextDueDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_paidDate}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.paidDate}" title="#{bundle.ViewEquipmentFinanceDetailTitle_paidDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_paidAmount}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.paidAmount}" title="#{bundle.ViewEquipmentFinanceDetailTitle_paidAmount}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_otherCharges}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.otherCharges}" title="#{bundle.ViewEquipmentFinanceDetailTitle_otherCharges}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_remarks}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.remarks}" title="#{bundle.ViewEquipmentFinanceDetailTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinanceDetailLabel_equipmentFinancingId}"/>
+                    <h:outputText value="#{equipmentFinanceDetailController.selected.equipmentFinancingId}" title="#{bundle.ViewEquipmentFinanceDetailTitle_equipmentFinancingId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentFinanceDetailController.destroyAndView}" value="#{bundle.ViewEquipmentFinanceDetailDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentFinanceDetailEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentFinanceDetailController.prepareCreate}" value="#{bundle.ViewEquipmentFinanceDetailCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentFinanceDetailController.prepareList}" value="#{bundle.ViewEquipmentFinanceDetailShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentFinanceDetailIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

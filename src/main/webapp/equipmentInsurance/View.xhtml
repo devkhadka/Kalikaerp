@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentInsuranceTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_id}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.id}" title="#{bundle.ViewEquipmentInsuranceTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_insurer}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.insurer}" title="#{bundle.ViewEquipmentInsuranceTitle_insurer}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_policy}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.policy}" title="#{bundle.ViewEquipmentInsuranceTitle_policy}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_premium}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.premium}" title="#{bundle.ViewEquipmentInsuranceTitle_premium}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_insuredAmount}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.insuredAmount}" title="#{bundle.ViewEquipmentInsuranceTitle_insuredAmount}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_coverStartDate}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.coverStartDate}" title="#{bundle.ViewEquipmentInsuranceTitle_coverStartDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_coverEndDate}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.coverEndDate}" title="#{bundle.ViewEquipmentInsuranceTitle_coverEndDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_remarks}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.remarks}" title="#{bundle.ViewEquipmentInsuranceTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentInsuranceLabel_equipmentId}"/>
+                    <h:outputText value="#{equipmentInsuranceController.selected.equipmentId}" title="#{bundle.ViewEquipmentInsuranceTitle_equipmentId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentInsuranceController.destroyAndView}" value="#{bundle.ViewEquipmentInsuranceDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentInsuranceEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentInsuranceController.prepareCreate}" value="#{bundle.ViewEquipmentInsuranceCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentInsuranceController.prepareList}" value="#{bundle.ViewEquipmentInsuranceShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentInsuranceIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

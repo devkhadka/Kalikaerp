@@ -1,0 +1,89 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    
+
+        
+
+           
+   <p:dataTable id="dataTableWithoOutPo" var="takedata" value="#{storeReceiveController.rb.rsm}" selectionMode="single"  binding="#{storeReceiveController.rb.dt}">  
+        
+       
+<!--        <p:column headerText="Material ID">  
+            
+            <h:inputText value="#{takedata.materialId}"/>
+        </p:column>  -->
+       <p:column headerText="Material ID">  
+                      <p:selectOneMenu value="#{takedata.materialId}" >
+                          <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                      </p:selectOneMenu>
+        </p:column>  
+        
+       
+         <p:column headerText="Unit Challan">  
+                      <p:selectOneMenu value="#{takedata.unitIdChallan}" >
+                            <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                      </p:selectOneMenu>
+        </p:column>  
+        
+       
+       
+      
+                     
+<!--        <p:column headerText="Uom">  
+            
+            <h:inputText value="#{takedata.uom}"/>
+        </p:column> -->
+                     
+        <p:column headerText="Quantity Received">  
+            
+            <h:inputText value="#{takedata.quantityReceived}"/>
+        </p:column> 
+
+  <p:column headerText="Unit Received">  
+                      <p:selectOneMenu value="#{takedata.unitIdReceived}" >
+                            <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                      </p:selectOneMenu>
+        </p:column>  
+        
+
+ 
+        
+
+ 
+                     
+        <p:column headerText="Quantity Of Damages">  
+            
+            <h:inputText value="#{takedata.quantityDamaged}"/>
+        </p:column> 
+  
+<p:column headerText="Unit Damaged">  
+                      <p:selectOneMenu value="#{takedata.unitIdDamaged}" >
+                            <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                      </p:selectOneMenu>
+        </p:column>  
+        
+
+ 
+
+        <p:column headerText="Remarks">  
+            
+            <h:inputText value="#{takedata.remarks}"/>
+        </p:column>   
+        
+       
+         
+    </p:dataTable>  
+
+
+             <p:commandButton  id="saveBtn1fgg" value="Add"  
+                               actionListener="#{storeReceiveController.rb.addTextBox1}" update="@form"  immediate="true"/> 
+          <p:commandButton  id="removeBtn1fgfg" value="remove"    
+                               action="#{storeReceiveController.rb.removeSelected1}" update="@form" immediate="true" /> 
+            
+        
+        
+        
+</ui:composition>

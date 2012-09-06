@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMaintenanceDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditMaintenanceDetailsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{maintenanceDetailsController.selected.id}" title="#{bundle.EditMaintenanceDetailsTitle_id}" required="true" requiredMessage="#{bundle.EditMaintenanceDetailsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailsLabel_materialId}" for="materialId" />
+                    <h:inputText id="materialId" value="#{maintenanceDetailsController.selected.materialId}" title="#{bundle.EditMaintenanceDetailsTitle_materialId}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailsLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{maintenanceDetailsController.selected.quantity}" title="#{bundle.EditMaintenanceDetailsTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailsLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{maintenanceDetailsController.selected.remarks}" title="#{bundle.EditMaintenanceDetailsTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailsLabel_materialName}" for="materialName" />
+                    <h:inputText id="materialName" value="#{maintenanceDetailsController.selected.materialName}" title="#{bundle.EditMaintenanceDetailsTitle_materialName}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceDetailsLabel_scheduledMaintenancesId}" for="scheduledMaintenancesId" />
+                    <h:selectOneMenu id="scheduledMaintenancesId" value="#{maintenanceDetailsController.selected.scheduledMaintenancesId}" title="#{bundle.EditMaintenanceDetailsTitle_scheduledMaintenancesId}" required="true" requiredMessage="#{bundle.EditMaintenanceDetailsRequiredMessage_scheduledMaintenancesId}">
+                        <f:selectItems value="#{maintenanceSchedulesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{maintenanceDetailsController.update}" value="#{bundle.EditMaintenanceDetailsSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditMaintenanceDetailsViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{maintenanceDetailsController.prepareList}" value="#{bundle.EditMaintenanceDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditMaintenanceDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

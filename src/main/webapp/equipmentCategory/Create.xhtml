@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipmentCategoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateEquipmentCategoryLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentCategoryController.selected.id}" title="#{bundle.CreateEquipmentCategoryTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentCategoryRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateEquipmentCategoryLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{equipmentCategoryController.selected.name}" title="#{bundle.CreateEquipmentCategoryTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentCategoryLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{equipmentCategoryController.selected.description}" title="#{bundle.CreateEquipmentCategoryTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentCategoryLabel_parentId}" for="parentId" />
+                    <h:inputText id="parentId" value="#{equipmentCategoryController.selected.parentId}" title="#{bundle.CreateEquipmentCategoryTitle_parentId}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentCategoryController.create}" value="#{bundle.CreateEquipmentCategorySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipmentCategoryController.prepareList}" value="#{bundle.CreateEquipmentCategoryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateEquipmentCategoryIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

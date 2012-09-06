@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipmentFinanceDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentFinanceDetailController.selected.id}" title="#{bundle.EditEquipmentFinanceDetailTitle_id}" required="true" requiredMessage="#{bundle.EditEquipmentFinanceDetailRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_nextDueDate}" for="nextDueDate" />
+                    <h:inputText id="nextDueDate" value="#{equipmentFinanceDetailController.selected.nextDueDate}" title="#{bundle.EditEquipmentFinanceDetailTitle_nextDueDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_paidDate}" for="paidDate" />
+                    <h:inputText id="paidDate" value="#{equipmentFinanceDetailController.selected.paidDate}" title="#{bundle.EditEquipmentFinanceDetailTitle_paidDate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_paidAmount}" for="paidAmount" />
+                    <h:inputText id="paidAmount" value="#{equipmentFinanceDetailController.selected.paidAmount}" title="#{bundle.EditEquipmentFinanceDetailTitle_paidAmount}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_otherCharges}" for="otherCharges" />
+                    <h:inputText id="otherCharges" value="#{equipmentFinanceDetailController.selected.otherCharges}" title="#{bundle.EditEquipmentFinanceDetailTitle_otherCharges}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{equipmentFinanceDetailController.selected.remarks}" title="#{bundle.EditEquipmentFinanceDetailTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditEquipmentFinanceDetailLabel_equipmentFinancingId}" for="equipmentFinancingId" />
+                    <h:selectOneMenu id="equipmentFinancingId" value="#{equipmentFinanceDetailController.selected.equipmentFinancingId}" title="#{bundle.EditEquipmentFinanceDetailTitle_equipmentFinancingId}" required="true" requiredMessage="#{bundle.EditEquipmentFinanceDetailRequiredMessage_equipmentFinancingId}">
+                        <f:selectItems value="#{equipmentFinancingController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipmentFinanceDetailController.update}" value="#{bundle.EditEquipmentFinanceDetailSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditEquipmentFinanceDetailViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{equipmentFinanceDetailController.prepareList}" value="#{bundle.EditEquipmentFinanceDetailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditEquipmentFinanceDetailIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

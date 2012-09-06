@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStoreInDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{storeInDetailController.selected.id}" title="#{bundle.CreateStoreInDetailTitle_id}" required="true" requiredMessage="#{bundle.CreateStoreInDetailRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{storeInDetailController.selected.name}" title="#{bundle.CreateStoreInDetailTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{storeInDetailController.selected.quantity}" title="#{bundle.CreateStoreInDetailTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_serialno}" for="serialno" />
+                    <h:inputText id="serialno" value="#{storeInDetailController.selected.serialno}" title="#{bundle.CreateStoreInDetailTitle_serialno}" />
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_status}" for="status" />
+                    <h:inputText id="status" value="#{storeInDetailController.selected.status}" title="#{bundle.CreateStoreInDetailTitle_status}" />
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_remarks}" for="remarks" />
+                    <h:inputTextarea rows="4" cols="30" id="remarks" value="#{storeInDetailController.selected.remarks}" title="#{bundle.CreateStoreInDetailTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{storeInDetailController.selected.unitId}" title="#{bundle.CreateStoreInDetailTitle_unitId}" required="true" requiredMessage="#{bundle.CreateStoreInDetailRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStoreInDetailLabel_storeInId}" for="storeInId" />
+                    <h:selectOneMenu id="storeInId" value="#{storeInDetailController.selected.storeInId}" title="#{bundle.CreateStoreInDetailTitle_storeInId}" required="true" requiredMessage="#{bundle.CreateStoreInDetailRequiredMessage_storeInId}">
+                        <f:selectItems value="#{storeInController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeInDetailController.create}" value="#{bundle.CreateStoreInDetailSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{storeInDetailController.prepareList}" value="#{bundle.CreateStoreInDetailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateStoreInDetailIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

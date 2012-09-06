@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://java.sun.com/jsf/core"
+         xmlns:ui="http://java.sun.com/jsf/facelets"
+         >
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+       
+        
+        
+        
+        
+        <p:dataTable id="cars" var="purchaseOrderDetail" value="#{purchaseOrderController.purchaseOrder.purchaseOrderDetailsCollection}" rowKey="#{car.model}"  
+                 selection="#{tableBean.selectedCar}" selectionMode="single">  
+  
+        <f:facet name="header">  
+            Click "View" button after selecting a row to see details  
+        </f:facet>  
+  
+        <p:column headerText="Material">  
+            #{purchaseOrderDetail.approvePurchaseRequestMaterialId}  
+        </p:column>  
+  
+        <p:column headerText="Quantity">  
+            #{purchaseOrderDetail.quantity}  
+        </p:column>  
+  
+      
+  
+        <p:column headerText="PurchaseOrderId">  
+            #{purchaseOrderDetail.purchaseOrderId}  
+        </p:column>  
+  
+        <f:facet name="footer">  
+            <p:commandButton id="viewButton" value="View"   
+                    />  
+        </f:facet>  
+            
+<!--             <p:commandButton id="viewButton" value="View" icon="ui-icon-search"  
+                    update=":form:display" oncomplete="carDialog.show()-->
+  
+    </p:dataTable>  
+  
+<!--    <p:dialog id="dialog" header="Car Detail" widgetVar="carDialog" resizable="false"  
+              width="200" showEffect="clip" hideEffect="fold">  
+  
+        <h:panelGrid id="display" columns="2" cellpadding="4">  
+  
+            <f:facet name="header">  
+                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+            </f:facet>  
+  
+            <h:outputText value="Model:" />  
+            <h:outputText value="#{tableBean.selectedCar.model}" />  
+  
+            <h:outputText value="Year:" />  
+            <h:outputText value="#{tableBean.selectedCar.year}" />  
+  
+            <h:outputText value="Manufacturer:" />  
+            <h:outputText value="#{tableBean.selectedCar.manufacturer}" />  
+  
+            <h:outputText value="Color:" />  
+            <h:outputText value="#{tableBean.selectedCar.color}" />  
+        </h:panelGrid>  
+    </p:dialog>  -->
+        
+        
+        
+        
+        
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMaterialGroupTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateMaterialGroupLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{materialGroupController.selected.id}" title="#{bundle.CreateMaterialGroupTitle_id}" required="true" requiredMessage="#{bundle.CreateMaterialGroupRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateMaterialGroupLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{materialGroupController.selected.name}" title="#{bundle.CreateMaterialGroupTitle_name}" />
+                    <h:outputLabel value="#{bundle.CreateMaterialGroupLabel_parentId}" for="parentId" />
+                    <h:selectOneMenu id="parentId" value="#{materialGroupController.selected.parentId}" title="#{bundle.CreateMaterialGroupTitle_parentId}" >
+                        <f:selectItems value="#{materialGroupController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{materialGroupController.create}" value="#{bundle.CreateMaterialGroupSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{materialGroupController.prepareList}" value="#{bundle.CreateMaterialGroupShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateMaterialGroupIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

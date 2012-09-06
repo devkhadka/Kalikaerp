@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMaterialRequisitionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMaterialRequisitionEmpty}" rendered="#{materialRequisitionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{materialRequisitionController.items.rowCount > 0}">
+                    <h:outputText value="#{materialRequisitionController.pagination.pageFirstItem + 1}..#{materialRequisitionController.pagination.pageLastItem + 1}/#{materialRequisitionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{materialRequisitionController.previous}" value="#{bundle.Previous} #{materialRequisitionController.pagination.pageSize}" rendered="#{materialRequisitionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{materialRequisitionController.next}" value="#{bundle.Next} #{materialRequisitionController.pagination.pageSize}" rendered="#{materialRequisitionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{materialRequisitionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterialRequisitionTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterialRequisitionTitle_requisitonToBeRaisedDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.requisitonToBeRaisedDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterialRequisitionTitle_locationDelivery}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.locationDelivery}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterialRequisitionTitle_createdBy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createdBy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterialRequisitionTitle_createdDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.createdDate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMaterialRequisitionTitle_materialRequistionTypeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.materialRequistionTypeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{materialRequisitionController.prepareView}" value="#{bundle.ListMaterialRequisitionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{materialRequisitionController.prepareEdit}" value="#{bundle.ListMaterialRequisitionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{materialRequisitionController.approve}" value="Approve"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{materialRequisitionController.processApproveRequisition}" value="ProcessAppRequisition"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{materialRequisitionController.destroy}" value="#{bundle.ListMaterialRequisitionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{materialRequisitionController.prepareCreate}" value="#{bundle.ListMaterialRequisitionCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListMaterialRequisitionIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditGoodsOutDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditGoodsOutDetailLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{goodsOutDetailController.selected.id}" title="#{bundle.EditGoodsOutDetailTitle_id}" required="true" requiredMessage="#{bundle.EditGoodsOutDetailRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditGoodsOutDetailLabel_rate}" for="rate" />
+                    <h:inputText id="rate" value="#{goodsOutDetailController.selected.rate}" title="#{bundle.EditGoodsOutDetailTitle_rate}" />
+                    <h:outputLabel value="#{bundle.EditGoodsOutDetailLabel_goodsOutId}" for="goodsOutId" />
+                    <h:selectOneMenu id="goodsOutId" value="#{goodsOutDetailController.selected.goodsOutId}" title="#{bundle.EditGoodsOutDetailTitle_goodsOutId}" required="true" requiredMessage="#{bundle.EditGoodsOutDetailRequiredMessage_goodsOutId}">
+                        <f:selectItems value="#{goodsOutController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditGoodsOutDetailLabel_approveSiteTransferId}" for="approveSiteTransferId" />
+                    <h:selectOneMenu id="approveSiteTransferId" value="#{goodsOutDetailController.selected.approveSiteTransferId}" title="#{bundle.EditGoodsOutDetailTitle_approveSiteTransferId}" >
+                        <f:selectItems value="#{approveSiteTransferController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditGoodsOutDetailLabel_approveMaterialsRequisitonId}" for="approveMaterialsRequisitonId" />
+                    <h:selectOneMenu id="approveMaterialsRequisitonId" value="#{goodsOutDetailController.selected.approveMaterialsRequisitonId}" title="#{bundle.EditGoodsOutDetailTitle_approveMaterialsRequisitonId}" >
+                        <f:selectItems value="#{approveMaterialsRequisitonController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{goodsOutDetailController.update}" value="#{bundle.EditGoodsOutDetailSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditGoodsOutDetailViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{goodsOutDetailController.prepareList}" value="#{bundle.EditGoodsOutDetailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditGoodsOutDetailIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSubActivityTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditSubActivityLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{subActivityController.selected.id}" title="#{bundle.EditSubActivityTitle_id}" required="true" requiredMessage="#{bundle.EditSubActivityRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditSubActivityLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{subActivityController.selected.name}" title="#{bundle.EditSubActivityTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditSubActivityLabel_parentId}" for="parentId" />
+                    <h:inputText id="parentId" value="#{subActivityController.selected.parentId}" title="#{bundle.EditSubActivityTitle_parentId}" />
+                    <h:outputLabel value="#{bundle.EditSubActivityLabel_subActivityId}" for="subActivityId" />
+                    <h:selectOneMenu id="subActivityId" value="#{subActivityController.selected.subActivityId}" title="#{bundle.EditSubActivityTitle_subActivityId}" >
+                        <f:selectItems value="#{subActivityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSubActivityLabel_activityId}" for="activityId" />
+                    <h:selectOneMenu id="activityId" value="#{subActivityController.selected.activityId}" title="#{bundle.EditSubActivityTitle_activityId}" >
+                        <f:selectItems value="#{activityController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{subActivityController.update}" value="#{bundle.EditSubActivitySaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditSubActivityViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{subActivityController.prepareList}" value="#{bundle.EditSubActivityShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditSubActivityIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

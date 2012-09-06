@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListApprovePurchaseRequestMaterialEmpty}" rendered="#{approvePurchaseRequestMaterialController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{approvePurchaseRequestMaterialController.items.rowCount > 0}">
+                    <h:outputText value="#{approvePurchaseRequestMaterialController.pagination.pageFirstItem + 1}..#{approvePurchaseRequestMaterialController.pagination.pageLastItem + 1}/#{approvePurchaseRequestMaterialController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{approvePurchaseRequestMaterialController.previous}" value="#{bundle.Previous} #{approvePurchaseRequestMaterialController.pagination.pageSize}" rendered="#{approvePurchaseRequestMaterialController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{approvePurchaseRequestMaterialController.next}" value="#{bundle.Next} #{approvePurchaseRequestMaterialController.pagination.pageSize}" rendered="#{approvePurchaseRequestMaterialController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{approvePurchaseRequestMaterialController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_project}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.project}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_quantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_complete}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.complete}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_approvedBy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.approvedBy}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_date}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.date}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_locationDelivery}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.locationDelivery}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_unitId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApprovePurchaseRequestMaterialTitle_purchaseRequestMaterial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.purchaseRequestMaterial}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{approvePurchaseRequestMaterialController.prepareView}" value="#{bundle.ListApprovePurchaseRequestMaterialViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{approvePurchaseRequestMaterialController.prepareEdit}" value="#{bundle.ListApprovePurchaseRequestMaterialEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{approvePurchaseRequestMaterialController.destroy}" value="#{bundle.ListApprovePurchaseRequestMaterialDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{approvePurchaseRequestMaterialController.prepareCreate}" value="#{bundle.ListApprovePurchaseRequestMaterialCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListApprovePurchaseRequestMaterialIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

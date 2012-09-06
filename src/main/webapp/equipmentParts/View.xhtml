@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentPartsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_id}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.id}" title="#{bundle.ViewEquipmentPartsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_name}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.name}" title="#{bundle.ViewEquipmentPartsTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_modelNumber}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.modelNumber}" title="#{bundle.ViewEquipmentPartsTitle_modelNumber}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_remarks}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.remarks}" title="#{bundle.ViewEquipmentPartsTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_usage}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.usage}" title="#{bundle.ViewEquipmentPartsTitle_usage}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_description}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.description}" title="#{bundle.ViewEquipmentPartsTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentPartsLabel_quantity}"/>
+                    <h:outputText value="#{equipmentPartsController.selected.quantity}" title="#{bundle.ViewEquipmentPartsTitle_quantity}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentPartsController.destroyAndView}" value="#{bundle.ViewEquipmentPartsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentPartsEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentPartsController.prepareCreate}" value="#{bundle.ViewEquipmentPartsCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentPartsController.prepareList}" value="#{bundle.ViewEquipmentPartsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentPartsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

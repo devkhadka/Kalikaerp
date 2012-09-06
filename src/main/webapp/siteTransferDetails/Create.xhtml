@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSiteTransferDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{siteTransferDetailsController.selected.id}" title="#{bundle.CreateSiteTransferDetailsTitle_id}" required="true" requiredMessage="#{bundle.CreateSiteTransferDetailsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_quantityReq}" for="quantityReq" />
+                    <h:inputText id="quantityReq" value="#{siteTransferDetailsController.selected.quantityReq}" title="#{bundle.CreateSiteTransferDetailsTitle_quantityReq}" />
+                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_location}" for="location" />
+                    <h:inputText id="location" value="#{siteTransferDetailsController.selected.location}" title="#{bundle.CreateSiteTransferDetailsTitle_location}" />
+                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{siteTransferDetailsController.selected.unitId}" title="#{bundle.CreateSiteTransferDetailsTitle_unitId}" required="true" requiredMessage="#{bundle.CreateSiteTransferDetailsRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{siteTransferDetailsController.selected.materialId}" title="#{bundle.CreateSiteTransferDetailsTitle_materialId}" required="true" requiredMessage="#{bundle.CreateSiteTransferDetailsRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_processApprovedRequisitionsId}" for="processApprovedRequisitionsId" />
+                    <h:selectOneMenu id="processApprovedRequisitionsId" value="#{siteTransferDetailsController.selected.processApprovedRequisitionsId}" title="#{bundle.CreateSiteTransferDetailsTitle_processApprovedRequisitionsId}" required="true" requiredMessage="#{bundle.CreateSiteTransferDetailsRequiredMessage_processApprovedRequisitionsId}">
+                        <f:selectItems value="#{processApprovedRequisitionsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSiteTransferDetailsLabel_siteTransferOrdersId}" for="siteTransferOrdersId" />
+                    <h:selectOneMenu id="siteTransferOrdersId" value="#{siteTransferDetailsController.selected.siteTransferOrdersId}" title="#{bundle.CreateSiteTransferDetailsTitle_siteTransferOrdersId}" required="true" requiredMessage="#{bundle.CreateSiteTransferDetailsRequiredMessage_siteTransferOrdersId}">
+                        <f:selectItems value="#{siteTransferOrdersController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{siteTransferDetailsController.create}" value="#{bundle.CreateSiteTransferDetailsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{siteTransferDetailsController.prepareList}" value="#{bundle.CreateSiteTransferDetailsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateSiteTransferDetailsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsLabel_expense}"/>
+                    <h:outputText value="#{localPurchasePurchaseOrderDetailsController.selected.expense}" title="#{bundle.ViewLocalPurchasePurchaseOrderDetailsTitle_expense}"/>
+                    <h:outputText value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsLabel_remarks}"/>
+                    <h:outputText value="#{localPurchasePurchaseOrderDetailsController.selected.remarks}" title="#{bundle.ViewLocalPurchasePurchaseOrderDetailsTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsLabel_purchaseOrderDetails}"/>
+                    <h:outputText value="#{localPurchasePurchaseOrderDetailsController.selected.purchaseOrderDetails}" title="#{bundle.ViewLocalPurchasePurchaseOrderDetailsTitle_purchaseOrderDetails}"/>
+                    <h:outputText value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsLabel_localPurchase}"/>
+                    <h:outputText value="#{localPurchasePurchaseOrderDetailsController.selected.localPurchase}" title="#{bundle.ViewLocalPurchasePurchaseOrderDetailsTitle_localPurchase}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{localPurchasePurchaseOrderDetailsController.destroyAndView}" value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsEditLink}"/>
+                <br />
+                <h:commandLink action="#{localPurchasePurchaseOrderDetailsController.prepareCreate}" value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsCreateLink}" />
+                <br />
+                <h:commandLink action="#{localPurchasePurchaseOrderDetailsController.prepareList}" value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewLocalPurchasePurchaseOrderDetailsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

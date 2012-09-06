@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPurchaseOrderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{purchaseOrderController.selected.id}" title="#{bundle.EditPurchaseOrderTitle_id}" required="true" requiredMessage="#{bundle.EditPurchaseOrderRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_number}" for="number" />
+                    <h:inputText id="number" value="#{purchaseOrderController.selected.number}" title="#{bundle.EditPurchaseOrderTitle_number}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_termsConditions}" for="termsConditions" />
+                    <h:inputTextarea rows="4" cols="30" id="termsConditions" value="#{purchaseOrderController.selected.termsConditions}" title="#{bundle.EditPurchaseOrderTitle_termsConditions}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_company}" for="company" />
+                    <h:inputText id="company" value="#{purchaseOrderController.selected.company}" title="#{bundle.EditPurchaseOrderTitle_company}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_amount}" for="amount" />
+                    <h:inputText id="amount" value="#{purchaseOrderController.selected.amount}" title="#{bundle.EditPurchaseOrderTitle_amount}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_project}" for="project" />
+                    <h:inputText id="project" value="#{purchaseOrderController.selected.project}" title="#{bundle.EditPurchaseOrderTitle_project}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_supplierVatPan}" for="supplierVatPan" />
+                    <h:inputText id="supplierVatPan" value="#{purchaseOrderController.selected.supplierVatPan}" title="#{bundle.EditPurchaseOrderTitle_supplierVatPan}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_externalDocNumber}" for="externalDocNumber" />
+                    <h:inputTextarea rows="4" cols="30" id="externalDocNumber" value="#{purchaseOrderController.selected.externalDocNumber}" title="#{bundle.EditPurchaseOrderTitle_externalDocNumber}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_currency}" for="currency" />
+                    <h:inputTextarea rows="4" cols="30" id="currency" value="#{purchaseOrderController.selected.currency}" title="#{bundle.EditPurchaseOrderTitle_currency}" />
+                    <h:outputLabel value="#{bundle.EditPurchaseOrderLabel_supplierId}" for="supplierId" />
+                    <h:selectOneMenu id="supplierId" value="#{purchaseOrderController.selected.supplierId}" title="#{bundle.EditPurchaseOrderTitle_supplierId}" required="true" requiredMessage="#{bundle.EditPurchaseOrderRequiredMessage_supplierId}">
+                        <f:selectItems value="#{supplierController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{purchaseOrderController.update}" value="#{bundle.EditPurchaseOrderSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditPurchaseOrderViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{purchaseOrderController.prepareList}" value="#{bundle.EditPurchaseOrderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditPurchaseOrderIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

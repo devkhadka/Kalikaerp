@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStoreInDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_id}"/>
+                    <h:outputText value="#{storeInDetailController.selected.id}" title="#{bundle.ViewStoreInDetailTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_name}"/>
+                    <h:outputText value="#{storeInDetailController.selected.name}" title="#{bundle.ViewStoreInDetailTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_quantity}"/>
+                    <h:outputText value="#{storeInDetailController.selected.quantity}" title="#{bundle.ViewStoreInDetailTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_serialno}"/>
+                    <h:outputText value="#{storeInDetailController.selected.serialno}" title="#{bundle.ViewStoreInDetailTitle_serialno}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_status}"/>
+                    <h:outputText value="#{storeInDetailController.selected.status}" title="#{bundle.ViewStoreInDetailTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_remarks}"/>
+                    <h:outputText value="#{storeInDetailController.selected.remarks}" title="#{bundle.ViewStoreInDetailTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_unitId}"/>
+                    <h:outputText value="#{storeInDetailController.selected.unitId}" title="#{bundle.ViewStoreInDetailTitle_unitId}"/>
+                    <h:outputText value="#{bundle.ViewStoreInDetailLabel_storeInId}"/>
+                    <h:outputText value="#{storeInDetailController.selected.storeInId}" title="#{bundle.ViewStoreInDetailTitle_storeInId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeInDetailController.destroyAndView}" value="#{bundle.ViewStoreInDetailDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewStoreInDetailEditLink}"/>
+                <br />
+                <h:commandLink action="#{storeInDetailController.prepareCreate}" value="#{bundle.ViewStoreInDetailCreateLink}" />
+                <br />
+                <h:commandLink action="#{storeInDetailController.prepareList}" value="#{bundle.ViewStoreInDetailShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewStoreInDetailIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

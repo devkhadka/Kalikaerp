@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSupplierTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditSupplierLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{supplierController.selected.id}" title="#{bundle.EditSupplierTitle_id}" required="true" requiredMessage="#{bundle.EditSupplierRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditSupplierLabel_groupId}" for="groupId" />
+                    <h:selectOneMenu id="groupId" value="#{supplierController.selected.groupId}" title="#{bundle.EditSupplierTitle_groupId}" required="true" requiredMessage="#{bundle.EditSupplierRequiredMessage_groupId}">
+                        <f:selectItems value="#{supplierGroupController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSupplierLabel_industriesId}" for="industriesId" />
+                    <h:selectOneMenu id="industriesId" value="#{supplierController.selected.industriesId}" title="#{bundle.EditSupplierTitle_industriesId}" required="true" requiredMessage="#{bundle.EditSupplierRequiredMessage_industriesId}">
+                        <f:selectItems value="#{industriesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{supplierController.update}" value="#{bundle.EditSupplierSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditSupplierViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{supplierController.prepareList}" value="#{bundle.EditSupplierShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditSupplierIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

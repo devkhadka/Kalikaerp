@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditApproveMaterialsRequisitonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{approveMaterialsRequisitonController.selected.id}" title="#{bundle.EditApproveMaterialsRequisitonTitle_id}" required="true" requiredMessage="#{bundle.EditApproveMaterialsRequisitonRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_approveQuantity}" for="approveQuantity" />
+                    <h:inputText id="approveQuantity" value="#{approveMaterialsRequisitonController.selected.approveQuantity}" title="#{bundle.EditApproveMaterialsRequisitonTitle_approveQuantity}" />
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_issueCompleted}" for="issueCompleted" />
+                    <h:inputText id="issueCompleted" value="#{approveMaterialsRequisitonController.selected.issueCompleted}" title="#{bundle.EditApproveMaterialsRequisitonTitle_issueCompleted}" />
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_rejectQuantity}" for="rejectQuantity" />
+                    <h:inputText id="rejectQuantity" value="#{approveMaterialsRequisitonController.selected.rejectQuantity}" title="#{bundle.EditApproveMaterialsRequisitonTitle_rejectQuantity}" />
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_reasonsOfRejection}" for="reasonsOfRejection" />
+                    <h:inputTextarea rows="4" cols="30" id="reasonsOfRejection" value="#{approveMaterialsRequisitonController.selected.reasonsOfRejection}" title="#{bundle.EditApproveMaterialsRequisitonTitle_reasonsOfRejection}" />
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_siteTransferRequisitionId}" for="siteTransferRequisitionId" />
+                    <h:selectOneMenu id="siteTransferRequisitionId" value="#{approveMaterialsRequisitonController.selected.siteTransferRequisitionId}" title="#{bundle.EditApproveMaterialsRequisitonTitle_siteTransferRequisitionId}" required="true" requiredMessage="#{bundle.EditApproveMaterialsRequisitonRequiredMessage_siteTransferRequisitionId}">
+                        <f:selectItems value="#{siteTransferRequisitionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{approveMaterialsRequisitonController.selected.unitId}" title="#{bundle.EditApproveMaterialsRequisitonTitle_unitId}" required="true" requiredMessage="#{bundle.EditApproveMaterialsRequisitonRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditApproveMaterialsRequisitonLabel_requisitionDeliveryId}" for="requisitionDeliveryId" />
+                    <h:selectOneMenu id="requisitionDeliveryId" value="#{approveMaterialsRequisitonController.selected.requisitionDeliveryId}" title="#{bundle.EditApproveMaterialsRequisitonTitle_requisitionDeliveryId}" required="true" requiredMessage="#{bundle.EditApproveMaterialsRequisitonRequiredMessage_requisitionDeliveryId}">
+                        <f:selectItems value="#{requisitionDeliveryController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{approveMaterialsRequisitonController.update}" value="#{bundle.EditApproveMaterialsRequisitonSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditApproveMaterialsRequisitonViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{approveMaterialsRequisitonController.prepareList}" value="#{bundle.EditApproveMaterialsRequisitonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditApproveMaterialsRequisitonIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

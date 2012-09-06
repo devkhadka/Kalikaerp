@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRepairsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRepairsEmpty}" rendered="#{repairsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{repairsController.items.rowCount > 0}">
+                    <h:outputText value="#{repairsController.pagination.pageFirstItem + 1}..#{repairsController.pagination.pageLastItem + 1}/#{repairsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{repairsController.previous}" value="#{bundle.Previous} #{repairsController.pagination.pageSize}" rendered="#{repairsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{repairsController.next}" value="#{bundle.Next} #{repairsController.pagination.pageSize}" rendered="#{repairsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{repairsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRepairsTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRepairsTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRepairsTitle_location}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.location}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRepairsTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRepairsTitle_companyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.companyId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{repairsController.prepareView}" value="#{bundle.ListRepairsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{repairsController.prepareEdit}" value="#{bundle.ListRepairsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{repairsController.destroy}" value="#{bundle.ListRepairsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{repairsController.prepareCreate}" value="#{bundle.ListRepairsCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListRepairsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

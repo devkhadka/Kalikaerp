@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListApproveSiteTransferTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListApproveSiteTransferEmpty}" rendered="#{approveSiteTransferController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{approveSiteTransferController.items.rowCount > 0}">
+                    <h:outputText value="#{approveSiteTransferController.pagination.pageFirstItem + 1}..#{approveSiteTransferController.pagination.pageLastItem + 1}/#{approveSiteTransferController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{approveSiteTransferController.previous}" value="#{bundle.Previous} #{approveSiteTransferController.pagination.pageSize}" rendered="#{approveSiteTransferController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{approveSiteTransferController.next}" value="#{bundle.Next} #{approveSiteTransferController.pagination.pageSize}" rendered="#{approveSiteTransferController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{approveSiteTransferController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_approvedQuantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.approvedQuantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_rejectedQuantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rejectedQuantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_siteTransferDetailsId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.siteTransferDetailsId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_unitIdRejected}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitIdRejected}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListApproveSiteTransferTitle_unitIdApproved}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitIdApproved}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{approveSiteTransferController.prepareView}" value="#{bundle.ListApproveSiteTransferViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{approveSiteTransferController.prepareEdit}" value="#{bundle.ListApproveSiteTransferEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{approveSiteTransferController.destroy}" value="#{bundle.ListApproveSiteTransferDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{approveSiteTransferController.prepareCreate}" value="#{bundle.ListApproveSiteTransferCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListApproveSiteTransferIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateApprovePurchaseRequestMaterialTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{approvePurchaseRequestMaterialController.selected.id}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_id}" required="true" requiredMessage="#{bundle.CreateApprovePurchaseRequestMaterialRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_project}" for="project" />
+                    <h:inputText id="project" value="#{approvePurchaseRequestMaterialController.selected.project}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_project}" />
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{approvePurchaseRequestMaterialController.selected.quantity}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_complete}" for="complete" />
+                    <h:inputText id="complete" value="#{approvePurchaseRequestMaterialController.selected.complete}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_complete}" />
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_approvedBy}" for="approvedBy" />
+                    <h:inputText id="approvedBy" value="#{approvePurchaseRequestMaterialController.selected.approvedBy}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_approvedBy}" />
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_date}" for="date" />
+                    <h:inputText id="date" value="#{approvePurchaseRequestMaterialController.selected.date}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_date}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_locationDelivery}" for="locationDelivery" />
+                    <h:inputText id="locationDelivery" value="#{approvePurchaseRequestMaterialController.selected.locationDelivery}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_locationDelivery}" />
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{approvePurchaseRequestMaterialController.selected.unitId}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_unitId}" required="true" requiredMessage="#{bundle.CreateApprovePurchaseRequestMaterialRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateApprovePurchaseRequestMaterialLabel_purchaseRequestMaterial}" for="purchaseRequestMaterial" />
+                    <h:selectOneMenu id="purchaseRequestMaterial" value="#{approvePurchaseRequestMaterialController.selected.purchaseRequestMaterial}" title="#{bundle.CreateApprovePurchaseRequestMaterialTitle_purchaseRequestMaterial}" required="true" requiredMessage="#{bundle.CreateApprovePurchaseRequestMaterialRequiredMessage_purchaseRequestMaterial}">
+                        <f:selectItems value="#{purchaseRequestMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{approvePurchaseRequestMaterialController.create}" value="#{bundle.CreateApprovePurchaseRequestMaterialSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{approvePurchaseRequestMaterialController.prepareList}" value="#{bundle.CreateApprovePurchaseRequestMaterialShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateApprovePurchaseRequestMaterialIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

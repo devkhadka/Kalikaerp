@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRequistionMaterialProjectTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateRequistionMaterialProjectLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{requistionMaterialProjectController.selected.id}" title="#{bundle.CreateRequistionMaterialProjectTitle_id}" required="true" requiredMessage="#{bundle.CreateRequistionMaterialProjectRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateRequistionMaterialProjectLabel_projectId}" for="projectId" />
+                    <h:selectOneMenu id="projectId" value="#{requistionMaterialProjectController.selected.projectId}" title="#{bundle.CreateRequistionMaterialProjectTitle_projectId}" required="true" requiredMessage="#{bundle.CreateRequistionMaterialProjectRequiredMessage_projectId}">
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRequistionMaterialProjectLabel_requisitionMaterialId}" for="requisitionMaterialId" />
+                    <h:selectOneMenu id="requisitionMaterialId" value="#{requistionMaterialProjectController.selected.requisitionMaterialId}" title="#{bundle.CreateRequistionMaterialProjectTitle_requisitionMaterialId}" required="true" requiredMessage="#{bundle.CreateRequistionMaterialProjectRequiredMessage_requisitionMaterialId}">
+                        <f:selectItems value="#{requisitionMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{requistionMaterialProjectController.create}" value="#{bundle.CreateRequistionMaterialProjectSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{requistionMaterialProjectController.prepareList}" value="#{bundle.CreateRequistionMaterialProjectShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateRequistionMaterialProjectIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

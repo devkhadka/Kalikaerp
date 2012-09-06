@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_id}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.id}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_quantityChallan}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.quantityChallan}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_quantityChallan}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_quantityReceived}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.quantityReceived}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_quantityReceived}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_quantityDamaged}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.quantityDamaged}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_quantityDamaged}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_remarks}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.remarks}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_unitIdDamaged}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.unitIdDamaged}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_unitIdDamaged}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_unitIdReceived}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.unitIdReceived}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_unitIdReceived}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_storeReceiveDetailsId}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.storeReceiveDetailsId}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_storeReceiveDetailsId}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_unitIdChallan}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.unitIdChallan}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_unitIdChallan}"/>
+                    <h:outputText value="#{bundle.ViewStoreReceiveFineDetailsLabel_materialId}"/>
+                    <h:outputText value="#{storeReceiveFineDetailsController.selected.materialId}" title="#{bundle.ViewStoreReceiveFineDetailsTitle_materialId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{storeReceiveFineDetailsController.destroyAndView}" value="#{bundle.ViewStoreReceiveFineDetailsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewStoreReceiveFineDetailsEditLink}"/>
+                <br />
+                <h:commandLink action="#{storeReceiveFineDetailsController.prepareCreate}" value="#{bundle.ViewStoreReceiveFineDetailsCreateLink}" />
+                <br />
+                <h:commandLink action="#{storeReceiveFineDetailsController.prepareList}" value="#{bundle.ViewStoreReceiveFineDetailsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewStoreReceiveFineDetailsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

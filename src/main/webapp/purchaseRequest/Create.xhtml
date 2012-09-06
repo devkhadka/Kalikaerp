@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePurchaseRequestTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreatePurchaseRequestLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{purchaseRequestController.selected.id}" title="#{bundle.CreatePurchaseRequestTitle_id}" required="true" requiredMessage="#{bundle.CreatePurchaseRequestRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreatePurchaseRequestLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{purchaseRequestController.selected.description}" title="#{bundle.CreatePurchaseRequestTitle_description}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseRequestController.create}" value="#{bundle.CreatePurchaseRequestSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{purchaseRequestController.prepareList}" value="#{bundle.CreatePurchaseRequestShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreatePurchaseRequestIndexLink}" action="/index" immediate="true" />
+            </h:form>
+             <h:form>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Date" style="font-weight:bold"></h:outputLabel>
+                <p:calendar value="#{purchaseRequestController.selected.createdDate}"  pattern="d-M-yyyy">
+                    <f:convertDateTime pattern="d-M-yyyy"/>
+                </p:calendar>
+                <h:outputLabel value="Purchase Request Description" style="font-weight:bold"/>
+                <p:inputTextarea value="#{purchaseRequestController.selected.description}"/>
+            </h:panelGrid>
+
+
+                 <p:dataTable   var="purchaseRequestMaterial" value="#{purchaseRequestController.selected.purchaseRequestMaterialCollection}" >  
+                <p:column headerText="Material"> 
+                    <h:selectOneMenu value="#{purchaseRequestMaterial.materialId}" >
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>  
+                </p:column>  
+                <p:column headerText="Project">
+                    <h:selectOneMenu value="#{purchaseRequestMaterial.projectId}" >
+                        <f:selectItems value="#{projectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>   
+                </p:column>
+                <p:column headerText="Expected Date">  
+                    <p:calendar value="#{purchaseRequestMaterial.expectedDate}"  pattern="d-M-yyyy">
+                        <f:convertDateTime pattern="d-M-yyyy" />
+                    </p:calendar>
+                </p:column>  
+                <p:column headerText="Expected Quantity">  
+                    <h:inputText value="#{purchaseRequestMaterial.expextedQuantity}" />  
+                </p:column>  
+                <p:column headerText="Unit">  
+                    <h:selectOneMenu  value="#{purchaseRequestMaterial.unitId}" >
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>  
+                </p:column>  
+                <p:column headerText="Stores Location">  
+                    <h:selectOneMenu  value="#{purchaseRequestMaterial.locationDelivery}"  >
+                        <f:selectItems value="#{storesController.itemsAvailableSelectOne}" />
+                    </h:selectOneMenu>  
+                </p:column> 
+                <p:column headerText=" option ">
+                    <p:commandLink value="delete" action="#{purchaseRequestController.selected.removePurchaseRequestMaterial(purchaseRequestMaterial)}"  update="@form"/>
+                </p:column>
+            </p:dataTable>       
+                 <h:commandLink action="#{purchaseRequestController.selected.addPurchaseRequestMaterial}" immediate="true"><h:outputText value="Add"/></h:commandLink>
+            
+                 <p:commandButton value="Save"  action="#{purchaseRequestController.create}"/>
+        </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

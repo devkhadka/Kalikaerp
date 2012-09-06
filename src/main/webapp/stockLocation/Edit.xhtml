@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditStockLocationTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditStockLocationLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{stockLocationController.selected.id}" title="#{bundle.EditStockLocationTitle_id}" required="true" requiredMessage="#{bundle.EditStockLocationRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditStockLocationLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{stockLocationController.selected.quantity}" title="#{bundle.EditStockLocationTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditStockLocationLabel_statusMaterialId}" for="statusMaterialId" />
+                    <h:selectOneMenu id="statusMaterialId" value="#{stockLocationController.selected.statusMaterialId}" title="#{bundle.EditStockLocationTitle_statusMaterialId}" required="true" requiredMessage="#{bundle.EditStockLocationRequiredMessage_statusMaterialId}">
+                        <f:selectItems value="#{statusMaterialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStockLocationLabel_materialId}" for="materialId" />
+                    <h:selectOneMenu id="materialId" value="#{stockLocationController.selected.materialId}" title="#{bundle.EditStockLocationTitle_materialId}" required="true" requiredMessage="#{bundle.EditStockLocationRequiredMessage_materialId}">
+                        <f:selectItems value="#{materialController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStockLocationLabel_unitId}" for="unitId" />
+                    <h:selectOneMenu id="unitId" value="#{stockLocationController.selected.unitId}" title="#{bundle.EditStockLocationTitle_unitId}" required="true" requiredMessage="#{bundle.EditStockLocationRequiredMessage_unitId}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditStockLocationLabel_storeLocationId}" for="storeLocationId" />
+                    <h:selectOneMenu id="storeLocationId" value="#{stockLocationController.selected.storeLocationId}" title="#{bundle.EditStockLocationTitle_storeLocationId}" required="true" requiredMessage="#{bundle.EditStockLocationRequiredMessage_storeLocationId}">
+                        <f:selectItems value="#{storeLocationController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{stockLocationController.update}" value="#{bundle.EditStockLocationSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditStockLocationViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{stockLocationController.prepareList}" value="#{bundle.EditStockLocationShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditStockLocationIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

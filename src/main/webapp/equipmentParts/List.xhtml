@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEquipmentPartsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEquipmentPartsEmpty}" rendered="#{equipmentPartsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{equipmentPartsController.items.rowCount > 0}">
+                    <h:outputText value="#{equipmentPartsController.pagination.pageFirstItem + 1}..#{equipmentPartsController.pagination.pageLastItem + 1}/#{equipmentPartsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{equipmentPartsController.previous}" value="#{bundle.Previous} #{equipmentPartsController.pagination.pageSize}" rendered="#{equipmentPartsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{equipmentPartsController.next}" value="#{bundle.Next} #{equipmentPartsController.pagination.pageSize}" rendered="#{equipmentPartsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{equipmentPartsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_modelNumber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.modelNumber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_usage}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usage}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquipmentPartsTitle_quantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{equipmentPartsController.prepareView}" value="#{bundle.ListEquipmentPartsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipmentPartsController.prepareEdit}" value="#{bundle.ListEquipmentPartsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equipmentPartsController.destroy}" value="#{bundle.ListEquipmentPartsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{equipmentPartsController.prepareCreate}" value="#{bundle.ListEquipmentPartsCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListEquipmentPartsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

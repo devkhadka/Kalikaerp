@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRejectPurchaseRequestTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRejectPurchaseRequestLabel_id}"/>
+                    <h:outputText value="#{rejectPurchaseRequestController.selected.id}" title="#{bundle.ViewRejectPurchaseRequestTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRejectPurchaseRequestLabel_quantity}"/>
+                    <h:outputText value="#{rejectPurchaseRequestController.selected.quantity}" title="#{bundle.ViewRejectPurchaseRequestTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewRejectPurchaseRequestLabel_purchaseRequestMaterial}"/>
+                    <h:outputText value="#{rejectPurchaseRequestController.selected.purchaseRequestMaterial}" title="#{bundle.ViewRejectPurchaseRequestTitle_purchaseRequestMaterial}"/>
+                    <h:outputText value="#{bundle.ViewRejectPurchaseRequestLabel_unitId}"/>
+                    <h:outputText value="#{rejectPurchaseRequestController.selected.unitId}" title="#{bundle.ViewRejectPurchaseRequestTitle_unitId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rejectPurchaseRequestController.destroyAndView}" value="#{bundle.ViewRejectPurchaseRequestDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewRejectPurchaseRequestEditLink}"/>
+                <br />
+                <h:commandLink action="#{rejectPurchaseRequestController.prepareCreate}" value="#{bundle.ViewRejectPurchaseRequestCreateLink}" />
+                <br />
+                <h:commandLink action="#{rejectPurchaseRequestController.prepareList}" value="#{bundle.ViewRejectPurchaseRequestShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewRejectPurchaseRequestIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

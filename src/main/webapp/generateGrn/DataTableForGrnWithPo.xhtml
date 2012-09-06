@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
+    
+   
+       
+
+           
+           <h:dataTable value="#{storeReceiveController.dTFGWP}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                     
+                     <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" Material ID"/>
+                            </f:facet>
+                            <h:outputText value="#{item.materialID}"/>
+                        </h:column>
+               
+                 <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Material Description"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descriptionForDataTable}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Uom"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uom}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quantity Ordered "/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantityOrdered}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cumulative received up to last Delivery"/>
+                            </f:facet>
+                             <h:inputText value="#{item.cumulativeReceived}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quantity as per Delivery Challan"/>
+                            </f:facet>
+                            <h:inputText value="#{item.quantityAsPerDeliveryChallan}"/>
+                        </h:column>
+               
+                  <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" Unit Damaged"/>
+                            </f:facet>
+                            
+                    <h:outputLabel value="#{bundle.CreateStoreReceiveFineDetailsLabel_unitIdChallan}" for="unitIdChallan" />
+                    <h:selectOneMenu id="unitIdChallan" value="#{item.unitIdChallan}" title="#{bundle.CreateStoreReceiveFineDetailsTitle_unitIdChallan}" required="true" requiredMessage="#{bundle.CreateStoreReceiveFineDetailsRequiredMessage_unitIdChallan}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quantity Received"/>
+                            </f:facet>
+                            <h:inputText value="#{item.quantityReceived}"/>
+                        </h:column>
+                       <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" Unit Damaged"/>
+                            </f:facet>
+                         <h:outputLabel value="#{bundle.CreateStoreReceiveFineDetailsLabel_unitIdReceived}" for="unitIdReceived" />
+                    <h:selectOneMenu id="unitIdReceived" value="#{item.unitIdReceived}" title="#{bundle.CreateStoreReceiveFineDetailsTitle_unitIdReceived}" required="true" requiredMessage="#{bundle.CreateStoreReceiveFineDetailsRequiredMessage_unitIdReceived}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                        </h:column>
+                     <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quantity of Damages (If Any )"/>
+                            </f:facet>
+                            <h:inputText value="#{item.quantityOfDamages}"/>
+                        </h:column>
+               
+                <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=" Unit Damaged"/>
+                            </f:facet>
+                            <h:outputLabel value="#{bundle.CreateStoreReceiveFineDetailsLabel_unitIdDamaged}" for="unitIdDamaged" />
+                    <h:selectOneMenu id="unitIdDamaged" value="#{item.unitIdDamaged}" title="#{bundle.CreateStoreReceiveFineDetailsTitle_unitIdDamaged}" required="true" requiredMessage="#{bundle.CreateStoreReceiveFineDetailsRequiredMessage_unitIdDamaged}">
+                        <f:selectItems value="#{unitController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                        </h:column>
+                     <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Remarks"/>
+                            </f:facet>
+                           <h:inputText value="#{item.remarks}"/>
+                        </h:column>
+               
+             
+               
+                        
+                    </h:dataTable>
+
+
+                  
+
+</ui:composition>

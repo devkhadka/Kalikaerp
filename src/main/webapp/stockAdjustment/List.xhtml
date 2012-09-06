@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListStockAdjustmentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListStockAdjustmentEmpty}" rendered="#{stockAdjustmentController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{stockAdjustmentController.items.rowCount > 0}">
+                    <h:outputText value="#{stockAdjustmentController.pagination.pageFirstItem + 1}..#{stockAdjustmentController.pagination.pageLastItem + 1}/#{stockAdjustmentController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{stockAdjustmentController.previous}" value="#{bundle.Previous} #{stockAdjustmentController.pagination.pageSize}" rendered="#{stockAdjustmentController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{stockAdjustmentController.next}" value="#{bundle.Next} #{stockAdjustmentController.pagination.pageSize}" rendered="#{stockAdjustmentController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{stockAdjustmentController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_remarks}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.remarks}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_addLessQuantity}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addLessQuantity}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_addLess}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.addLess}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_unitId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.unitId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_stockLocationId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.stockLocationId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListStockAdjustmentTitle_materialId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.materialId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{stockAdjustmentController.prepareView}" value="#{bundle.ListStockAdjustmentViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{stockAdjustmentController.prepareEdit}" value="#{bundle.ListStockAdjustmentEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{stockAdjustmentController.destroy}" value="#{bundle.ListStockAdjustmentDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{stockAdjustmentController.prepareCreate}" value="#{bundle.ListStockAdjustmentCreateLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ListStockAdjustmentIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCloseExceptionsRemarksTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditCloseExceptionsRemarksLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{closeExceptionsRemarksController.selected.id}" title="#{bundle.EditCloseExceptionsRemarksTitle_id}" required="true" requiredMessage="#{bundle.EditCloseExceptionsRemarksRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditCloseExceptionsRemarksLabel_poNumber}" for="poNumber" />
+                    <h:inputText id="poNumber" value="#{closeExceptionsRemarksController.selected.poNumber}" title="#{bundle.EditCloseExceptionsRemarksTitle_poNumber}" />
+                    <h:outputLabel value="#{bundle.EditCloseExceptionsRemarksLabel_stoNumber}" for="stoNumber" />
+                    <h:inputText id="stoNumber" value="#{closeExceptionsRemarksController.selected.stoNumber}" title="#{bundle.EditCloseExceptionsRemarksTitle_stoNumber}" />
+                    <h:outputLabel value="#{bundle.EditCloseExceptionsRemarksLabel_remarks}" for="remarks" />
+                    <h:inputText id="remarks" value="#{closeExceptionsRemarksController.selected.remarks}" title="#{bundle.EditCloseExceptionsRemarksTitle_remarks}" />
+                    <h:outputLabel value="#{bundle.EditCloseExceptionsRemarksLabel_storeReceiveFineDetailsId}" for="storeReceiveFineDetailsId" />
+                    <h:selectOneMenu id="storeReceiveFineDetailsId" value="#{closeExceptionsRemarksController.selected.storeReceiveFineDetailsId}" title="#{bundle.EditCloseExceptionsRemarksTitle_storeReceiveFineDetailsId}" required="true" requiredMessage="#{bundle.EditCloseExceptionsRemarksRequiredMessage_storeReceiveFineDetailsId}">
+                        <f:selectItems value="#{storeReceiveFineDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{closeExceptionsRemarksController.update}" value="#{bundle.EditCloseExceptionsRemarksSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditCloseExceptionsRemarksViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{closeExceptionsRemarksController.prepareList}" value="#{bundle.EditCloseExceptionsRemarksShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditCloseExceptionsRemarksIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentFinancingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_id}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.id}" title="#{bundle.ViewEquipmentFinancingTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_contractNumber}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.contractNumber}" title="#{bundle.ViewEquipmentFinancingTitle_contractNumber}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_financer}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.financer}" title="#{bundle.ViewEquipmentFinancingTitle_financer}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_fullAmount}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.fullAmount}" title="#{bundle.ViewEquipmentFinancingTitle_fullAmount}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_downPayment}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.downPayment}" title="#{bundle.ViewEquipmentFinancingTitle_downPayment}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_financeAmount}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.financeAmount}" title="#{bundle.ViewEquipmentFinancingTitle_financeAmount}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_firstInstallmentDue}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.firstInstallmentDue}" title="#{bundle.ViewEquipmentFinancingTitle_firstInstallmentDue}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_installmentAmount}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.installmentAmount}" title="#{bundle.ViewEquipmentFinancingTitle_installmentAmount}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_roi}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.roi}" title="#{bundle.ViewEquipmentFinancingTitle_roi}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_installmentNumber}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.installmentNumber}" title="#{bundle.ViewEquipmentFinancingTitle_installmentNumber}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_remarks}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.remarks}" title="#{bundle.ViewEquipmentFinancingTitle_remarks}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentFinancingLabel_equipmentId}"/>
+                    <h:outputText value="#{equipmentFinancingController.selected.equipmentId}" title="#{bundle.ViewEquipmentFinancingTitle_equipmentId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentFinancingController.destroyAndView}" value="#{bundle.ViewEquipmentFinancingDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentFinancingEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentFinancingController.prepareCreate}" value="#{bundle.ViewEquipmentFinancingCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentFinancingController.prepareList}" value="#{bundle.ViewEquipmentFinancingShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentFinancingIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

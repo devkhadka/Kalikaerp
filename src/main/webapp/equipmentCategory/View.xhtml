@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEquipmentCategoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEquipmentCategoryLabel_id}"/>
+                    <h:outputText value="#{equipmentCategoryController.selected.id}" title="#{bundle.ViewEquipmentCategoryTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentCategoryLabel_name}"/>
+                    <h:outputText value="#{equipmentCategoryController.selected.name}" title="#{bundle.ViewEquipmentCategoryTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentCategoryLabel_description}"/>
+                    <h:outputText value="#{equipmentCategoryController.selected.description}" title="#{bundle.ViewEquipmentCategoryTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewEquipmentCategoryLabel_parentId}"/>
+                    <h:outputText value="#{equipmentCategoryController.selected.parentId}" title="#{bundle.ViewEquipmentCategoryTitle_parentId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentCategoryController.destroyAndView}" value="#{bundle.ViewEquipmentCategoryDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewEquipmentCategoryEditLink}"/>
+                <br />
+                <h:commandLink action="#{equipmentCategoryController.prepareCreate}" value="#{bundle.ViewEquipmentCategoryCreateLink}" />
+                <br />
+                <h:commandLink action="#{equipmentCategoryController.prepareList}" value="#{bundle.ViewEquipmentCategoryShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewEquipmentCategoryIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

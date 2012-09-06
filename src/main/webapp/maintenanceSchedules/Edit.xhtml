@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMaintenanceSchedulesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.EditMaintenanceSchedulesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{maintenanceSchedulesController.selected.id}" title="#{bundle.EditMaintenanceSchedulesTitle_id}" required="true" requiredMessage="#{bundle.EditMaintenanceSchedulesRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.EditMaintenanceSchedulesLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{maintenanceSchedulesController.selected.name}" title="#{bundle.EditMaintenanceSchedulesTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceSchedulesLabel_scheduledHours}" for="scheduledHours" />
+                    <h:inputText id="scheduledHours" value="#{maintenanceSchedulesController.selected.scheduledHours}" title="#{bundle.EditMaintenanceSchedulesTitle_scheduledHours}" />
+                    <h:outputLabel value="#{bundle.EditMaintenanceSchedulesLabel_equipmentId}" for="equipmentId" />
+                    <h:selectOneMenu id="equipmentId" value="#{maintenanceSchedulesController.selected.equipmentId}" title="#{bundle.EditMaintenanceSchedulesTitle_equipmentId}" required="true" requiredMessage="#{bundle.EditMaintenanceSchedulesRequiredMessage_equipmentId}">
+                        <f:selectItems value="#{equipmentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMaintenanceSchedulesLabel_scheduledMaintenanceTypesId}" for="scheduledMaintenanceTypesId" />
+                    <h:selectOneMenu id="scheduledMaintenanceTypesId" value="#{maintenanceSchedulesController.selected.scheduledMaintenanceTypesId}" title="#{bundle.EditMaintenanceSchedulesTitle_scheduledMaintenanceTypesId}" required="true" requiredMessage="#{bundle.EditMaintenanceSchedulesRequiredMessage_scheduledMaintenanceTypesId}">
+                        <f:selectItems value="#{scheduledMaintenanceTypesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{maintenanceSchedulesController.update}" value="#{bundle.EditMaintenanceSchedulesSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditMaintenanceSchedulesViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{maintenanceSchedulesController.prepareList}" value="#{bundle.EditMaintenanceSchedulesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditMaintenanceSchedulesIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

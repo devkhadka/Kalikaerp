@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPurchaseOrderDetailsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_id}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.id}" title="#{bundle.ViewPurchaseOrderDetailsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_rate}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.rate}" title="#{bundle.ViewPurchaseOrderDetailsTitle_rate}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_quantity}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.quantity}" title="#{bundle.ViewPurchaseOrderDetailsTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_amount}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.amount}" title="#{bundle.ViewPurchaseOrderDetailsTitle_amount}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_locationDelivery}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.locationDelivery}" title="#{bundle.ViewPurchaseOrderDetailsTitle_locationDelivery}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_approvePurchaseRequestMaterialId}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.approvePurchaseRequestMaterialId}" title="#{bundle.ViewPurchaseOrderDetailsTitle_approvePurchaseRequestMaterialId}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_storesId}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.storesId}" title="#{bundle.ViewPurchaseOrderDetailsTitle_storesId}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_purchaseOrderId}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.purchaseOrderId}" title="#{bundle.ViewPurchaseOrderDetailsTitle_purchaseOrderId}"/>
+                    <h:outputText value="#{bundle.ViewPurchaseOrderDetailsLabel_unitId}"/>
+                    <h:outputText value="#{purchaseOrderDetailsController.selected.unitId}" title="#{bundle.ViewPurchaseOrderDetailsTitle_unitId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purchaseOrderDetailsController.destroyAndView}" value="#{bundle.ViewPurchaseOrderDetailsDestroyLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="Edit" value="#{bundle.ViewPurchaseOrderDetailsEditLink}"/>
+                <br />
+                <h:commandLink action="#{purchaseOrderDetailsController.prepareCreate}" value="#{bundle.ViewPurchaseOrderDetailsCreateLink}" />
+                <br />
+                <h:commandLink action="#{purchaseOrderDetailsController.prepareList}" value="#{bundle.ViewPurchaseOrderDetailsShowAllLink}"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.ViewPurchaseOrderDetailsIndexLink}" action="/index" immediate="true" />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

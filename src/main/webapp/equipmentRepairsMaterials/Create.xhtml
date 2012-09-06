@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEquipmentRepairsMaterialsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+<ui:remove>                    <h:outputLabel value="#{bundle.CreateEquipmentRepairsMaterialsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{equipmentRepairsMaterialsController.selected.id}" title="#{bundle.CreateEquipmentRepairsMaterialsTitle_id}" required="true" requiredMessage="#{bundle.CreateEquipmentRepairsMaterialsRequiredMessage_id}"/></ui:remove>
+                    <h:outputLabel value="#{bundle.CreateEquipmentRepairsMaterialsLabel_materialName}" for="materialName" />
+                    <h:inputText id="materialName" value="#{equipmentRepairsMaterialsController.selected.materialName}" title="#{bundle.CreateEquipmentRepairsMaterialsTitle_materialName}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentRepairsMaterialsLabel_quanity}" for="quanity" />
+                    <h:inputText id="quanity" value="#{equipmentRepairsMaterialsController.selected.quanity}" title="#{bundle.CreateEquipmentRepairsMaterialsTitle_quanity}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentRepairsMaterialsLabel_rate}" for="rate" />
+                    <h:inputText id="rate" value="#{equipmentRepairsMaterialsController.selected.rate}" title="#{bundle.CreateEquipmentRepairsMaterialsTitle_rate}" />
+                    <h:outputLabel value="#{bundle.CreateEquipmentRepairsMaterialsLabel_maintenanceFineDetailsId}" for="maintenanceFineDetailsId" />
+                    <h:selectOneMenu id="maintenanceFineDetailsId" value="#{equipmentRepairsMaterialsController.selected.maintenanceFineDetailsId}" title="#{bundle.CreateEquipmentRepairsMaterialsTitle_maintenanceFineDetailsId}" required="true" requiredMessage="#{bundle.CreateEquipmentRepairsMaterialsRequiredMessage_maintenanceFineDetailsId}">
+                        <f:selectItems value="#{maintenanceFineDetailsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{equipmentRepairsMaterialsController.create}" value="#{bundle.CreateEquipmentRepairsMaterialsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{equipmentRepairsMaterialsController.prepareList}" value="#{bundle.CreateEquipmentRepairsMaterialsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateEquipmentRepairsMaterialsIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
